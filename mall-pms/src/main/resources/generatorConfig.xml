@@ -38,46 +38,57 @@
                              targetProject="mall-pms/src/main/java"/>
         <!--生成全部表tableName设为%-->
         <!--生成pms_product表-->
-<!--        <table tableName="pms_product">-->
-<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-<!--        </table>-->
-<!--        &lt;!&ndash;生成pms_member_price表&ndash;&gt;-->
-<!--        <table tableName="pms_member_price">-->
-<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-<!--        </table>-->
-<!--        &lt;!&ndash;生成cms_prefrence_area_product_relation表&ndash;&gt;-->
-<!--        <table tableName="cms_prefrence_area_product_relation">-->
-<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-<!--        </table>-->
-<!--        &lt;!&ndash;生成pms_product_attribute_value表&ndash;&gt;-->
-<!--        <table tableName="pms_product_attribute_value">-->
-<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-<!--        </table>-->
-<!--        &lt;!&ndash;生成pms_product_full_reduction表&ndash;&gt;-->
-<!--        <table tableName="pms_product_full_reduction">-->
-<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-<!--        </table>-->
-<!--        &lt;!&ndash;生成pms_product_ladder表&ndash;&gt;-->
-<!--        <table tableName="pms_product_ladder">-->
-<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-<!--        </table>-->
-<!--        &lt;!&ndash;生成pms_sku_stock表&ndash;&gt;-->
-<!--        <table tableName="pms_sku_stock">-->
-<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-<!--        </table>-->
-<!--        &lt;!&ndash;生成cms_subject_product_relation表&ndash;&gt;-->
-<!--        <table tableName="cms_subject_product_relation">-->
-<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-<!--        </table>-->
-<!--        &lt;!&ndash;生成pms_product_category表&ndash;&gt;-->
-<!--        <table tableName="pms_product_category">-->
-<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-<!--        </table>-->
+        <table tableName="pms_product">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成pms_member_price表-->
+        <table tableName="pms_member_price">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成cms_prefrence_area_product_relation表-->
+        <table tableName="cms_prefrence_area_product_relation">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成pms_product_attribute_value表-->
+        <table tableName="pms_product_attribute_value">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成pms_product_full_reduction表-->
+        <table tableName="pms_product_full_reduction">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成pms_product_ladder表-->
+        <table tableName="pms_product_ladder">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成pms_sku_stock表-->
+        <table tableName="pms_sku_stock">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成cms_subject_product_relation表-->
+        <table tableName="cms_subject_product_relation">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成pms_product_category表-->
+        <table tableName="pms_product_category">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
 
 
         <!--生成pms_brand表-->
         <table tableName="pms_brand">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+
+
+        <!--生成pms_product_attribute_category表-->
+        <table tableName="pms_product_attribute_category">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成pms_product_attribute表-->
+        <table tableName="pms_product_attribute">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
     </context>
 </generatorConfiguration>

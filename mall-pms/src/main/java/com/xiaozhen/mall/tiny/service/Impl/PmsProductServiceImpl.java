@@ -1,6 +1,7 @@
 package com.xiaozhen.mall.tiny.service.Impl;
 
 import com.github.pagehelper.PageHelper;
+import com.xiaozhen.mall.tiny.common.utils.MyUtils;
 import com.xiaozhen.mall.tiny.dto.PmsProductParam;
 import com.xiaozhen.mall.tiny.dto.PmsProductResult;
 import com.xiaozhen.mall.tiny.mbg.mapper.*;
@@ -11,9 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Field;
 import java.util.List;
+
 
 /**
  * @description: 商品PmsProductService实现类
@@ -221,16 +221,7 @@ public class PmsProductServiceImpl implements PmsProductService {
     public PmsProductResult updateInfo(Long id) {
         PmsProduct product = productMapper.selectByPrimaryKey(id);
         PmsProductResult productResult = new PmsProductResult();
-        Field[] fields = product.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            try {
-                PropertyDescriptor pd = new PropertyDescriptor(field.getName(), product.getClass());
-                Object data = pd.getReadMethod().invoke(product);
-                pd.getWriteMethod().invoke(productResult, data);
-            } catch (Exception ignored) {
-                LOGGER.debug(ignored.getMessage());
-            }
-        }
+        MyUtils.upCasting(product, productResult);
         // 商品会员价格设置
         PmsMemberPriceExample memberPriceExample = new PmsMemberPriceExample();
         memberPriceExample.createCriteria().andProductIdEqualTo(id);
@@ -273,5 +264,4 @@ public class PmsProductServiceImpl implements PmsProductService {
         productResult.setCateParentId(cateParentId);
         return productResult;
     }
-
 }
