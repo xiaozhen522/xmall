@@ -1,5 +1,6 @@
 package com.xiaozhen.mall.tiny.service;
 
+import com.xiaozhen.mall.tiny.dto.PmsBrandParm;
 import com.xiaozhen.mall.tiny.mbg.model.PmsBrand;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public interface PmsBrandService {
      * @param: brand  新的商品品牌
      * @return: 影响行数
      */
-    int createBrand(PmsBrand brandParm);
+    int createBrand(PmsBrandParm brandParm);
 
     /**
      * @description: 删除指定id的商品品牌

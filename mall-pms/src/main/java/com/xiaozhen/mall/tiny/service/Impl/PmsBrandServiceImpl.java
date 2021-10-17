@@ -1,6 +1,8 @@
 package com.xiaozhen.mall.tiny.service.Impl;
 
 import com.github.pagehelper.PageHelper;
+import com.xiaozhen.mall.tiny.common.utils.MyUtils;
+import com.xiaozhen.mall.tiny.dto.PmsBrandParm;
 import com.xiaozhen.mall.tiny.mbg.mapper.PmsBrandMapper;
 import com.xiaozhen.mall.tiny.mbg.model.PmsBrand;
 import com.xiaozhen.mall.tiny.mbg.model.PmsBrandExample;
@@ -27,8 +29,10 @@ public class PmsBrandServiceImpl implements PmsBrandService {
     }
 
     @Override
-    public int createBrand(PmsBrand brandParam) {
-        return brandMapper.insertSelective(brandParam);
+    public int createBrand(PmsBrandParm brandParam) {
+        PmsBrand brand = new PmsBrand();
+        MyUtils.cast(brandParam, brand);
+        return brandMapper.insertSelective(brand);
     }
 
     @Override

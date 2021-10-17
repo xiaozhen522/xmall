@@ -59,7 +59,7 @@ public class PmsProductAttributeCategoryServiceImpl implements PmsProductAttribu
         for (PmsProductAttributeCategory productAttributeCategory : productAttributeCategoryList) {
             // 转换对象
             PmsProductAttributeCategoryItem productAttributeCategoryItem = new PmsProductAttributeCategoryItem();
-            MyUtils.upCasting(productAttributeCategory, productAttributeCategoryItem);
+            MyUtils.cast(productAttributeCategory, productAttributeCategoryItem);
             // 查询商品属性参数
             PmsProductAttributeExample productAttributeExample = new PmsProductAttributeExample();
             productAttributeExample.createCriteria().andProductAttributeCategoryIdEqualTo(productAttributeCategory.getId());

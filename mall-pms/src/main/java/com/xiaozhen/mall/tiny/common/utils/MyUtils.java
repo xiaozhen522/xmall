@@ -14,7 +14,7 @@ import java.lang.reflect.Field;
 public class MyUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(MyUtils.class);
 
-    public static void upCasting(Object person, Object son) {
+    public static void cast(Object person, Object son) {
         Field[] fields = person.getClass().getDeclaredFields();
         for (Field field : fields) {
             try {

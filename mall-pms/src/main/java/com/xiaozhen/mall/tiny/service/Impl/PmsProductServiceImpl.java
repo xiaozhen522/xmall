@@ -221,7 +221,7 @@ public class PmsProductServiceImpl implements PmsProductService {
     public PmsProductResult updateInfo(Long id) {
         PmsProduct product = productMapper.selectByPrimaryKey(id);
         PmsProductResult productResult = new PmsProductResult();
-        MyUtils.upCasting(product, productResult);
+        MyUtils.cast(product, productResult);
         // 商品会员价格设置
         PmsMemberPriceExample memberPriceExample = new PmsMemberPriceExample();
         memberPriceExample.createCriteria().andProductIdEqualTo(id);
