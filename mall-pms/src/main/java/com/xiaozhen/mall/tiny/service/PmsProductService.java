@@ -43,5 +43,5 @@ public interface PmsProductService {
 
     int updateProductVerifyStatus(Integer verifyStatus, Long[] ids);
 
-    PmsProductResult updateInfo(Long id);
+    PmsProductResult updateInfo(Long id) ;
 }

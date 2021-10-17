@@ -6,9 +6,13 @@ import com.xiaozhen.mall.tiny.dto.PmsProductResult;
 import com.xiaozhen.mall.tiny.mbg.mapper.*;
 import com.xiaozhen.mall.tiny.mbg.model.*;
 import com.xiaozhen.mall.tiny.service.PmsProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
 import java.util.List;
 
 /**
@@ -18,6 +22,7 @@ import java.util.List;
  **/
 @Service
 public class PmsProductServiceImpl implements PmsProductService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(PmsProductServiceImpl.class);
     @Autowired
     private PmsProductMapper productMapper;
     @Autowired
@@ -151,6 +156,7 @@ public class PmsProductServiceImpl implements PmsProductService {
         return productMapper.updateByPrimaryKey(productParam);
     }
 
+
     @Override
     public int updateProductDeleteStatus(Integer deleteStatus, Long[] ids) {
         int rows = 0;
@@ -213,7 +219,18 @@ public class PmsProductServiceImpl implements PmsProductService {
 
     @Override
     public PmsProductResult updateInfo(Long id) {
-        PmsProductResult productResult = (PmsProductResult) productMapper.selectByPrimaryKey(id);
+        PmsProduct product = productMapper.selectByPrimaryKey(id);
+        PmsProductResult productResult = new PmsProductResult();
+        Field[] fields = product.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            try {
+                PropertyDescriptor pd = new PropertyDescriptor(field.getName(), product.getClass());
+                Object data = pd.getReadMethod().invoke(product);
+                pd.getWriteMethod().invoke(productResult, data);
+            } catch (Exception ignored) {
+                LOGGER.debug(ignored.getMessage());
+            }
+        }
         // 商品会员价格设置
         PmsMemberPriceExample memberPriceExample = new PmsMemberPriceExample();
         memberPriceExample.createCriteria().andProductIdEqualTo(id);
@@ -250,7 +267,9 @@ public class PmsProductServiceImpl implements PmsProductService {
         List<CmsSubjectProductRelation> subjectProductRelationList = subjectProductRelationMapper.selectByExample(subjectProductRelationExample);
         productResult.setSubjectProductRelationList(subjectProductRelationList);
         // cateParentId
-        Long cateParentId = productCategoryMapper.selectByPrimaryKey(productResult.getCateParentId()).getId();
+        Long productCategoryId = productResult.getProductCategoryId();
+        PmsProductCategory productCategory = productCategoryMapper.selectByPrimaryKey(productCategoryId);
+        Long cateParentId = productCategory.getParentId();
         productResult.setCateParentId(cateParentId);
         return productResult;
     }

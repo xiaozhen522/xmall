@@ -3,9 +3,9 @@ package com.xiaozhen.mall.tiny.dto;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * @description:
+ * @description 返回商品参数
  * @create time:2021/10/16
- * @Author: XiaoZhen
+ * @Author XiaoZhen
  **/
 public class PmsProductResult extends PmsProductParam {
     @ApiModelProperty(value = "商品所选分类的父id")
