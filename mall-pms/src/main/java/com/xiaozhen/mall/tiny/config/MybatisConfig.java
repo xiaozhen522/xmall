@@ -9,6 +9,6 @@ import org.springframework.context.annotation.Configuration;
  * @Author: XiaoZhen
  **/
 @Configuration
-@MapperScan("com.xiaozhen.mall.tiny.mbg.mapper")
+@MapperScan({"com.xiaozhen.mall.tiny.mbg.mapper","com.xiaozhen.mall.tiny.dao"})
 public class MybatisConfig {
 }
