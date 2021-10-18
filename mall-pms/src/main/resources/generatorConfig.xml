@@ -8,6 +8,8 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
         <property name="javaFileEncoding" value="UTF-8"/>
+        <!--覆盖生成的XML文件-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
         <!--为模型生成序列化方法-->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <!--为生成的Java模型创建一个toString方法-->
@@ -87,6 +89,10 @@
         </table>
         <!--生成pms_product_attribute表-->
         <table tableName="pms_product_attribute">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成pms_product_category_attribute_relation表-->
+        <table tableName="pms_product_category_attribute_relation">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
