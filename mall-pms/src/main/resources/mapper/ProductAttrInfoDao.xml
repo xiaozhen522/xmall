@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaozhen.mall.tiny.dao.ProductAttrInfoDao">
+    <resultMap id="BaseResultMap" type="com.xiaozhen.mall.tiny.dto.ProductAttrInfo">
+        <id column="id" jdbcType="BIGINT" property="attributeId"/>
+        <result column="product_attribute_category_id" jdbcType="BIGINT" property="attributeCategoryId"/>
+    </resultMap>
+    <select id="getProductAttrInfoList" resultMap="BaseResultMap">
+        SELECT pa.id,
+               pa.product_attribute_category_id
+        FROM pms_product_attribute AS pa
+        WHERE pa.product_attribute_category_id = #{productCategoryId}
+    </select>
+</mapper>
