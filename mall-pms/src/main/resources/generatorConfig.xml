@@ -131,6 +131,19 @@
         <table tableName="cms_subject">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+        <!--sms-->
+        <!--生成sms_coupon表-->
+        <table tableName="sms_coupon">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成sms_coupon_product_category_relation表-->
+        <table tableName="sms_coupon_product_category_relation">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成sms_coupon_product_relation表-->
+        <table tableName="sms_coupon_product_relation">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
 
     </context>
 </generatorConfiguration>
