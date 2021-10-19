@@ -118,5 +118,10 @@
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
+        <!--生成oms_order_return_apply表-->
+        <table tableName="oms_order_return_apply">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
     </context>
 </generatorConfiguration>
