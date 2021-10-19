@@ -39,6 +39,7 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.xiaozhen.mall.tiny.mbg.mapper"
                              targetProject="mall-pms/src/main/java"/>
         <!--生成全部表tableName设为%-->
+        <!--pms-->
         <!--生成pms_product表-->
         <table tableName="pms_product">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
@@ -75,14 +76,10 @@
         <table tableName="pms_product_category">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-
-
         <!--生成pms_brand表-->
         <table tableName="pms_brand">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-
-
         <!--生成pms_product_attribute_category表-->
         <table tableName="pms_product_attribute_category">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
@@ -96,11 +93,11 @@
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
+        <!--oms-->
         <!--生成oms_company_address表-->
         <table tableName="oms_company_address">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-
         <!--生成oms_order表-->
         <table tableName="oms_order">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
@@ -117,7 +114,6 @@
         <table tableName="oms_order_setting">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-
         <!--生成oms_order_return_apply表-->
         <table tableName="oms_order_return_apply">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
@@ -126,10 +122,13 @@
         <table tableName="oms_order_return_reason">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-
-
+        <!--cms-->
         <!--生成cms_prefrence_area表-->
         <table tableName="cms_prefrence_area">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成cms_subject表-->
+        <table tableName="cms_subject">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
