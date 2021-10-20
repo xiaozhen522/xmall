@@ -1,4 +1,4 @@
-package com.xiaozhen.mall.tiny.controller;
+package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.mbg.model.SmsCouponHistory;
 

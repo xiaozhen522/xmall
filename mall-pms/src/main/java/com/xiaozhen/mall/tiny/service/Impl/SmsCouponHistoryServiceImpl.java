@@ -1,9 +1,10 @@
-package com.xiaozhen.mall.tiny.controller;
+package com.xiaozhen.mall.tiny.service.Impl;
 
 import com.github.pagehelper.PageHelper;
 import com.xiaozhen.mall.tiny.mbg.mapper.SmsCouponHistoryMapper;
 import com.xiaozhen.mall.tiny.mbg.model.SmsCouponHistory;
 import com.xiaozhen.mall.tiny.mbg.model.SmsCouponHistoryExample;
+import com.xiaozhen.mall.tiny.service.SmsCouponHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

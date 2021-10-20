@@ -3,6 +3,7 @@ package com.xiaozhen.mall.tiny.controller;
 import com.xiaozhen.mall.tiny.common.api.CommonPage;
 import com.xiaozhen.mall.tiny.common.api.CommontResult;
 import com.xiaozhen.mall.tiny.mbg.model.SmsCouponHistory;
+import com.xiaozhen.mall.tiny.service.SmsCouponHistoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
