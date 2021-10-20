@@ -144,6 +144,10 @@
         <table tableName="sms_coupon_product_relation">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+        <!--生成sms_coupon_history表-->
+        <table tableName="sms_coupon_history">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
 
     </context>
 </generatorConfiguration>
