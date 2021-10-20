@@ -152,6 +152,10 @@
         <table tableName="sms_flash_promotion">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+        <!--生成sms_flash_promotion_product_relation表-->
+        <table tableName="sms_flash_promotion_product_relation">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
 
     </context>
 </generatorConfiguration>
