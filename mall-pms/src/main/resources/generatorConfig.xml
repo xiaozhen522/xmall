@@ -160,5 +160,9 @@
         <table tableName="sms_flash_promotion_session">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+        <!--生成sms_home_advertise表-->
+        <table tableName="sms_home_advertise">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>
