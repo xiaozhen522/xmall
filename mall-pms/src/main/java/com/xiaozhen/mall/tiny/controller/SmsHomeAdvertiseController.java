@@ -73,9 +73,9 @@ public class SmsHomeAdvertiseController {
     @ApiOperation("分页查询广告")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<CommonPage<SmsHomeAdvertise>> listHomeAdvertise(@RequestParam(name = "endTime")
+    public CommontResult<CommonPage<SmsHomeAdvertise>> listHomeAdvertise(@RequestParam(name = "endTime",defaultValue = "")
                                                                          @ApiParam("endTime") String endTime,
-                                                                         @RequestParam(name = "name")
+                                                                         @RequestParam(name = "name",defaultValue = "")
                                                                          @ApiParam("name") String name,
                                                                          @RequestParam(name = "pageNum", defaultValue = "1")
                                                                          @ApiParam("页码") Integer pageNum,
