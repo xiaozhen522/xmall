@@ -144,6 +144,41 @@
         <table tableName="sms_coupon_product_relation">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-
+        <!--生成sms_coupon_history表-->
+        <table tableName="sms_coupon_history">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成sms_flash_promotion表-->
+        <table tableName="sms_flash_promotion">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成sms_flash_promotion_product_relation表-->
+        <table tableName="sms_flash_promotion_product_relation">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成sms_flash_promotion_session表-->
+        <table tableName="sms_flash_promotion_session">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成sms_home_advertise表-->
+        <table tableName="sms_home_advertise">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成sms_home_brand表-->
+        <table tableName="sms_home_brand">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成sms_home_new_product表-->
+        <table tableName="sms_home_new_product">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成sms_home_recommend_product表-->
+        <table tableName="sms_home_recommend_product">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成sms_home_recommend_subject表-->
+        <table tableName="sms_home_recommend_subject">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>

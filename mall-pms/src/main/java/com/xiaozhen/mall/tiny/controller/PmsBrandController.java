@@ -101,6 +101,7 @@ public class PmsBrandController {
         return CommontResult.success(CommonPage.restPage(brandList));
     }
 
+    @CrossOrigin(origins = "http://127.0.0.1:8848")
     @ApiOperation("获取所有品牌列表")
     @RequestMapping(value = "/listAll", method = RequestMethod.GET)
     @ResponseBody
