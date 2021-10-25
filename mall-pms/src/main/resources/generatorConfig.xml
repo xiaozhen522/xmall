@@ -180,5 +180,22 @@
         <table tableName="sms_home_recommend_subject">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+        <!--ums-->
+        <!--生成ums_admin表-->
+        <table tableName="ums_admin">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成ums_permission表-->
+        <table tableName="ums_permission">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成ums_role表-->
+        <table tableName="ums_role">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成ums_admin_role_relation表-->
+        <table tableName="ums_admin_role_relation">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>
