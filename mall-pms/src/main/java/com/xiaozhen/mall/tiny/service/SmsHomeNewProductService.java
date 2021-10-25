@@ -15,9 +15,9 @@ public interface SmsHomeNewProductService {
 
     int deleteHomeNewProduct(Long[] ids);
 
-    int updateRecommendStatus(Long[] id, Integer recommentStatus);
-
     List<SmsHomeNewProduct> listHomeNewProduct(Integer pageNum, Integer pageSize, String productName, Integer recpmmendStatus);
+
+    int updateRecommendStatus(Long[] id, Integer recommentStatus);
 
     int updateSort(Long id, Integer sort);
 

@@ -172,5 +172,9 @@
         <table tableName="sms_home_new_product">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+        <!--生成sms_home_recommend_product表-->
+        <table tableName="sms_home_recommend_product">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>
