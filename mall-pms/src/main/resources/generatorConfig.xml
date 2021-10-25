@@ -197,5 +197,9 @@
         <table tableName="ums_admin_role_relation">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+        <!--生成ums_member_level表-->
+        <table tableName="ums_member_level">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>
