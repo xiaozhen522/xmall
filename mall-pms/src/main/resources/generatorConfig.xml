@@ -209,5 +209,9 @@
         <table tableName="ums_resource_category">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+        <!--生成ums_resource表-->
+        <table tableName="ums_resource">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>
