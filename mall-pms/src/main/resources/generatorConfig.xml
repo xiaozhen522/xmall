@@ -213,5 +213,13 @@
         <table tableName="ums_resource">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+        <!--生成ums_role_menu_relation表-->
+        <table tableName="ums_role_menu_relation">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--生成ums_role_resource_relation表-->
+        <table tableName="ums_role_resource_relation">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaozhen.mall.tiny.dao.UmsRoleDao">
+
+    <select id="listMenu" resultMap="com.xiaozhen.mall.tiny.mbg.mapper.UmsMenuMapper.BaseResultMap">
+        SELECT ums_menu.*
+        FROM ums_menu,
+             ums_role_menu_relation
+        WHERE ums_role_menu_relation.menu_id = ums_menu.id
+          AND ums_role_menu_relation.role_id = #{roleId}
+    </select>
+    <select id="listResource" resultMap="com.xiaozhen.mall.tiny.mbg.mapper.UmsResourceMapper.BaseResultMap">
+        SELECT ums_resource.*
+        FROM ums_role_resource_relation,
+             ums_resource
+        WHERE ums_role_resource_relation.resource_id = ums_resource.id
+          AND ums_role_resource_relation.role_id = #{roleId}
+    </select>
+</mapper>
