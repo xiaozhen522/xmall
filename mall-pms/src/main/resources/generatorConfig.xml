@@ -201,5 +201,9 @@
         <table tableName="ums_member_level">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+        <!--生成ums_menu表-->
+        <table tableName="ums_menu">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>
