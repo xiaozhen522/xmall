@@ -50,18 +50,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET,    // 允许对与网站静态资源的无授权访问
-                        "/*",
-                        "/*.html",
-                        "/favicon.ico",
-                        "/**/*.html",
-                        "/**/*.css",
-                        "/**/*.js",
-                        "/swagger-resources/**",
-                        "/v2/api-docs/**")
-                .permitAll()
-                .antMatchers("/admin/login", "/admin/register")  // 对登录注册要允许匿名访问
-                .permitAll()
+//                .antMatchers(HttpMethod.GET,    // 允许对与网站静态资源的无授权访问
+//                        "/*",
+//                        "/*.html",
+//                        "/favicon.ico",
+//                        "/**/*.html",
+//                        "/**/*.css",
+//                        "/**/*.js",
+//                        "/swagger-resources/**",
+//                        "/v2/api-docs/**")
+//                .permitAll()
+//                .antMatchers("/admin/login", "/admin/register")  // 对登录注册要允许匿名访问
+//                .permitAll()
                 .antMatchers("/**") // 测试是全部运行访问
                 .permitAll()
                 .anyRequest()   // 出上面外的所有请求全部需要鉴权认证
