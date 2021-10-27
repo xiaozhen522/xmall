@@ -36,7 +36,40 @@ public class Swagger2Config {
                 .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
+                .build()
+                .securitySchemes(securityschemes())
+                .securityContexts(securityContexts());
+    }
+
+    private List<SecurityContext> securityContexts() {
+        // 设置需要认证的路经
+        List<SecurityContext> result = new ArrayList<>();
+        result.add(getContextByPath("/brand/.*"));
+        return result;
+    }
+
+    private SecurityContext getContextByPath(String pathRegex) {
+        return SecurityContext.builder()
+                .securityReferences(defaultAuth())
+                .forPaths(PathSelectors.regex(pathRegex))
                 .build();
+    }
+
+    private List<SecurityReference> defaultAuth() {
+        List<SecurityReference> result = new ArrayList<>();
+        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+        authorizationScopes[0] = authorizationScope;
+        result.add(new SecurityReference("Authorization", authorizationScopes));
+        return result;
+    }
+
+    private List<ApiKey> securityschemes() {
+        // 设置请求头信息
+        List<ApiKey> result = new ArrayList<>();
+        ApiKey apiKey = new ApiKey("Authorization", "Authorization", "header");
+        result.add(apiKey);
+        return result;
     }
 
     private ApiInfo apiInfo() {
