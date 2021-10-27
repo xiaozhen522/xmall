@@ -1,9 +1,9 @@
 package com.xiaozhen.mall.tiny.common.api;
 
 /**
- * @description: 枚举常用错误码
+ * @description : 枚举常用错误码
  * @create time:2021/10/16
- * @Author:XiaoZhen
+ * @Author :XiaoZhen
  **/
 public enum ResultCode implements IErrorCode {
     SUCCESS(200, "操作成功"),

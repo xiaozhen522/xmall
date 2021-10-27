@@ -1,12 +1,12 @@
 package com.xiaozhen.mall.tiny.service.Impl;
 
 import com.github.pagehelper.PageHelper;
-import com.xiaozhen.mall.tiny.common.utils.MyUtils;
 import com.xiaozhen.mall.tiny.dto.PmsBrandParm;
 import com.xiaozhen.mall.tiny.mbg.mapper.PmsBrandMapper;
 import com.xiaozhen.mall.tiny.mbg.model.PmsBrand;
 import com.xiaozhen.mall.tiny.mbg.model.PmsBrandExample;
 import com.xiaozhen.mall.tiny.service.PmsBrandService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +14,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @description: 商品品牌PmsBrandService实现类
+ * @description : 商品品牌PmsBrandService实现类
  * @create time:13:26
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class PmsBrandServiceImpl implements PmsBrandService {
@@ -24,33 +24,33 @@ public class PmsBrandServiceImpl implements PmsBrandService {
     private PmsBrandMapper brandMapper;
 
     @Override
-    public PmsBrand getBrand(Long id) {
+    public PmsBrand getById(Long id) {
         return brandMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int createBrand(PmsBrandParm brandParam) {
+    public int create(PmsBrandParm brandParam) {
         PmsBrand brand = new PmsBrand();
-        MyUtils.cast(brandParam, brand);
+        BeanUtils.copyProperties(brandParam, brand);
         return brandMapper.insertSelective(brand);
     }
 
     @Override
-    public int deleteBrand(Long id) {
+    public int deleteById(Long id) {
         return brandMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public int deleteBrandBatch(Long[] ids) {
-        PmsBrandExample brandExample = new PmsBrandExample();
-        brandExample.createCriteria().andIdIn(Arrays.asList(ids));
-        return brandMapper.deleteByExample(brandExample);
+    public int deleteBatch(Long[] ids) {
+        PmsBrandExample example = new PmsBrandExample();
+        example.createCriteria().andIdIn(Arrays.asList(ids));
+        return brandMapper.deleteByExample(example);
     }
 
     @Override
-    public List<PmsBrand> listBrand(String keyword, Integer pageNum, Integer pageSize) {
+    public List<PmsBrand> list(String keyword, Integer pageNum, Integer pageSize) {
         PmsBrandExample brandExample = new PmsBrandExample();
-        if (keyword != null && !keyword.equals("")) {
+        if (keyword != null) {
             brandExample.createCriteria().andNameLike("%" + keyword + "%");
         }
         PageHelper.startPage(pageNum, pageSize);
@@ -58,32 +58,32 @@ public class PmsBrandServiceImpl implements PmsBrandService {
     }
 
     @Override
-    public List<PmsBrand> listAllBrand() {
+    public List<PmsBrand> listAll() {
         return brandMapper.selectByExample(new PmsBrandExample());
     }
 
     @Override
-    public int updateBrand(Long id, PmsBrand brand) {
+    public int updateById(Long id, PmsBrand brand) {
         brand.setId(id);
         return brandMapper.updateByPrimaryKey(brand);
     }
 
     @Override
     public int updateFactoryStatus(Integer factoryStatus, Long[] ids) {
-        PmsBrandExample brandExample = new PmsBrandExample();
-        brandExample.createCriteria().andIdIn(Arrays.asList(ids));
-        PmsBrand pmsBrand = new PmsBrand();
-        pmsBrand.setFactoryStatus(factoryStatus);
-        return brandMapper.updateByExampleSelective(pmsBrand, brandExample);
+        PmsBrandExample example = new PmsBrandExample();
+        example.createCriteria().andIdIn(Arrays.asList(ids));
+        PmsBrand brand = new PmsBrand();
+        brand.setFactoryStatus(factoryStatus);
+        return brandMapper.updateByExampleSelective(brand, example);
     }
 
     @Override
     public int updateShowStatus(Integer showStatus, Long[] ids) {
-        PmsBrandExample brandExample = new PmsBrandExample();
-        brandExample.createCriteria().andIdIn(Arrays.asList(ids));
-        PmsBrand pmsBrand = new PmsBrand();
-        pmsBrand.setShowStatus(showStatus);
-        return brandMapper.updateByExampleSelective(pmsBrand, brandExample);
+        PmsBrandExample example = new PmsBrandExample();
+        example.createCriteria().andIdIn(Arrays.asList(ids));
+        PmsBrand brand = new PmsBrand();
+        brand.setShowStatus(showStatus);
+        return brandMapper.updateByExampleSelective(brand, example);
     }
 
 }

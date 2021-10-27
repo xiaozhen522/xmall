@@ -5,9 +5,9 @@ import com.xiaozhen.mall.tiny.mbg.model.SmsHomeNewProduct;
 import java.util.List;
 
 /**
- * @description: 首页新品
+ * @description : 首页新品
  * @create time:11:35
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public interface SmsHomeNewProductService {
 

@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @description: 首页轮播广告管理
+ * @description : 首页轮播广告管理
  * @create time:18:38
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Api(tags = "SmsHomeAdvertiseController", description = "首页轮播广告管理")
 @Controller

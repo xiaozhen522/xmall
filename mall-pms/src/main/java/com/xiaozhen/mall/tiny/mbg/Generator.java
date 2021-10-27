@@ -9,9 +9,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
- * @description: 用于生成MBG
+ * @description : 用于生成MBG
  * @create time:2021/10/15
- * @Author:XiaoZhen
+ * @Author :XiaoZhen
  **/
 public class Generator {
     public static void main(String[] args) throws Exception {

@@ -5,9 +5,9 @@ import com.xiaozhen.mall.tiny.mbg.model.PmsProductCategory;
 import java.util.List;
 
 /**
- * @description:
+ * @description :
  * @create time:2021/10/18
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public class PmsProductCategoryWithChildernItem extends PmsProductCategory {
     private List<PmsProductCategory> children;

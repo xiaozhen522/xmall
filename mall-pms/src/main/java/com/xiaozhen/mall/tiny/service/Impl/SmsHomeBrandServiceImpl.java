@@ -12,9 +12,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @description: 首页品牌SmsHomeBrandService实现类
+ * @description : 首页品牌SmsHomeBrandService实现类
  * @create time:19:33
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class SmsHomeBrandServiceImpl implements SmsHomeBrandService {

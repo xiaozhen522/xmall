@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * @description: 优惠券领取记录管理
+ * @description : 优惠券领取记录管理
  * @create time:17:40
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Api(tags = "SmsCouponHistoryController", description = "优惠券领取记录管理")
 @Controller

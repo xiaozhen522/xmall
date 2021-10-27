@@ -20,7 +20,7 @@ public class OmsCompanyAddressServiceImpl implements OmsCompanyAddressService {
     private OmsCompanyAddressMapper companyAddressMapper;
 
     @Override
-    public List<OmsCompanyAddress> listCompanyAddress() {
+    public List<OmsCompanyAddress> list() {
         return companyAddressMapper.selectByExample(new OmsCompanyAddressExample());
     }
 }

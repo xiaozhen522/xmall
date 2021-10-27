@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @description: sku商品库存管理
+ * @description : sku商品库存管理
  * @create time:15:20
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Api(tags = "PmsSkuStockController", description = "sku商品库存管理")
 @Controller

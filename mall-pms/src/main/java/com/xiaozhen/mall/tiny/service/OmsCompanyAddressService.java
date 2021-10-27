@@ -15,5 +15,5 @@ public interface OmsCompanyAddressService {
      *
      * @return List
      */
-    List<OmsCompanyAddress> listCompanyAddress();
+    List<OmsCompanyAddress> list();
 }

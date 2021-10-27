@@ -5,9 +5,9 @@ import com.xiaozhen.mall.tiny.mbg.model.SmsHomeRecommendProduct;
 import java.util.List;
 
 /**
- * @description: 首页人气推荐
+ * @description : 首页人气推荐
  * @create time:13:06
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public interface SmsHomeRecommendProductService {
 

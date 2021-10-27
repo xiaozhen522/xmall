@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @description: 商品属性管理
+ * @description : 商品属性管理
  * @create time:18:44
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Api(tags = "PmsProductAttributeController", description = "商品属性管理")
 @Controller
@@ -33,31 +33,31 @@ public class PmsProductAttributeController {
     @ApiOperation("查询单个商品属性")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<PmsProductAttribute> getProductAttribute(@PathVariable("id")
-                                                                  @ApiParam("id") Long id) {
-        return CommontResult.success(productAttributeService.getProductAttribute(id));
+    public CommontResult<PmsProductAttribute> getById(@PathVariable("id")
+                                                      @ApiParam("id") Long id) {
+        return CommontResult.success(productAttributeService.getById(id));
     }
 
     @ApiOperation("根据商品分类的id获取商品属性及属性分类")
     @RequestMapping(value = "/attrInfo/{productCategoryId}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<List<ProductAttrInfo>> getProductAttrInfo(@PathVariable("productCategoryId")
-                                                                   @ApiParam("productCategoryId") Long productCategoryId) {
-        return CommontResult.success(productAttributeService.getProductAttrInfo(productCategoryId));
+    public CommontResult<List<ProductAttrInfo>> getAttrInfoByproductCategoryId(@PathVariable("productCategoryId")
+                                                                               @ApiParam("productCategoryId") Long productCategoryId) {
+        return CommontResult.success(productAttributeService.getAttrInfoByproductCategoryId(productCategoryId));
     }
 
     @ApiOperation("添加商品属性信息")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult createProductAttribute(@RequestBody ProductAttributeParam productAttributeParam) {
+    public CommontResult create(@RequestBody ProductAttributeParam productAttributeParam) {
         CommontResult commontResult;
-        int count = productAttributeService.createProductAttribute(productAttributeParam);
+        int count = productAttributeService.create(productAttributeParam);
         if (count == 1) {
-            commontResult = CommontResult.success(productAttributeParam);
-            LOGGER.debug("createProductAttribute success:{}", productAttributeParam);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("create success:{}", productAttributeParam);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("createProductAttribute failed:{}", productAttributeParam);
+            LOGGER.debug("create failed:{}", productAttributeParam);
         }
         return commontResult;
     }
@@ -65,16 +65,16 @@ public class PmsProductAttributeController {
     @ApiOperation("批量删除商品属性")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult deleteProductAttributeList(@RequestParam(name = "ids")
-                                                    @ApiParam("ids") Long... ids) {
+    public CommontResult delete(@RequestParam("ids")
+                                @ApiParam("ids") Long... ids) {
         CommontResult commontResult;
-        int count = productAttributeService.deleteProductAttributeList(ids);
+        int count = productAttributeService.delete(ids);
         if (count > 0) {
-            commontResult = CommontResult.success(ids);
-            LOGGER.debug("deleteProductAttributeList success:ids={}", ids);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("delete success:ids={}", ids);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("deleteProductAttributeList failed:ids={}", ids);
+            LOGGER.debug("delete failed:ids={}", ids);
         }
         return commontResult;
     }
@@ -82,16 +82,17 @@ public class PmsProductAttributeController {
     @ApiOperation("根据分类查询属性列表或参数列表")
     @RequestMapping(value = "/list/{cid}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<CommonPage<PmsProductAttribute>> listProductAttribute(@RequestParam(name = "pageNum", defaultValue = "1")
-                                                                               @ApiParam("页码") Integer pageNum,
-                                                                               @RequestParam(name = "pageSize", defaultValue = "5")
-                                                                               @ApiParam("每页数量") Integer pageSize,
-                                                                               @PathVariable("cid")
-                                                                               @ApiParam("cid") Long cid,
-                                                                               @RequestParam(name = "type", defaultValue = "")
-                                                                               @ApiParam("0表示属性，1表示参数") Integer type) {
+    public CommontResult<CommonPage<PmsProductAttribute>> listByCidOrType(@RequestParam(name = "pageNum",
+            defaultValue = "1")
+                                                                          @ApiParam("页码") Integer pageNum,
+                                                                          @RequestParam(name = "pageSize", defaultValue = "5")
+                                                                          @ApiParam("每页数量") Integer pageSize,
+                                                                          @PathVariable("cid")
+                                                                          @ApiParam("cid") Long cid,
+                                                                          @RequestParam(name = "type", defaultValue = "")
+                                                                          @ApiParam("0表示属性，1表示参数") Integer type) {
 
-        List<PmsProductAttribute> productAttributeList = productAttributeService.listProductAttribute(cid, pageNum,
+        List<PmsProductAttribute> productAttributeList = productAttributeService.listByCidOrType(cid, pageNum,
                 pageSize, type);
         return CommontResult.success(CommonPage.restPage(productAttributeList));
     }
@@ -99,18 +100,18 @@ public class PmsProductAttributeController {
     @ApiOperation("修改商品属性信息")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateProductAttribute(@PathVariable("id")
-                                                @ApiParam("id") Long id,
-                                                @RequestBody ProductAttributeParam productAttributeParam) {
+    public CommontResult updateById(@PathVariable("id")
+                                    @ApiParam("id") Long id,
+                                    @RequestBody ProductAttributeParam productAttributeParam) {
 
         CommontResult commontResult;
-        int count = productAttributeService.updateProductAttribute(id, productAttributeParam);
+        int count = productAttributeService.updateById(id, productAttributeParam);
         if (count == 1) {
-            commontResult = CommontResult.success(productAttributeParam);
-            LOGGER.debug("updateProductAttribute success:{}", productAttributeParam);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("updateById success:{}", productAttributeParam);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateProductAttribute failed:{}", productAttributeParam);
+            LOGGER.debug("updateById failed:{}", productAttributeParam);
         }
         return commontResult;
     }

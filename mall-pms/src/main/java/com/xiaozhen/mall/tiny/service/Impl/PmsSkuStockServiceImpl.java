@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @description: sku商品库存PmsSkuStockService实现类
+ * @description : sku商品库存PmsSkuStockService实现类
  * @create time:15:20
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class PmsSkuStockServiceImpl implements PmsSkuStockService {

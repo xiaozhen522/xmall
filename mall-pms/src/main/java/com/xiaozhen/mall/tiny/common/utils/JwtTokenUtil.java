@@ -14,9 +14,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @description: JwtToken工具类
+ * @description : JwtToken工具类
  * @create time:2021/10/25
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Component
 public class JwtTokenUtil {

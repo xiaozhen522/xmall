@@ -17,9 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description: 限时购和商品关系SmsFlashPromotionProductRelationService实现类
+ * @description : 限时购和商品关系SmsFlashPromotionProductRelationService实现类
  * @create time:18:25
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class SmsFlashPromotionProductRelationServiceImpl implements SmsFlashPromotionProductRelationService {

@@ -1,9 +1,9 @@
 package com.xiaozhen.mall.tiny.common.api;
 
 /**
- * @description: 通用返回对象
+ * @description : 通用返回对象
  * @create time:2021/10/16
- * @Author:XiaoZhen
+ * @Author :XiaoZhen
  **/
 public class CommontResult<T> {
     private Long code;

@@ -1,9 +1,9 @@
 package com.xiaozhen.mall.tiny.dto;
 
 /**
- * @description:
+ * @description :
  * @create time:2021/10/25
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public class UpdatePasswordParam {
     private String newPassword;

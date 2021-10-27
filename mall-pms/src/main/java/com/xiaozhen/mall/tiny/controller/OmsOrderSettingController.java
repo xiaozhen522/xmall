@@ -13,9 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @description: 订单设置管理
+ * @description : 订单设置管理
  * @create time:19:42
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Api(tags = "OmsOrderSettingController", description = "订单设置管理")
 @Controller
@@ -28,26 +28,26 @@ public class OmsOrderSettingController {
     @ApiOperation("获取指定订单设置")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<OmsOrderSetting> getOrderSetting(@PathVariable("id")
-                                                          @ApiParam("id") Long id) {
-        return CommontResult.success(orderSettingService.getOrderSetting(id));
+    public CommontResult<OmsOrderSetting> get(@PathVariable("id")
+                                              @ApiParam("id") Long id) {
+        return CommontResult.success(orderSettingService.get(id));
     }
 
     @ApiOperation("修改指定订单设置")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateOrderSetting(@PathVariable("id")
-                                            @ApiParam("id") Long id,
-                                            @RequestBody
-                                            @ApiParam("orderSetting") OmsOrderSetting orderSetting) {
+    public CommontResult update(@PathVariable("id")
+                                @ApiParam("id") Long id,
+                                @RequestBody
+                                @ApiParam("orderSetting") OmsOrderSetting orderSetting) {
         CommontResult commontResult;
-        int count = orderSettingService.updateOrderSetting(id, orderSetting);
+        int count = orderSettingService.update(id, orderSetting);
         if (count == 1) {
-            commontResult = CommontResult.success(orderSetting);
-            LOGGER.debug("updateOrderSetting success:{}", orderSetting);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("update success:{}", orderSetting);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateOrderSetting failed:{}", orderSetting);
+            LOGGER.debug("update failed:{}", orderSetting);
         }
         return commontResult;
     }

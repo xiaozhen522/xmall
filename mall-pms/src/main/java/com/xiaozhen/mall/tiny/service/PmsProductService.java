@@ -7,20 +7,20 @@ import com.xiaozhen.mall.tiny.mbg.model.PmsProduct;
 import java.util.List;
 
 /**
- * @description: 商品
+ * @description : 商品
  * @create time:11:26
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public interface PmsProductService {
     /**
-     * @description: 创建新的商品
+     * @description : 创建新的商品
      * @param: product  新的商品
      * @return: 影响行数
      */
     int createProduct(PmsProductParam productParam);
 
     /**
-     * @description: 更新指定id的商品
+     * @description : 更新指定id的商品
      * @param: id   商品id
      * @param: product  新的商品
      * @return: 影响行数

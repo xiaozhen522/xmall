@@ -18,12 +18,12 @@ public interface CmsSubjectService {
      * @param pageSize 每页数量
      * @return List
      */
-    List<CmsSubject> listSubject(String keyword, Integer pageNum, Integer pageSize);
+    List<CmsSubject> list(String keyword, Integer pageNum, Integer pageSize);
 
     /**
      * 获取所有商品专题列表
      *
      * @return List
      */
-    List<CmsSubject> listAllSubject();
+    List<CmsSubject> listAll();
 }

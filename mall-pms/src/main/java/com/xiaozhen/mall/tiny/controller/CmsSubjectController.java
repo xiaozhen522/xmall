@@ -31,20 +31,20 @@ public class CmsSubjectController {
     @ApiOperation("根据专题名称获取分页专题")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<CommonPage<CmsSubject>> listSubject(@RequestParam(name = "keyword", defaultValue = "")
+    public CommontResult<CommonPage<CmsSubject>> list(@RequestParam(name = "keyword", defaultValue = "")
                                                              @ApiParam("keyword") String keyword,
                                                              @RequestParam(name = "pageNum", defaultValue = "1")
                                                              @ApiParam("页码") Integer pageNum,
                                                              @RequestParam(name = "pageSize", defaultValue = "5")
                                                              @ApiParam("每页数量") Integer pageSize) {
-        List<CmsSubject> subjectList = subjectService.listSubject(keyword, pageNum, pageSize);
+        List<CmsSubject> subjectList = subjectService.list(keyword, pageNum, pageSize);
         return CommontResult.success(CommonPage.restPage(subjectList));
     }
 
     @ApiOperation("获取全部商品专题")
     @RequestMapping(value = "/listAll", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<List<CmsSubject>> listAllSubject() {
-        return CommontResult.success(subjectService.listAllSubject());
+    public CommontResult<List<CmsSubject>> listAll() {
+        return CommontResult.success(subjectService.listAll());
     }
 }

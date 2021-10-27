@@ -28,7 +28,7 @@ public class OmsCompanyAddressController {
     @ApiOperation("获取所有公司收发货地址")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<List<OmsCompanyAddress>> listCompanyAddress() {
-        return CommontResult.success(companyAddressService.listCompanyAddress());
+    public CommontResult<List<OmsCompanyAddress>> list() {
+        return CommontResult.success(companyAddressService.list());
     }
 }

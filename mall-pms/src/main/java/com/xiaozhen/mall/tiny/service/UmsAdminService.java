@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @description: 后台用户
+ * @description : 后台用户
  * @create time:17:35
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public interface UmsAdminService {
 

@@ -5,7 +5,7 @@
         <id column="id" jdbcType="BIGINT" property="attributeId"/>
         <result column="product_attribute_category_id" jdbcType="BIGINT" property="attributeCategoryId"/>
     </resultMap>
-    <select id="getProductAttrInfoList" resultMap="BaseResultMap">
+    <select id="getAttrInfoByproductCategoryId" resultMap="BaseResultMap">
         SELECT pa.id,
                pa.product_attribute_category_id
         FROM pms_product_attribute AS pa

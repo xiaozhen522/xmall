@@ -20,7 +20,7 @@ public class CmsPrefrenceAreaServiceImpl implements CmsPrefrenceAreaService {
     private CmsPrefrenceAreaMapper prefrenceAreaMapper;
 
     @Override
-    public List<CmsPrefrenceArea> listAllPrefrenceArea() {
+    public List<CmsPrefrenceArea> listAll() {
         return prefrenceAreaMapper.selectByExample(new CmsPrefrenceAreaExample());
     }
 }

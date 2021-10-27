@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaozhen.mall.tiny.dao.ProductCategoryParamDao">
+    <resultMap id="BaseResultMap" type="com.xiaozhen.mall.tiny.dto.ProductCategoryParam">
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="keywords" jdbcType="VARCHAR" property="keywords"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="nav_status" jdbcType="INTEGER" property="navStatus"/>
+        <result column="parent_id" jdbcType="BIGINT" property="parentId"/>
+        <result column="product_unit" jdbcType="VARCHAR" property="productUnit"/>
+        <result column="show_status" jdbcType="INTEGER" property="showStatus"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <collection property="productAttributeIdList" />
+    </resultMap>
+    <insert id="create">
+
+    </insert>
+</mapper>

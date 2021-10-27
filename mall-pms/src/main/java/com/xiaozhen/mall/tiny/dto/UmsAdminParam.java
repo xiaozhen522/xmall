@@ -1,9 +1,9 @@
 package com.xiaozhen.mall.tiny.dto;
 
 /**
- * @description: 注册param
+ * @description : 注册param
  * @create time:2021/10/25
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public class UmsAdminParam {
     private String email;

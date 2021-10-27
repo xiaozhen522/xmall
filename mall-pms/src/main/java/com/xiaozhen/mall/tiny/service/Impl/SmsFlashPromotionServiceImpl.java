@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @description: 显示购活动SmsFlashPromotionService实现类
+ * @description : 显示购活动SmsFlashPromotionService实现类
  * @create time:18:02
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class SmsFlashPromotionServiceImpl implements SmsFlashPromotionService {

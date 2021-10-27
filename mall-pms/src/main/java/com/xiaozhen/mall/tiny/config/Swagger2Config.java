@@ -20,9 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description: Swagger2API文档的配置
+ * @description : Swagger2API文档的配置
  * @create time:2021/10/16
- * @Author:XiaoZhen
+ * @Author :XiaoZhen
  **/
 @Configuration
 @EnableSwagger2

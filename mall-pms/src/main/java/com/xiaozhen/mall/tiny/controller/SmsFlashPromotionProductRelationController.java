@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @description: 限时购和商品关系管理
+ * @description : 限时购和商品关系管理
  * @create time:18:25
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Api(tags = "SmsFlashPromotionProductRelationController", description = "限时购和商品关系管理")
 @Controller

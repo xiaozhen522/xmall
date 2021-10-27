@@ -7,9 +7,9 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 
 /**
- * @description: 自定义工具类
+ * @description : 自定义工具类
  * @create time:2021/10/17
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public class MyUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(MyUtils.class);

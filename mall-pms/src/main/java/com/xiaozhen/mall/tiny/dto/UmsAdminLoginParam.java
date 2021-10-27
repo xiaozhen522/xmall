@@ -3,9 +3,9 @@ package com.xiaozhen.mall.tiny.dto;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * @description:
+ * @description :
  * @create time:2021/10/25
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public class UmsAdminLoginParam {
     @ApiModelProperty("密码")

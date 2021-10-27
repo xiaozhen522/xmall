@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @description: 首页品牌管理
+ * @description : 首页品牌管理
  * @create time:19:33
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Api(tags = "SmsHomeBrandController", description = "首页品牌管理")
 @Controller

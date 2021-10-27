@@ -15,5 +15,5 @@ public interface CmsPrefrenceAreaService {
      *
      * @return List
      */
-    List<CmsPrefrenceArea> listAllPrefrenceArea();
+    List<CmsPrefrenceArea> listAll();
 }

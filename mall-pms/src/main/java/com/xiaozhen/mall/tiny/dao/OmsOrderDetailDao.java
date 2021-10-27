@@ -8,5 +8,5 @@ import com.xiaozhen.mall.tiny.dto.OmsOrderDetail;
  * @Author : XiaoZhen
  **/
 public interface OmsOrderDetailDao {
-    OmsOrderDetail getOrderDetail(Long id);
+    OmsOrderDetail get(Long id);
 }

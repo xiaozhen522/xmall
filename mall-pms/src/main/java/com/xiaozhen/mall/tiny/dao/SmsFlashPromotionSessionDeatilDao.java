@@ -6,9 +6,9 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * @description:
+ * @description :
  * @create time:2021/10/22
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public interface SmsFlashPromotionSessionDeatilDao {
     List<SmsFlashPromotionSessionDeatil> listFlashPromotionSessionDetail(@Param("flashPromotionId") Long flashPromotionId);

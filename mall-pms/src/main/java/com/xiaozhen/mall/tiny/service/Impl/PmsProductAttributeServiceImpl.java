@@ -15,9 +15,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @description: 商品属性PmsProductAttributeService实现类
+ * @description : 商品属性PmsProductAttributeService实现类
  * @create time:18:44
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class PmsProductAttributeServiceImpl implements PmsProductAttributeService {
@@ -27,29 +27,29 @@ public class PmsProductAttributeServiceImpl implements PmsProductAttributeServic
     private ProductAttrInfoDao productAttrInfoDao;
 
     @Override
-    public List<ProductAttrInfo> getProductAttrInfo(Long productCategoryId) {
-        return productAttrInfoDao.getProductAttrInfoList(productCategoryId);
+    public List<ProductAttrInfo> getAttrInfoByproductCategoryId(Long productCategoryId) {
+        return productAttrInfoDao.getAttrInfoByproductCategoryId(productCategoryId);
     }
 
     @Override
-    public PmsProductAttribute getProductAttribute(Long id) {
+    public PmsProductAttribute getById(Long id) {
         return productAttributeMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int createProductAttribute(ProductAttributeParam productAttributeParam) {
+    public int create(ProductAttributeParam productAttributeParam) {
         return productAttributeMapper.insertSelective(productAttributeParam);
     }
 
     @Override
-    public int deleteProductAttributeList(Long[] ids) {
+    public int delete(Long[] ids) {
         PmsProductAttributeExample productAttributeExample = new PmsProductAttributeExample();
         productAttributeExample.createCriteria().andIdIn(Arrays.asList(ids));
         return productAttributeMapper.deleteByExample(productAttributeExample);
     }
 
     @Override
-    public List<PmsProductAttribute> listProductAttribute(Long cid, Integer pageNum, Integer pageSize, Integer type) {
+    public List<PmsProductAttribute> listByCidOrType(Long cid, Integer pageNum, Integer pageSize, Integer type) {
         PmsProductAttributeExample productAttributeExample = new PmsProductAttributeExample();
         PmsProductAttributeExample.Criteria criteria = productAttributeExample.createCriteria();
         if (cid != null) {
@@ -63,7 +63,7 @@ public class PmsProductAttributeServiceImpl implements PmsProductAttributeServic
     }
 
     @Override
-    public int updateProductAttribute(Long id, ProductAttributeParam productAttributeParam) {
+    public int updateById(Long id, ProductAttributeParam productAttributeParam) {
         productAttributeParam.setId(id);
         return productAttributeMapper.updateByPrimaryKey(productAttributeParam);
     }

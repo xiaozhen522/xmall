@@ -1,14 +1,16 @@
 package com.xiaozhen.mall.tiny.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
 /**
- * @description:
+ * @description :
  * @create time:2021/10/19
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
+@Data
 public class OmsUpdateStatusParam {
     @ApiModelProperty(value = "处理备注")
     private String handleNote;
@@ -26,68 +28,4 @@ public class OmsUpdateStatusParam {
     private Long companyAddressId;
     @ApiModelProperty("服务单号")
     private Long id;
-
-    public String getHandleNote() {
-        return handleNote;
-    }
-
-    public void setHandleNote(String handleNote) {
-        this.handleNote = handleNote;
-    }
-
-    public String getHandleMan() {
-        return handleMan;
-    }
-
-    public void setHandleMan(String handleMan) {
-        this.handleMan = handleMan;
-    }
-
-    public String getReceiveMan() {
-        return receiveMan;
-    }
-
-    public void setReceiveMan(String receiveMan) {
-        this.receiveMan = receiveMan;
-    }
-
-    public String getReceiveNote() {
-        return receiveNote;
-    }
-
-    public void setReceiveNote(String receiveNote) {
-        this.receiveNote = receiveNote;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public BigDecimal getReturnAmount() {
-        return returnAmount;
-    }
-
-    public void setReturnAmount(BigDecimal returnAmount) {
-        this.returnAmount = returnAmount;
-    }
-
-    public Long getCompanyAddressId() {
-        return companyAddressId;
-    }
-
-    public void setCompanyAddressId(Long companyAddressId) {
-        this.companyAddressId = companyAddressId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

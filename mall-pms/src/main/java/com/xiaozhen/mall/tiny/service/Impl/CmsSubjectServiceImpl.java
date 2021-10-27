@@ -21,7 +21,7 @@ public class CmsSubjectServiceImpl implements CmsSubjectService {
     private CmsSubjectMapper subjectMapper;
 
     @Override
-    public List<CmsSubject> listSubject(String keyword, Integer pageNum, Integer pageSize) {
+    public List<CmsSubject> list(String keyword, Integer pageNum, Integer pageSize) {
         CmsSubjectExample example = new CmsSubjectExample();
         example.createCriteria().andCategoryNameLike("%" + keyword + "%");
         PageHelper.startPage(pageNum, pageSize);
@@ -29,7 +29,7 @@ public class CmsSubjectServiceImpl implements CmsSubjectService {
     }
 
     @Override
-    public List<CmsSubject> listAllSubject() {
+    public List<CmsSubject> listAll() {
         return subjectMapper.selectByExample(new CmsSubjectExample());
     }
 }

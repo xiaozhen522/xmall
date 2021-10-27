@@ -9,6 +9,7 @@ import com.xiaozhen.mall.tiny.mbg.model.*;
 import com.xiaozhen.mall.tiny.service.PmsProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +17,9 @@ import java.util.List;
 
 
 /**
- * @description: 商品PmsProductService实现类
+ * @description : 商品PmsProductService实现类
  * @create time:11:26
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class PmsProductServiceImpl implements PmsProductService {

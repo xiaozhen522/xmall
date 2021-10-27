@@ -4,9 +4,9 @@ import com.xiaozhen.mall.tiny.mbg.model.SmsFlashPromotionSession;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * @description:
+ * @description :
  * @create time:2021/10/22
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public class SmsFlashPromotionSessionDeatil extends SmsFlashPromotionSession {
     @ApiModelProperty("商品数量")

@@ -6,9 +6,9 @@ import com.xiaozhen.mall.tiny.mbg.model.UmsRole;
 import java.util.List;
 
 /**
- * @description:
+ * @description :
  * @create time:2021/10/25
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public interface AdminRoleRealationDao {
     List<UmsPermission> getPermissionList(Long adminId);

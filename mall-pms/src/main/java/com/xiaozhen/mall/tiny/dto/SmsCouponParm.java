@@ -8,9 +8,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.List;
 
 /**
- * @description:
+ * @description :
  * @create time:2021/10/19
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public class SmsCouponParm extends SmsCoupon {
     @ApiModelProperty("优惠券绑定的商品分类")

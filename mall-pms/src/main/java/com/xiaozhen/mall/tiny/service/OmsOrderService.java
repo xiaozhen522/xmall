@@ -20,7 +20,7 @@ public interface OmsOrderService {
      * @param id 订单id
      * @return 订单对象
      */
-    OmsOrderDetail getOrderDetail(Long id);
+    OmsOrderDetail get(Long id);
 
     /**
      * 批量删除订单
@@ -28,7 +28,7 @@ public interface OmsOrderService {
      * @param ids 订单id列表
      * @return 删除行数
      */
-    int deleteOrderList(Long[] ids);
+    int delete(Long[] ids);
 
     /**
      * 根据条件分页查询订单
@@ -43,7 +43,7 @@ public interface OmsOrderService {
      * @param status         订单状态
      * @return List
      */
-    List<OmsOrder> listOrder(String createTime, String orderSn, Integer orderType, Integer pageNum, Integer pageSize, String receiveKeyword, Integer sourceType, Integer status);
+    List<OmsOrder> list(String createTime, String orderSn, Integer orderType, Integer pageNum, Integer pageSize, String receiveKeyword, Integer sourceType, Integer status);
 
     /**
      * 批量更新订单状态

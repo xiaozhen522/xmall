@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @description: 商品管理
+ * @description : 商品管理
  * @create time:11:26
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Api(tags = "PmsProductController", description = "商品管理")
 @Controller

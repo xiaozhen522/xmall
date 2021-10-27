@@ -12,9 +12,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @description: 退货原因OmsOrderReturnReasonService实现类
+ * @description : 退货原因OmsOrderReturnReasonService实现类
  * @create time:20:56
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class OmsOrderReturnReasonServiceImpl implements OmsOrderReturnReasonService {
@@ -22,30 +22,30 @@ public class OmsOrderReturnReasonServiceImpl implements OmsOrderReturnReasonServ
     private OmsOrderReturnReasonMapper returnReasonMapper;
 
     @Override
-    public OmsOrderReturnReason getOrderReturnReason(Long id) {
+    public OmsOrderReturnReason get(Long id) {
         return returnReasonMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int createOrderReturnReason(OmsOrderReturnReason returnReason) {
+    public int create(OmsOrderReturnReason returnReason) {
         return returnReasonMapper.insertSelective(returnReason);
     }
 
     @Override
-    public int deleteOrderReturnReasonList(Long[] ids) {
+    public int delete(Long[] ids) {
         OmsOrderReturnReasonExample example = new OmsOrderReturnReasonExample();
         example.createCriteria().andIdIn(Arrays.asList(ids));
         return returnReasonMapper.deleteByExample(example);
     }
 
     @Override
-    public int updateOrderReturnReason(Long id, OmsOrderReturnReason returnReason) {
+    public int update(Long id, OmsOrderReturnReason returnReason) {
         returnReason.setId(id);
         return returnReasonMapper.updateByPrimaryKey(returnReason);
     }
 
     @Override
-    public List<OmsOrderReturnReason> listOrderReturnReason(Integer pageNum, Integer pageSize) {
+    public List<OmsOrderReturnReason> list(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         return returnReasonMapper.selectByExample(new OmsOrderReturnReasonExample());
     }

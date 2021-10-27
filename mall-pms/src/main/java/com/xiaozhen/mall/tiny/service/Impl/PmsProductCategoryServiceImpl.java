@@ -2,6 +2,7 @@ package com.xiaozhen.mall.tiny.service.Impl;
 
 import com.github.pagehelper.PageHelper;
 import com.xiaozhen.mall.tiny.common.utils.MyUtils;
+import com.xiaozhen.mall.tiny.dao.ProductCategoryParamDao;
 import com.xiaozhen.mall.tiny.dto.PmsProductCategoryWithChildernItem;
 import com.xiaozhen.mall.tiny.dto.ProductCategoryParam;
 import com.xiaozhen.mall.tiny.mbg.mapper.PmsProductCategoryAttributeRelationMapper;
@@ -18,31 +19,34 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @description: 商品分类PmsProductCategoryService实现类
+ * @description : 商品分类PmsProductCategoryService实现类
  * @create time:9:08
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class PmsProductCategoryServiceImpl implements PmsProductCategoryService {
     @Autowired
-    private PmsProductCategoryMapper pcMapper;
+    private PmsProductCategoryMapper productCategoryMapper;
+    @Autowired
+    private ProductCategoryParamDao productCategoryParamDao;
     @Autowired
     private PmsProductCategoryAttributeRelationMapper pcarMapper;
 
     @Override
-    public PmsProductCategory getProductCategory(Long id) {
-        return pcMapper.selectByPrimaryKey(id);
+    public PmsProductCategory getById(Long id) {
+        return productCategoryMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int createProductCategory(ProductCategoryParam pcp) {
+    public int create(ProductCategoryParam productCategoryParam) {
+//        return productCategoryParamDao.create(productCategoryParam);
         int rows = 0;
         PmsProductCategory pc = new PmsProductCategory();
-        MyUtils.cast(pcp, pc);
-        pcMapper.insertSelective(pc);
+        MyUtils.cast(productCategoryParam, pc);
+        productCategoryMapper.insertSelective(pc);
         rows++;
         Long pcId = pc.getId();
-        List<Long> ids = pcp.getProductAttributeIdList();
+        List<Long> ids = productCategoryParam.getProductAttributeIdList();
         for (Long id : ids) {
             PmsProductCategoryAttributeRelation pcar = new PmsProductCategoryAttributeRelation();
             pcar.setProductCategoryId(pcId);
@@ -54,30 +58,30 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
     }
 
     @Override
-    public int deleteProductCategory(Long id) {
-        return pcMapper.deleteByPrimaryKey(id);
+    public int deleteById(Long id) {
+        return productCategoryMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public List<PmsProductCategory> listProductCategory(Integer pageNum, Integer pageSize, Long parentId) {
+    public List<PmsProductCategory> listByParentId(Integer pageNum, Integer pageSize, Long parentId) {
         PmsProductCategoryExample pce = new PmsProductCategoryExample();
         pce.createCriteria().andParentIdEqualTo(parentId);
         PageHelper.startPage(pageNum, pageSize);
-        return pcMapper.selectByExample(pce);
+        return productCategoryMapper.selectByExample(pce);
     }
 
     @Override
-    public List<PmsProductCategoryWithChildernItem> listAllProductCategoryWithChildernItem() {
+    public List<PmsProductCategoryWithChildernItem> listWithChildern() {
         PmsProductCategoryExample pcExample1 = new PmsProductCategoryExample();
         pcExample1.createCriteria().andParentIdEqualTo(0L);
-        List<PmsProductCategory> pcList1 = pcMapper.selectByExample(pcExample1);
+        List<PmsProductCategory> pcList1 = productCategoryMapper.selectByExample(pcExample1);
         List<PmsProductCategoryWithChildernItem> pcwciList = new ArrayList<>();
         for (PmsProductCategory productCategory : pcList1) {
             PmsProductCategoryWithChildernItem pcwcItem = new PmsProductCategoryWithChildernItem();
             MyUtils.cast(productCategory, pcwcItem);
             PmsProductCategoryExample pcExample2 = new PmsProductCategoryExample();
             pcExample2.createCriteria().andParentIdEqualTo(productCategory.getId());
-            List<PmsProductCategory> pcList = pcMapper.selectByExample(pcExample2);
+            List<PmsProductCategory> pcList = productCategoryMapper.selectByExample(pcExample2);
             pcwcItem.setChildren(pcList);
             pcwciList.add(pcwcItem);
         }
@@ -85,11 +89,11 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
     }
 
     @Override
-    public int updateProductCategory(Long id, ProductCategoryParam productCategoryParam) {
+    public int updateById(Long id, ProductCategoryParam productCategoryParam) {
         PmsProductCategory productCategory = new PmsProductCategory();
         MyUtils.cast(productCategoryParam, productCategory);
         productCategory.setId(id);
-        return pcMapper.updateByPrimaryKey(productCategory);
+        return productCategoryMapper.updateByPrimaryKey(productCategory);
     }
 
     @Override
@@ -98,7 +102,7 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
         example.createCriteria().andIdIn(Arrays.asList(ids));
         PmsProductCategory productCategory = new PmsProductCategory();
         productCategory.setNavStatus(navStatus);
-        return pcMapper.updateByExampleSelective(productCategory, example);
+        return productCategoryMapper.updateByExampleSelective(productCategory, example);
     }
 
     @Override
@@ -107,7 +111,7 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
         example.createCriteria().andIdIn(Arrays.asList(ids));
         PmsProductCategory productCategory = new PmsProductCategory();
         productCategory.setShowStatus(showStatus);
-        return pcMapper.updateByExampleSelective(productCategory, example);
+        return productCategoryMapper.updateByExampleSelective(productCategory, example);
     }
 
 }

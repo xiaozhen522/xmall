@@ -13,9 +13,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @description: 首页轮播广告SmsHomeAdvertiseService实现类
+ * @description : 首页轮播广告SmsHomeAdvertiseService实现类
  * @create time:18:38
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class SmsHomeAdvertiseServiceImpl implements SmsHomeAdvertiseService {

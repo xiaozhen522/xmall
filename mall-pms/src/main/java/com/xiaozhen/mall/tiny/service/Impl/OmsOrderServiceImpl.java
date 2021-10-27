@@ -18,9 +18,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @description: 订单OmsOrderService实现类
+ * @description : 订单OmsOrderService实现类
  * @create time:17:22
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class OmsOrderServiceImpl implements OmsOrderService {
@@ -30,20 +30,20 @@ public class OmsOrderServiceImpl implements OmsOrderService {
     private OmsOrderDetailDao orderDetailDao;
 
     @Override
-    public OmsOrderDetail getOrderDetail(Long id) {
-        return orderDetailDao.getOrderDetail(id);
+    public OmsOrderDetail get(Long id) {
+        return orderDetailDao.get(id);
     }
 
     @Override
-    public int deleteOrderList(Long[] ids) {
+    public int delete(Long[] ids) {
         OmsOrderExample example = new OmsOrderExample();
         example.createCriteria().andCouponIdIn(Arrays.asList(ids));
         return orderMapper.deleteByExample(example);
     }
 
     @Override
-    public List<OmsOrder> listOrder(String createTime, String orderSn, Integer orderType, Integer pageNum,
-                                    Integer pageSize, String receiveKeyword, Integer sourceType, Integer status) {
+    public List<OmsOrder> list(String createTime, String orderSn, Integer orderType, Integer pageNum,
+                               Integer pageSize, String receiveKeyword, Integer sourceType, Integer status) {
         OmsOrderExample example = new OmsOrderExample();
         OmsOrderExample.Criteria criteria = example.createCriteria();
         OmsOrderExample.Criteria criteria1 = example.createCriteria();

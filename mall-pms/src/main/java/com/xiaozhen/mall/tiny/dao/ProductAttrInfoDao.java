@@ -7,11 +7,11 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 /**
- * @description: 自定义查询
+ * @description : 自定义查询
  * @create time:2021/10/17
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public interface ProductAttrInfoDao {
 
-    List<ProductAttrInfo> getProductAttrInfoList(@Param("productCategoryId") Long productCategoryId);
+    List<ProductAttrInfo> getAttrInfoByproductCategoryId(@Param("productCategoryId") Long productCategoryId);
 }

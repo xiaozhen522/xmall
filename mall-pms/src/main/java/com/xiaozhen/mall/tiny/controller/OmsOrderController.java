@@ -35,24 +35,24 @@ public class OmsOrderController {
     @ApiOperation("获取订单详情:订单信息、商品信息、操作记录")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<OmsOrderDetail> getOrderDetail(@PathVariable("id")
-                                                        @ApiParam("id") Long id) {
-        return CommontResult.success(orderService.getOrderDetail(id));
+    public CommontResult<OmsOrderDetail> get(@PathVariable("id")
+                                             @ApiParam("id") Long id) {
+        return CommontResult.success(orderService.get(id));
     }
 
     @ApiOperation("批量删除订单")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult deleteOrderList(@RequestParam("ids")
-                                         @ApiParam("ids") Long... ids) {
+    public CommontResult delete(@RequestParam("ids")
+                                @ApiParam("ids") Long... ids) {
         CommontResult commontResult;
-        int count = orderService.deleteOrderList(ids);
+        int count = orderService.delete(ids);
         if (count > 0) {
             commontResult = CommontResult.success(ids);
-            LOGGER.debug("deleteOrderList success:ids={}", ids);
+            LOGGER.debug("delete success:ids={}", ids);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("deleteOrderList failed:ids={}", ids);
+            LOGGER.debug("delete failed:ids={}", ids);
         }
         return commontResult;
     }
@@ -60,23 +60,23 @@ public class OmsOrderController {
     @ApiOperation("查询订单")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<CommonPage<OmsOrder>> listOrder(@RequestParam(name = "createTime", defaultValue = "")
-                                                         @ApiParam("订单提交时间") String createTime,
-                                                         @RequestParam(name = "orderSn", defaultValue = "")
-                                                         @ApiParam("订单编号") String orderSn,
-                                                         @RequestParam(name = "orderType", defaultValue = "")
-                                                         @ApiParam("订单类型:0->正常订单;1->秒杀订单") Integer orderType,
-                                                         @RequestParam(name = "pageNum", defaultValue = "1")
-                                                         @ApiParam("页码") Integer pageNum,
-                                                         @RequestParam(name = "pageSize", defaultValue = "5")
-                                                         @ApiParam("每页数量") Integer pageSize,
-                                                         @RequestParam(name = "receiveKeyword", defaultValue = "")
-                                                         @ApiParam("收货人姓名/号码") String receiveKeyword,
-                                                         @RequestParam(name = "sourceType", defaultValue = "")
-                                                         @ApiParam("订单来源:0->PC订单;1->app订单") Integer sourceType,
-                                                         @RequestParam(name = "status", defaultValue = "")
-                                                         @ApiParam("订单状态:0->待付款;1->代发货;2->已发货;3->已完成;4->已关闭;5->无效订单") Integer status) {
-        List<OmsOrder> orderList = orderService.listOrder(createTime, orderSn, orderType, pageNum, pageSize,
+    public CommontResult<CommonPage<OmsOrder>> list(@RequestParam(name = "createTime", defaultValue = "")
+                                                    @ApiParam("订单提交时间") String createTime,
+                                                    @RequestParam(name = "orderSn", defaultValue = "")
+                                                    @ApiParam("订单编号") String orderSn,
+                                                    @RequestParam(name = "orderType", defaultValue = "")
+                                                    @ApiParam("订单类型:0->正常订单;1->秒杀订单") Integer orderType,
+                                                    @RequestParam(name = "pageNum", defaultValue = "1")
+                                                    @ApiParam("页码") Integer pageNum,
+                                                    @RequestParam(name = "pageSize", defaultValue = "5")
+                                                    @ApiParam("每页数量") Integer pageSize,
+                                                    @RequestParam(name = "receiveKeyword", defaultValue = "")
+                                                    @ApiParam("收货人姓名/号码") String receiveKeyword,
+                                                    @RequestParam(name = "sourceType", defaultValue = "")
+                                                    @ApiParam("订单来源:0->PC订单;1->app订单") Integer sourceType,
+                                                    @RequestParam(name = "status", defaultValue = "")
+                                                    @ApiParam("订单状态:0->待付款;1->代发货;2->已发货;3->已完成;4->已关闭;5->无效订单") Integer status) {
+        List<OmsOrder> orderList = orderService.list(createTime, orderSn, orderType, pageNum, pageSize,
                 receiveKeyword, sourceType, status);
         return CommontResult.success(CommonPage.restPage(orderList));
     }

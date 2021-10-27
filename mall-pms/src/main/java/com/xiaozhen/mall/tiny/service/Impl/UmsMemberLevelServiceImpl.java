@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @description: 会员等级UmsMemberLevelService实现类
+ * @description : 会员等级UmsMemberLevelService实现类
  * @create time:23:28
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class UmsMemberLevelServiceImpl implements UmsMemberLevelService {

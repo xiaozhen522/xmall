@@ -5,9 +5,9 @@ import com.xiaozhen.mall.tiny.mbg.model.*;
 import java.util.List;
 
 /**
- * @description: 提交商品参数表单
+ * @description : 提交商品参数表单
  * @create time:2021/10/16
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public class PmsProductParam extends PmsProduct {
     private List<PmsMemberPrice> memberPriceList;

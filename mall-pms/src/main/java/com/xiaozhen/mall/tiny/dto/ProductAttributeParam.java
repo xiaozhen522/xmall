@@ -3,9 +3,9 @@ package com.xiaozhen.mall.tiny.dto;
 import com.xiaozhen.mall.tiny.mbg.model.PmsProductAttribute;
 
 /**
- * @description:
+ * @description :
  * @create time:2021/10/17
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public class ProductAttributeParam extends PmsProductAttribute {
 }

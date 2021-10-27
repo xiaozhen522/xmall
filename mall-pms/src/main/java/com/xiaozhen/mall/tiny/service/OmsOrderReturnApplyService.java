@@ -6,38 +6,48 @@ import com.xiaozhen.mall.tiny.mbg.model.OmsOrderReturnApply;
 import java.util.List;
 
 /**
- * @description: 订单退货申请
+ * @description : 订单退货申请
  * @create time:10:45
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public interface OmsOrderReturnApplyService {
     /**
-     * @description: 获取指定id的订单退货申请
-     * @param: id   订单退货申请id
-     * @return: 订单退货申请对象
+     * 获取指定的订单退货申请
+     *
+     * @param id 订单退货申请id
+     * @return 订单退货申请对象
      */
-    OmsOrderReturnApply getOrderReturnApply(Long id);
+    OmsOrderReturnApply get(Long id);
 
     /**
-     * @description: 删除指定id的订单退货申请
-     * @param: id   订单退货申请id
-     * @return: 影响行数
+     * 批量删除订单退货申请
+     *
+     * @param ids 订单退货申请id列表
+     * @return 删除行数
      */
-    int deleteOrderReturnApplyList(Long[] ids);
+    int delete(Long[] ids);
 
     /**
-     * @description: 分页查询订单退货申请
-     * @param: pageNum  页码
-     * @param: pageSize 每页数量
-     * @return: 订单退货申请对象列表
+     * 根据条件分页查询订单退货申请
+     *
+     * @param createTime      创建书简
+     * @param handleMan       处理人员
+     * @param handleTime      处理时间
+     * @param id              订单退货申请id
+     * @param pageNum         页码
+     * @param pageSize        每页数量
+     * @param receiverKeyword 收获人姓名/号码
+     * @param ststus          订单退货申请状态
+     * @return List
      */
-    List<OmsOrderReturnApply> listOrderReturnApply(String createTime, String handleMan, String handleTime, Long id, Integer pageNum, Integer pageSize, String receiverKeyword, Integer ststus);
+    List<OmsOrderReturnApply> list(String createTime, String handleMan, String handleTime, Long id, Integer pageNum, Integer pageSize, String receiverKeyword, Integer ststus);
 
     /**
-     * @description: 更新指定id的订单退货申请
-     * @param: id   订单退货申请id
-     * @param: returnApply  新的订单退货申请
-     * @return: 影响行数
+     * 更新指定的订单退货申请
+     *
+     * @param id          订单退货申请id
+     * @param statusParam 订单状态对象
+     * @return 更新行数
      */
     int updateStatus(Long id, OmsUpdateStatusParam statusParam);
 

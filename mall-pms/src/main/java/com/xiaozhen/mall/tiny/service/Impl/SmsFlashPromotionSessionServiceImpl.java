@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @description: 显示场次管理SmsFlashPromotionSessionService实现类
+ * @description : 显示场次管理SmsFlashPromotionSessionService实现类
  * @create time:22:33
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class SmsFlashPromotionSessionServiceImpl implements SmsFlashPromotionSessionService {

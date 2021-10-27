@@ -6,9 +6,9 @@ import com.github.pagehelper.PageInfo;
 import java.util.List;
 
 /**
- * @description: 分页数据封装
+ * @description : 分页数据封装
  * @create time:2021/10/16
- * @Author:XiaoZhen
+ * @Author :XiaoZhen
  **/
 public class CommonPage<T> {
     private Integer pageNum;

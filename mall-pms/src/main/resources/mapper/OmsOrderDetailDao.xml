@@ -9,7 +9,7 @@
                     ofType="com.xiaozhen.mall.tiny.mbg.model.OmsOrderOperateHistory"
                     select="getOrderOperateHistoryList"/>
     </resultMap>
-    <select id="getOrderDetail" resultMap="BaseResultMap">
+    <select id="get" resultMap="BaseResultMap">
         SELECT *
         FROM oms_order
         WHERE oms_order.id = #{id}

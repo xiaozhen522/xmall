@@ -6,9 +6,9 @@ import com.xiaozhen.mall.tiny.mbg.model.SmsFlashPromotionProductRelation;
 import java.util.List;
 
 /**
- * @description:
+ * @description :
  * @create time:2021/10/20
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public class SmsFlashPromotionProduct extends SmsFlashPromotionProductRelation {
     private PmsProduct product;

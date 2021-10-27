@@ -25,9 +25,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @description: 后台用户UmsAdminService实现类
+ * @description : 后台用户UmsAdminService实现类
  * @create time:17:35
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class UmsAdminServiceImpl implements UmsAdminService {

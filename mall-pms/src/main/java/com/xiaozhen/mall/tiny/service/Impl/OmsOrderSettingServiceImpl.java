@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @description: 订单设置OmsOrderSettingService实现类
+ * @description : 订单设置OmsOrderSettingService实现类
  * @create time:19:42
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class OmsOrderSettingServiceImpl implements OmsOrderSettingService {
@@ -17,13 +17,13 @@ public class OmsOrderSettingServiceImpl implements OmsOrderSettingService {
     private OmsOrderSettingMapper orderSettingMapper;
 
     @Override
-    public int updateOrderSetting(Long id, OmsOrderSetting orderSetting) {
+    public int update(Long id, OmsOrderSetting orderSetting) {
         orderSetting.setId(id);
         return orderSettingMapper.updateByPrimaryKey(orderSetting);
     }
 
     @Override
-    public OmsOrderSetting getOrderSetting(Long id) {
+    public OmsOrderSetting get(Long id) {
         return orderSettingMapper.selectByPrimaryKey(id);
     }
 

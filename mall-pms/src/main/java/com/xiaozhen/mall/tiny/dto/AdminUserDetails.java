@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @description: SpringSecurity需要的用户详情
+ * @description : SpringSecurity需要的用户详情
  * @create time:2021/10/25
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public class AdminUserDetails implements UserDetails {
     private UmsAdmin umsAdmin;
