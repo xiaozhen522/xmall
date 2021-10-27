@@ -4,6 +4,7 @@ import com.xiaozhen.mall.tiny.nosql.mongodb.document.MemberReadHistory;
 import com.xiaozhen.mall.tiny.nosql.mongodb.repository.MemberReadHistoryRepository;
 import com.xiaozhen.mall.tiny.service.MemberReadHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.List;
  * @create time:2021/10/26
  * @Author : XiaoZhen
  **/
+@Service
 public class MemberReadHistoryServiceImpl implements MemberReadHistoryService {
     @Autowired
     private MemberReadHistoryRepository memberReadHistoryRepository;
