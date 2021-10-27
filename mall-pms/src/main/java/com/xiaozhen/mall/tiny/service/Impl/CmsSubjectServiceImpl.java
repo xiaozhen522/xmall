@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @description: 商品专题CmsSubjectService实现类
+ * @description : 商品专题CmsSubjectService实现类
  * @create time:21:44
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class CmsSubjectServiceImpl implements CmsSubjectService {

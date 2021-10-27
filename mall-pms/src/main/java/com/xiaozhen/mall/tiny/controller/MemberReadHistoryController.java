@@ -40,7 +40,7 @@ public class MemberReadHistoryController {
     @ApiOperation("删除浏览记录")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult delete(@RequestParam(name = "ids")
+    public CommontResult delete(@RequestParam("ids")
                                 @ApiParam("ids") List<String> ids) {
         int count = memberReadHistoryService.delete(ids);
         if (count > 0) {

@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @description: 商品优选CmsPrefrenceAreaService实现类
+ * @description : 商品优选CmsPrefrenceAreaService实现类
  * @create time:21:34
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class CmsPrefrenceAreaServiceImpl implements CmsPrefrenceAreaService {

@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @description: 订单管理
+ * @description : 订单管理
  * @create time:17:22
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Api(tags = "OmsOrderController", description = "订单管理")
 @Controller
@@ -43,7 +43,7 @@ public class OmsOrderController {
     @ApiOperation("批量删除订单")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult deleteOrderList(@RequestParam(name = "ids")
+    public CommontResult deleteOrderList(@RequestParam("ids")
                                          @ApiParam("ids") Long... ids) {
         CommontResult commontResult;
         int count = orderService.deleteOrderList(ids);

@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @description: 收获地址OmsCompanyAddressService实现类
+ * @description : 公司收发货地址OmsCompanyAddressService实现类
  * @create time:16:58
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Service
 public class OmsCompanyAddressServiceImpl implements OmsCompanyAddressService {

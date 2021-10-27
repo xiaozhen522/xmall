@@ -1,12 +1,14 @@
 package com.xiaozhen.mall.tiny.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 /**
- * @description:
+ * @description : 物流信息
  * @create time:2021/10/18
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
+@Data
 public class OmsOrderDeliveryParam {
     @ApiModelProperty("物流公司")
     private String deliveryCompany;
@@ -14,28 +16,4 @@ public class OmsOrderDeliveryParam {
     private String deliverySn;
     @ApiModelProperty("订单id")
     private Long orderId;
-
-    public String getDeliveryCompany() {
-        return deliveryCompany;
-    }
-
-    public void setDeliveryCompany(String deliveryCompany) {
-        this.deliveryCompany = deliveryCompany;
-    }
-
-    public String getDeliverySn() {
-        return deliverySn;
-    }
-
-    public void setDeliverySn(String deliverySn) {
-        this.deliverySn = deliverySn;
-    }
-
-    public Long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
 }

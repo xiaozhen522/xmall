@@ -7,8 +7,6 @@ import com.xiaozhen.mall.tiny.service.CmsSubjectService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,15 +17,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * @description: 商品专题管理
+ * @description : 商品专题管理
  * @create time:21:44
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Api(tags = "CmsSubjectController", description = "商品专题管理")
 @Controller
 @RequestMapping("/subject")
 public class CmsSubjectController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CmsSubjectController.class);
     @Autowired
     private CmsSubjectService subjectService;
 
@@ -40,7 +37,7 @@ public class CmsSubjectController {
                                                              @ApiParam("页码") Integer pageNum,
                                                              @RequestParam(name = "pageSize", defaultValue = "5")
                                                              @ApiParam("每页数量") Integer pageSize) {
-        List<CmsSubject> subjectList = subjectService.listSubject(keyword,pageNum, pageSize);
+        List<CmsSubject> subjectList = subjectService.listSubject(keyword, pageNum, pageSize);
         return CommontResult.success(CommonPage.restPage(subjectList));
     }
 

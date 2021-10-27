@@ -5,15 +5,15 @@ import com.xiaozhen.mall.tiny.mbg.model.OmsCompanyAddress;
 import java.util.List;
 
 /**
- * @description: 收获地址
+ * @description : 公司收发货地址Service
  * @create time:16:58
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 public interface OmsCompanyAddressService {
-
     /**
-     * @description: 获取所有收获地址
-     * @return: 收获地址对象列表
+     * 获取所有公司收发货地址
+     *
+     * @return List
      */
     List<OmsCompanyAddress> listCompanyAddress();
 }
