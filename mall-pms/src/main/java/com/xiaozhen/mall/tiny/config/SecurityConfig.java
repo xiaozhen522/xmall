@@ -27,17 +27,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import java.util.List;
 
 /**
- * @description: SpringSecurity的配置
+ * @description : SpringSecurity的配置
  * @create time:2021/10/25
- * @Author: XiaoZhen
+ * @Author : XiaoZhen
  **/
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired(required = false)
+    @Autowired
     private RestfulAccessDeniedHandler restfulAccessDeniedHandler;
-    @Autowired(required = false)
+    @Autowired
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
     @Autowired
     private UmsAdminService adminService;

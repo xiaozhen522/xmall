@@ -21,7 +21,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/member/readHistory")
 public class MemberReadHistoryController {
-    @Autowired(required = false)
+    @Autowired
     private MemberReadHistoryService memberReadHistoryService;
 
     @ApiOperation("创建浏览记录")
