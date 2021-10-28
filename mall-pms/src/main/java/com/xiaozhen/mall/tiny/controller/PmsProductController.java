@@ -33,15 +33,16 @@ public class PmsProductController {
     @ApiOperation("创建商品")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult createProduct(@RequestBody PmsProductParam productParam) {
+    public CommontResult create(@RequestBody
+                                @ApiParam("productParam") PmsProductParam productParam) {
         CommontResult commontResult;
-        int count = productService.createProduct(productParam);
-        if (count == 1) {
-            commontResult = CommontResult.success(productParam);
-            LOGGER.debug("createProduct success:{}", productParam);
+        int count = productService.create(productParam);
+        if (count > 0) {
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("create success:{}", productParam);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("createProduct failed:{}", productParam);
+            LOGGER.debug("create failed:{}", productParam);
         }
         return commontResult;
     }
@@ -49,47 +50,50 @@ public class PmsProductController {
     @ApiOperation("查询商品")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<CommonPage<PmsProduct>> listProduct(@RequestParam(name = "brandId", defaultValue = "")
-                                                             @ApiParam("商品品牌编号") Long brandId,
-                                                             @RequestParam(name = "keyword", defaultValue = "")
-                                                             @ApiParam("商品名称模糊关键字") String keyword,
-                                                             @RequestParam(name = "pageNum", defaultValue = "1")
-                                                             @ApiParam("页码") Integer pageNum,
-                                                             @RequestParam(name = "pageSize", defaultValue = "5")
-                                                             @ApiParam("每页数量") Integer pageSize,
-                                                             @RequestParam(name = "productCategoryId", defaultValue = "")
-                                                             @ApiParam("商品分类编号") Long productCategoryId,
-                                                             @RequestParam(name = "productSn", defaultValue = "")
-                                                             @ApiParam(value = "商品货号", defaultValue = "") String productSn,
-                                                             @RequestParam(name = "publishStatus", defaultValue = "")
-                                                             @ApiParam("上架状态") Integer publishStatus,
-                                                             @RequestParam(name = "verifyStatus", defaultValue = "")
-                                                             @ApiParam("审核状态") Integer verifyStatus) {
-        List<PmsProduct> productList = productService.listProduct(brandId, "%" + keyword + "%", pageNum, pageSize,
-                productCategoryId
-                , productSn, publishStatus, verifyStatus);
+    public CommontResult<CommonPage<PmsProduct>> list(@RequestParam(name = "brandId", defaultValue = "")
+                                                      @ApiParam("商品品牌编号") Long brandId,
+                                                      @RequestParam(name = "keyword", defaultValue = "")
+                                                      @ApiParam("商品名称模糊关键字") String keyword,
+                                                      @RequestParam(name = "pageNum", defaultValue = "1")
+                                                      @ApiParam("页码") Integer pageNum,
+                                                      @RequestParam(name = "pageSize", defaultValue = "5")
+                                                      @ApiParam("每页数量") Integer pageSize,
+                                                      @RequestParam(name = "productCategoryId", defaultValue = "")
+                                                      @ApiParam("商品分类编号") Long productCategoryId,
+                                                      @RequestParam(name = "productSn", defaultValue = "")
+                                                      @ApiParam(value = "商品货号", defaultValue = "") String productSn,
+                                                      @RequestParam(name = "publishStatus", defaultValue = "")
+                                                      @ApiParam("上架状态") Integer publishStatus,
+                                                      @RequestParam(name = "verifyStatus", defaultValue = "")
+                                                      @ApiParam("审核状态") Integer verifyStatus) {
+        List<PmsProduct> productList = productService.list(brandId, keyword, pageNum, pageSize, productCategoryId,
+                productSn, publishStatus, verifyStatus);
         return CommontResult.success(CommonPage.restPage(productList));
     }
 
     @ApiOperation("根据商品名称或货号模糊查询")
     @RequestMapping(value = "/simpleList", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<List<PmsProduct>> simepleListProduct(@RequestParam(name = "keyword") String keyword) {
-        return CommontResult.success(productService.simepleListProduct("%" + keyword + "%"));
+    public CommontResult<List<PmsProduct>> simpleList(@RequestParam(value = "keyword", defaultValue = "")
+                                                      @ApiParam("keyword") String keyword) {
+        return CommontResult.success(productService.simpleList(keyword));
     }
 
     @ApiOperation("更新商品")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateProduct(@PathVariable("id") Long id, @RequestBody PmsProductParam productParam) {
+    public CommontResult updateById(@PathVariable("id")
+                                    @ApiParam("id") Long id,
+                                    @RequestBody
+                                    @ApiParam("productParam") PmsProductParam productParam) {
         CommontResult commontResult;
-        int count = productService.updateProduct(id, productParam);
-        if (count == 1) {
-            commontResult = CommontResult.success(productParam);
-            LOGGER.debug("updateProduct success:{}", productParam);
+        int count = productService.updateById(id, productParam);
+        if (count > 0) {
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("updateById success:{}", productParam);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateProduct failed:{}", productParam);
+            LOGGER.debug("updateById failed:{}", productParam);
         }
         return commontResult;
     }
@@ -97,18 +101,18 @@ public class PmsProductController {
     @ApiOperation("批量修改删除状态")
     @RequestMapping(value = "/update/deleteStatus", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateProductDeleteStatus(@RequestParam(name = "deleteStatus")
-                                                   @ApiParam("deleteStatus") Integer deleteStatus,
-                                                   @RequestParam(name = "ids")
-                                                   @ApiParam("ids") Long... ids) {
+    public CommontResult updateDeleteStatus(@RequestParam(name = "deleteStatus")
+                                            @ApiParam("deleteStatus") Integer deleteStatus,
+                                            @RequestParam(name = "ids")
+                                            @ApiParam("ids") Long... ids) {
         CommontResult commontResult;
-        int count = productService.updateProductDeleteStatus(deleteStatus, ids);
+        int count = productService.updateDeleteStatus(deleteStatus, ids);
         if (count > 0) {
-            commontResult = CommontResult.success(ids);
-            LOGGER.debug("updateProductDeleteStatus success:ids={}", ids);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("updateDeleteStatus success:ids={}", ids);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateProductDeleteStatus failed:ids={}", ids);
+            LOGGER.debug("updateDeleteStatus failed:ids={}", ids);
         }
         return commontResult;
     }
@@ -116,18 +120,18 @@ public class PmsProductController {
     @ApiOperation("批量设为新品")
     @RequestMapping(value = "/update/newStatus", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateProductNewStatus(@RequestParam(name = "newStatus")
-                                                @ApiParam("newStatus") Integer newStatus,
-                                                @RequestParam(name = "ids")
-                                                @ApiParam("ids") Long... ids) {
+    public CommontResult updateNewStatus(@RequestParam(name = "newStatus")
+                                         @ApiParam("newStatus") Integer newStatus,
+                                         @RequestParam(name = "ids")
+                                         @ApiParam("ids") Long... ids) {
         CommontResult commontResult;
-        int count = productService.updateProductNewStatus(newStatus, ids);
+        int count = productService.updateNewStatus(newStatus, ids);
         if (count > 0) {
-            commontResult = CommontResult.success(ids);
-            LOGGER.debug("updateProductNewStatus success:ids={}", ids);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("updateNewStatus success:ids={}", ids);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateProductNewStatus failed:ids={}", ids);
+            LOGGER.debug("updateNewStatus failed:ids={}", ids);
         }
         return commontResult;
     }
@@ -135,18 +139,18 @@ public class PmsProductController {
     @ApiOperation("批量上下架")
     @RequestMapping(value = "/update/publishStatus", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateProductPublishStatus(@RequestParam(name = "publishStatus")
-                                                    @ApiParam("publishStatus") Integer publishStatus,
-                                                    @RequestParam(name = "ids")
-                                                    @ApiParam("ids") Long... ids) {
+    public CommontResult updatePublishStatus(@RequestParam(name = "publishStatus")
+                                             @ApiParam("publishStatus") Integer publishStatus,
+                                             @RequestParam(name = "ids")
+                                             @ApiParam("ids") Long... ids) {
         CommontResult commontResult;
-        int count = productService.updateProductPublishStatus(publishStatus, ids);
+        int count = productService.updatePublishStatus(publishStatus, ids);
         if (count > 0) {
-            commontResult = CommontResult.success(ids);
-            LOGGER.debug("updateProductPublishStatus success:ids={}", ids);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("updatePublishStatus success:ids={}", ids);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateProductPublishStatus failed:ids={}", ids);
+            LOGGER.debug("updatePublishStatus failed:ids={}", ids);
         }
         return commontResult;
     }
@@ -154,18 +158,18 @@ public class PmsProductController {
     @ApiOperation("批量推荐商品")
     @RequestMapping(value = "/update/recommendStatus", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateProductRecommendStatus(@RequestParam(name = "recommendStatus")
-                                                      @ApiParam("recommendStatus") Integer recommendStatus,
-                                                      @RequestParam(name = "ids")
-                                                      @ApiParam("ids") Long... ids) {
+    public CommontResult updateRecommendStatus(@RequestParam(name = "recommendStatus")
+                                               @ApiParam("recommendStatus") Integer recommendStatus,
+                                               @RequestParam(name = "ids")
+                                               @ApiParam("ids") Long... ids) {
         CommontResult commontResult;
-        int count = productService.updateProductRecommendStatus(recommendStatus, ids);
+        int count = productService.updateRecommendStatus(recommendStatus, ids);
         if (count > 0) {
-            commontResult = CommontResult.success(ids);
-            LOGGER.debug("updateProductRecommendStatus success:ids={}", ids);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("updateRecommendStatus success:ids={}", ids);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateProductRecommendStatus failed:ids={}", ids);
+            LOGGER.debug("updateRecommendStatus failed:ids={}", ids);
         }
         return commontResult;
     }
@@ -173,26 +177,28 @@ public class PmsProductController {
     @ApiOperation("批量修改审核状态")
     @RequestMapping(value = "/update/verifyStatus", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateProductVerifyStatus(@RequestParam(name = "verifyStatus")
-                                                   @ApiParam("verifyStatus") Integer verifyStatus,
-                                                   @RequestParam(name = "ids")
-                                                   @ApiParam("ids") Long... ids) {
+    public CommontResult updateVerifyStatus(@RequestParam(name = "verifyStatus")
+                                            @ApiParam("verifyStatus") Integer verifyStatus,
+                                            @RequestParam(name = "ids")
+                                            @ApiParam("ids") Long... ids) {
         CommontResult commontResult;
-        int count = productService.updateProductVerifyStatus(verifyStatus, ids);
+        int count = productService.updateVerifyStatus(verifyStatus, ids);
         if (count > 0) {
-            commontResult = CommontResult.success(ids);
-            LOGGER.debug("updateProductVerifyStatus success:ids={}", ids);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("updateVerifyStatus success:ids={}", ids);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateProductVerifyStatus failed:ids={}", ids);
+            LOGGER.debug("updateVerifyStatus failed:ids={}", ids);
         }
         return commontResult;
     }
+
     @ApiOperation("根据商品id获取商品编辑信息")
     @RequestMapping(value = "/updateInfo/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<PmsProductResult> updateInfo(@PathVariable("id")Long id){
-        return CommontResult.success(productService.updateInfo(id));
+    public CommontResult<PmsProductResult> getUpdateInfoById(@PathVariable("id")
+                                                          @ApiParam("id") Long id) {
+        return CommontResult.success(productService.getUpdateInfoById(id));
     }
 
 }

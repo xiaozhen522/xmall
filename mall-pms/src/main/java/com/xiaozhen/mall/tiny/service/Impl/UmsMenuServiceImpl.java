@@ -25,7 +25,7 @@ public class UmsMenuServiceImpl implements UmsMenuService {
     private UmsMenuDao menuDao;
 
     @Override
-    public UmsMenu get(Long id) {
+    public UmsMenu getById(Long id) {
         return menuMapper.selectByPrimaryKey(id);
     }
 
@@ -35,7 +35,7 @@ public class UmsMenuServiceImpl implements UmsMenuService {
     }
 
     @Override
-    public int delete(Long id) {
+    public int deleteById(Long id) {
         return menuMapper.deleteByPrimaryKey(id);
     }
 
@@ -53,13 +53,13 @@ public class UmsMenuServiceImpl implements UmsMenuService {
     }
 
     @Override
-    public int update(Long id, UmsMenu menu) {
+    public int updateById(Long id, UmsMenu menu) {
         menu.setId(id);
         return menuMapper.updateByPrimaryKey(menu);
     }
 
     @Override
-    public int updateHidden(Long id, Integer hidden) {
+    public int updateHiddenById(Long id, Integer hidden) {
         UmsMenu menu = new UmsMenu();
         menu.setId(id);
         menu.setHidden(hidden);

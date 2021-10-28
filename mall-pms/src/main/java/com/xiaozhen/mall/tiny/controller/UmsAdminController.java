@@ -43,22 +43,22 @@ public class UmsAdminController {
     @ApiOperation("获取指定用户信息")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<UmsAdmin> get(@PathVariable("id") Long id) {
-        return CommontResult.success(adminService.get(id));
+    public CommontResult<UmsAdmin> getById(@PathVariable("id") Long id) {
+        return CommontResult.success(adminService.getById(id));
     }
 
     @ApiOperation("删除指定用户信息")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult delete(@PathVariable("id") Long id) {
+    public CommontResult deleteById(@PathVariable("id") Long id) {
         CommontResult commontResult;
-        int count = adminService.delete(id);
+        int count = adminService.deleteById(id);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("delete success:id={}", id);
+            LOGGER.debug("deleteById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("delete failed:id={}", id);
+            LOGGER.debug("deleteById failed:id={}", id);
         }
         return commontResult;
     }
@@ -66,9 +66,9 @@ public class UmsAdminController {
     @ApiOperation("获取当前登录用户信息")
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult getInfo(@RequestParam(name = "name")
+    public CommontResult getInfoByName(@RequestParam(name = "name")
                                  @ApiParam("name") String name) {
-        return CommontResult.success(adminService.getAdminByUsername(name));
+        return CommontResult.success(adminService.getInfoByName(name));
     }
 
     @ApiOperation("根据用户名或姓名分页获取用户列表")
@@ -128,9 +128,9 @@ public class UmsAdminController {
     @ApiOperation("获取指定用户的角色")
     @RequestMapping(value = "/role/{adminId}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<List<UmsRole>> getRoleList(@PathVariable("adminId")
+    public CommontResult<List<UmsRole>> getRoleListById(@PathVariable("adminId")
                                                     @ApiParam("adminId") Long adminId) {
-        return CommontResult.success(adminService.getRoleList(adminId));
+        return CommontResult.success(adminService.getRoleListById(adminId));
     }
 
     @ApiOperation("给用户分配角色")
@@ -155,18 +155,18 @@ public class UmsAdminController {
     @ApiOperation("修改指定用户信息")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult update(@RequestBody
+    public CommontResult updateById(@RequestBody
                                 @ApiParam("admin") UmsAdmin admin,
                                 @RequestParam(name = "id")
                                 @ApiParam("id") Long id) {
         CommontResult commontResult;
-        int count = adminService.update(id, admin);
+        int count = adminService.updateById(id, admin);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("update success:{}", admin);
+            LOGGER.debug("updateById success:{}", admin);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("update failed:{}", admin);
+            LOGGER.debug("updateById failed:{}", admin);
         }
         return commontResult;
     }
@@ -192,18 +192,18 @@ public class UmsAdminController {
     @ApiOperation("修改账号状态")
     @RequestMapping(value = "/updateStatus/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateStatus(@RequestParam(name = "id")
+    public CommontResult updateStatusById(@RequestParam(name = "id")
                                       @ApiParam("id") Long id,
                                       @RequestParam(name = "status")
                                       @ApiParam("status") Integer status) {
         CommontResult commontResult;
-        int count = adminService.updateStatus(id, status);
+        int count = adminService.updateStatusById(id, status);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("updateStatus success:id={}", id);
+            LOGGER.debug("updateStatusById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateStatus failed:id={}", id);
+            LOGGER.debug("updateStatusById failed:id={}", id);
         }
         return commontResult;
     }
@@ -211,9 +211,9 @@ public class UmsAdminController {
     @ApiOperation("或偶去用户所有权限(包括+-权限)")
     @RequestMapping(value = "/permission/{adminId}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<List<UmsPermission>> getPermissionList(@PathVariable("adminId")
+    public CommontResult<List<UmsPermission>> getPermissionListById(@PathVariable("adminId")
                                                                 @ApiParam("adminId") Long adminId) {
-        List<UmsPermission> permissionList = adminService.getPermissionList(adminId);
+        List<UmsPermission> permissionList = adminService.getPermissionListById(adminId);
         return CommontResult.success(permissionList);
     }
 

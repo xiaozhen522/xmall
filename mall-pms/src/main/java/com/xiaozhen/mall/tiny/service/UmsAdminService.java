@@ -3,6 +3,7 @@ package com.xiaozhen.mall.tiny.service;
 import com.xiaozhen.mall.tiny.mbg.model.UmsAdmin;
 import com.xiaozhen.mall.tiny.mbg.model.UmsPermission;
 import com.xiaozhen.mall.tiny.mbg.model.UmsRole;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -14,33 +15,41 @@ import java.util.Map;
  **/
 public interface UmsAdminService {
 
-    UmsAdmin get(Long id);
+    UmsAdmin getById(Long id);
 
-    int delete(Long id);
+    @Transactional
+    int deleteById(Long id);
 
-    UmsAdmin getAdminByUsername(String username);
+    UmsAdmin getInfoByName(String username);
 
+    @Transactional
     int create(UmsAdmin admin);
 
     List<UmsAdmin> list(String keyword, Integer pageNum, Integer pageSize);
 
+    @Transactional
     String login(String username, String password);
 
     int lougot();
 
     Map<String, String> refreshToken(Map<String, String> tokenMap);
 
+    @Transactional
     UmsAdmin register(UmsAdmin umsAdminParam);
 
-    List<UmsRole> getRoleList(Long adminId);
+    List<UmsRole> getRoleListById(Long adminId);
 
+    @Transactional
     int updateRole(Long adminId, Long[] roleIds);
 
-    int update(Long id, UmsAdmin admin);
+    @Transactional
+    int updateById(Long id, UmsAdmin admin);
 
+    @Transactional
     int updatePassword(String oldPassword, String username, String newPassword);
 
-    int updateStatus(Long id, Integer status);
+    @Transactional
+    int updateStatusById(Long id, Integer status);
 
-    List<UmsPermission> getPermissionList(Long adminId);
+    List<UmsPermission> getPermissionListById(Long adminId);
 }

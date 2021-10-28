@@ -25,7 +25,7 @@ public class UmsResourceCategoryServiceImpl implements UmsResourceCategoryServic
     }
 
     @Override
-    public int delete(Long id) {
+    public int deleteById(Long id) {
         return resourceCateGoryMapper.deleteByPrimaryKey(id);
     }
 
@@ -35,7 +35,7 @@ public class UmsResourceCategoryServiceImpl implements UmsResourceCategoryServic
     }
 
     @Override
-    public int update(Long id, UmsResourceCategory resourceCateGory) {
+    public int updateById(Long id, UmsResourceCategory resourceCateGory) {
         resourceCateGory.setId(id);
         return resourceCateGoryMapper.updateByPrimaryKey(resourceCateGory);
     }

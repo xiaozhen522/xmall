@@ -32,24 +32,24 @@ public class SmsCouponController {
     @ApiOperation("获取单个优惠券的详细信息")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<SmsCouponParm> getCouponParm(@PathVariable("id")
-                                                      @ApiParam("id") Long id) {
-        return CommontResult.success(couponService.getCouponParm(id));
+    public CommontResult<SmsCouponParm> getById(@PathVariable("id")
+                                                @ApiParam("id") Long id) {
+        return CommontResult.success(couponService.getById(id));
     }
 
     @ApiOperation("添加优惠券")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult createCoupon(@RequestBody
-                                      @ApiParam("couponPram") SmsCouponParm couponParm) {
+    public CommontResult create(@RequestBody
+                                @ApiParam("couponPram") SmsCouponParm couponParm) {
         CommontResult commontResult;
-        int count = couponService.createCoupon(couponParm);
+        int count = couponService.create(couponParm);
         if (count > 0) {
-            commontResult = CommontResult.success(couponParm);
-            LOGGER.debug("createCoupon success:{}", couponParm);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("create success:{}", couponParm);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("createCoupon failed:{}", couponParm);
+            LOGGER.debug("create failed:{}", couponParm);
         }
         return commontResult;
     }
@@ -57,16 +57,16 @@ public class SmsCouponController {
     @ApiOperation("删除优惠券")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult deleteCoupon(@PathVariable("id")
-                                      @ApiParam("id") Long id) {
+    public CommontResult deleteById(@PathVariable("id")
+                                    @ApiParam("id") Long id) {
         CommontResult commontResult;
-        int count = couponService.deleteCoupon(id);
+        int count = couponService.deleteById(id);
         if (count > 0) {
-            commontResult = CommontResult.success(id);
-            LOGGER.debug("deleteCoupon success:id={}", id);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("deleteById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("deleteCoupon failed:id={}", id);
+            LOGGER.debug("deleteById failed:id={}", id);
         }
         return commontResult;
     }
@@ -74,33 +74,33 @@ public class SmsCouponController {
     @ApiOperation("根据优惠券名称和类型分页获取优惠券列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<CommonPage<SmsCoupon>> listCoupon(@RequestParam(name = "name", defaultValue = "")
-                                                           @ApiParam("name") String name,
-                                                           @RequestParam(name = "pageNum", defaultValue = "1")
-                                                           @ApiParam("页码") Integer pageNum,
-                                                           @RequestParam(name = "pageSize", defaultValue = "5")
-                                                           @ApiParam("每页数量") Integer pageSize,
-                                                           @RequestParam(name = "type", defaultValue = "")
-                                                           @ApiParam("type") Integer type) {
-        List<SmsCoupon> couponList = couponService.listCoupon(name, pageNum, pageSize, type);
+    public CommontResult<CommonPage<SmsCoupon>> list(@RequestParam(name = "name", defaultValue = "")
+                                                     @ApiParam("name") String name,
+                                                     @RequestParam(name = "pageNum", defaultValue = "1")
+                                                     @ApiParam("页码") Integer pageNum,
+                                                     @RequestParam(name = "pageSize", defaultValue = "5")
+                                                     @ApiParam("每页数量") Integer pageSize,
+                                                     @RequestParam(name = "type", defaultValue = "")
+                                                     @ApiParam("type") Integer type) {
+        List<SmsCoupon> couponList = couponService.list(name, pageNum, pageSize, type);
         return CommontResult.success(CommonPage.restPage(couponList));
     }
 
     @ApiOperation("修改优惠券")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateCoupon(@PathVariable("id")
-                                      @ApiParam("id") Long id,
-                                      @RequestBody
-                                      @ApiParam("couponParam") SmsCouponParm couponParm) {
+    public CommontResult updateById(@PathVariable("id")
+                                    @ApiParam("id") Long id,
+                                    @RequestBody
+                                    @ApiParam("couponParam") SmsCouponParm couponParm) {
         CommontResult commontResult;
-        int count = couponService.updateCoupon(id, couponParm);
+        int count = couponService.updateById(id, couponParm);
         if (count > 0) {
-            commontResult = CommontResult.success(couponParm);
-            LOGGER.debug("updateCoupon success:{}", couponParm);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("updateById success:{}", couponParm);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateCoupon failed:{}", couponParm);
+            LOGGER.debug("updateById failed:{}", couponParm);
         }
         return commontResult;
     }

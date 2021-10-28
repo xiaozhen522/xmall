@@ -1,6 +1,7 @@
 package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.mbg.model.OmsOrderSetting;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @description : 订单设置
@@ -15,7 +16,8 @@ public interface OmsOrderSettingService {
      * @param orderSetting 新的订单设置对象
      * @return 更新行数
      */
-    int update(Long id, OmsOrderSetting orderSetting);
+    @Transactional
+    int updateById(Long id, OmsOrderSetting orderSetting);
 
     /**
      * 获取指定的订单设置
@@ -23,5 +25,5 @@ public interface OmsOrderSettingService {
      * @param id 订单设置id
      * @return 订单设置对象
      */
-    OmsOrderSetting get(Long id);
+    OmsOrderSetting getById(Long id);
 }

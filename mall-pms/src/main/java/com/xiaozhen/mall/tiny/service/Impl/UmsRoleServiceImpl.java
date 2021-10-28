@@ -81,23 +81,23 @@ public class UmsRoleServiceImpl implements UmsRoleService {
     }
 
     @Override
-    public List<UmsMenu> listMenu(Long roleId) {
+    public List<UmsMenu> listMenuById(Long roleId) {
         return roleDao.listMenu(roleId);
     }
 
     @Override
-    public List<UmsResource> listResource(Long roleId) {
+    public List<UmsResource> listResourceById(Long roleId) {
         return roleDao.listResource(roleId);
     }
 
     @Override
-    public int update(Long id, UmsRole role) {
+    public int updateById(Long id, UmsRole role) {
         role.setId(id);
         return roleMapper.updateByPrimaryKey(role);
     }
 
     @Override
-    public int updateStatus(Long id, Integer status) {
+    public int updateStatusById(Long id, Integer status) {
         UmsRole role = new UmsRole();
         role.setStatus(status);
         role.setId(id);

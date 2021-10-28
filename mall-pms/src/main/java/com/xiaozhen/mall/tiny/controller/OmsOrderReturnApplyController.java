@@ -32,9 +32,9 @@ public class OmsOrderReturnApplyController {
     @ApiOperation("获取退货申请详情")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<OmsOrderReturnApply> get(@PathVariable("id")
+    public CommontResult<OmsOrderReturnApply> getById(@PathVariable("id")
                                                   @ApiParam("id") Long id) {
-        return CommontResult.success(orderReturnApplyService.get(id));
+        return CommontResult.success(orderReturnApplyService.getById(id));
     }
 
     @ApiOperation("批量删除申请")
@@ -83,18 +83,18 @@ public class OmsOrderReturnApplyController {
     @ApiOperation("修改申请状态")
     @RequestMapping(value = "/update/status/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateStatus(@PathVariable("id")
+    public CommontResult updateStatusById(@PathVariable("id")
                                       @ApiParam("id") Long id,
                                       @RequestBody
                                       @ApiParam("statusParam") OmsUpdateStatusParam statusParam) {
         CommontResult commontResult;
-        int count = orderReturnApplyService.updateStatus(id, statusParam);
+        int count = orderReturnApplyService.updateStatusById(id, statusParam);
         if (count == 1) {
             commontResult = CommontResult.success(statusParam);
-            LOGGER.debug("updateStatus success:{}", statusParam);
+            LOGGER.debug("updateStatusById success:{}", statusParam);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateStatus failed:{}", statusParam);
+            LOGGER.debug("updateStatusById failed:{}", statusParam);
         }
         return commontResult;
     }

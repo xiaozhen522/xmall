@@ -31,16 +31,16 @@ public class SmsHomeRecommendSubjectController {
     @ApiOperation("添加首页推荐专题")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult createHomeRecommendSubject(@RequestBody
-                                                    @ApiParam("homeRecommendSubjectList") SmsHomeRecommendSubject... homeRecommendSubjectList) {
+    public CommontResult create(@RequestBody
+                                @ApiParam("homeRecommendSubjectList") SmsHomeRecommendSubject... homeRecommendSubjectList) {
         CommontResult commontResult;
-        int count = homeRecommendSubjectService.createHomeRecommendSubject(homeRecommendSubjectList);
+        int count = homeRecommendSubjectService.create(homeRecommendSubjectList);
         if (count > 0) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("createHomeRecommendSubject success:{}", homeRecommendSubjectList);
+            LOGGER.debug("create success:{}", homeRecommendSubjectList);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("createHomeRecommendSubject failed:{}", homeRecommendSubjectList);
+            LOGGER.debug("create failed:{}", homeRecommendSubjectList);
         }
         return commontResult;
     }
@@ -48,16 +48,16 @@ public class SmsHomeRecommendSubjectController {
     @ApiOperation("批量删除推荐")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult deleteHomeRecommendSubject(@RequestParam(name = "ids")
-                                                    @ApiParam("ids") Long... ids) {
+    public CommontResult delete(@RequestParam(name = "ids")
+                                @ApiParam("ids") Long... ids) {
         CommontResult commontResult;
-        int count = homeRecommendSubjectService.deleteHomeRecommendSubject(ids);
+        int count = homeRecommendSubjectService.delete(ids);
         if (count > 0) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("deleteHomeRecommendSubject success:ids={}", ids);
+            LOGGER.debug("delete success:ids={}", ids);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("deleteHomeRecommendSubject failed:ids={}", ids);
+            LOGGER.debug("delete failed:ids={}", ids);
         }
         return commontResult;
     }
@@ -65,16 +65,16 @@ public class SmsHomeRecommendSubjectController {
     @ApiOperation("分页查询推荐")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<CommonPage<SmsHomeRecommendSubject>> listHomeRecommendSubject(@RequestParam(name = "pageNum", defaultValue = "1")
-                                                                                       @ApiParam("页码") Integer pageNum,
-                                                                                       @RequestParam(name = "pageSize", defaultValue = "5")
-                                                                                       @ApiParam("每页数量") Integer pageSize,
-                                                                                       @RequestParam(name = "recommendStatus", defaultValue = "")
-                                                                                       @ApiParam("recommendStatus") Integer recommendStatus,
-                                                                                       @RequestParam(name = "subjectName", defaultValue = "")
-                                                                                       @ApiParam("subjectName") String subjectName) {
+    public CommontResult<CommonPage<SmsHomeRecommendSubject>> list(@RequestParam(name = "pageNum", defaultValue = "1")
+                                                                   @ApiParam("页码") Integer pageNum,
+                                                                   @RequestParam(name = "pageSize", defaultValue = "5")
+                                                                   @ApiParam("每页数量") Integer pageSize,
+                                                                   @RequestParam(name = "recommendStatus", defaultValue = "")
+                                                                   @ApiParam("recommendStatus") Integer recommendStatus,
+                                                                   @RequestParam(name = "subjectName", defaultValue = "")
+                                                                   @ApiParam("subjectName") String subjectName) {
         List<SmsHomeRecommendSubject> homeRecommendSubjectList =
-                homeRecommendSubjectService.listHomeRecommendSubject(pageNum, pageSize, recommendStatus, subjectName);
+                homeRecommendSubjectService.list(pageNum, pageSize, recommendStatus, subjectName);
         return CommontResult.success(CommonPage.restPage(homeRecommendSubjectList));
     }
 
@@ -100,18 +100,18 @@ public class SmsHomeRecommendSubjectController {
     @ApiOperation("批量推荐排序")
     @RequestMapping(value = "/update/sort/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateSort(@PathVariable("id")
-                                    @ApiParam("id") Long id,
-                                    @RequestParam(name = "sort")
-                                    @ApiParam("sort") Integer sort) {
+    public CommontResult updateSortById(@PathVariable("id")
+                                        @ApiParam("id") Long id,
+                                        @RequestParam(name = "sort")
+                                        @ApiParam("sort") Integer sort) {
         CommontResult commontResult;
-        int count = homeRecommendSubjectService.updateSort(id, sort);
+        int count = homeRecommendSubjectService.updateSortById(id, sort);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("updateSort success:id={}", id);
+            LOGGER.debug("updateSortById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateSort failed:id={}", id);
+            LOGGER.debug("updateSortById failed:id={}", id);
         }
         return commontResult;
     }

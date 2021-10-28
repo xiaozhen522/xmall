@@ -20,7 +20,7 @@ public class PmsSkuStockServiceImpl implements PmsSkuStockService {
     private PmsSkuStockMapper skuMapper;
 
     @Override
-    public List<PmsSkuStock> getSkuStock(Long id, String keyword) {
+    public List<PmsSkuStock> getById(Long id, String keyword) {
         PmsSkuStockExample example = new PmsSkuStockExample();
         example.createCriteria().andIdEqualTo(id);
         example.or().andSkuCodeLike("%" + keyword + "%");
@@ -28,7 +28,7 @@ public class PmsSkuStockServiceImpl implements PmsSkuStockService {
     }
 
     @Override
-    public int updateSkuStockList(Long pid, PmsSkuStock[] skuStockList) {
+    public int updateById(Long pid, PmsSkuStock[] skuStockList) {
         int rows = 0;
         for (PmsSkuStock skuStock : skuStockList) {
             skuStock.setProductId(pid);

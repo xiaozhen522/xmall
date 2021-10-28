@@ -22,7 +22,7 @@ public class SmsHomeRecommendSubjectServiceImpl implements SmsHomeRecommendSubje
     private SmsHomeRecommendSubjectMapper homeRecommendSubjectMapper;
 
     @Override
-    public int createHomeRecommendSubject(SmsHomeRecommendSubject[] homeRecommendSubjectList) {
+    public int create(SmsHomeRecommendSubject[] homeRecommendSubjectList) {
         int rows = 0;
         for (SmsHomeRecommendSubject homeRecommendSubject : homeRecommendSubjectList) {
             rows += homeRecommendSubjectMapper.insertSelective(homeRecommendSubject);
@@ -31,18 +31,18 @@ public class SmsHomeRecommendSubjectServiceImpl implements SmsHomeRecommendSubje
     }
 
     @Override
-    public int deleteHomeRecommendSubject(Long[] ids) {
+    public int delete(Long[] ids) {
         SmsHomeRecommendSubjectExample example = new SmsHomeRecommendSubjectExample();
         example.createCriteria().andIdIn(Arrays.asList(ids));
         return homeRecommendSubjectMapper.deleteByExample(example);
     }
 
     @Override
-    public List<SmsHomeRecommendSubject> listHomeRecommendSubject(Integer pageNum, Integer pageSize, Integer recommendStatus,
-                                                                  String subjectName) {
+    public List<SmsHomeRecommendSubject> list(Integer pageNum, Integer pageSize, Integer recommendStatus,
+                                              String subjectName) {
         SmsHomeRecommendSubjectExample example = new SmsHomeRecommendSubjectExample();
         SmsHomeRecommendSubjectExample.Criteria criteria = example.createCriteria();
-        if (subjectName != null && !"".equals(subjectName)) {
+        if (subjectName != null) {
             criteria.andSubjectNameLike("%" + subjectName + "%");
         }
         if (recommendStatus != null) {
@@ -62,7 +62,7 @@ public class SmsHomeRecommendSubjectServiceImpl implements SmsHomeRecommendSubje
     }
 
     @Override
-    public int updateSort(Long id, Integer sort) {
+    public int updateSortById(Long id, Integer sort) {
         SmsHomeRecommendSubject homeRecommendSubject = new SmsHomeRecommendSubject();
         homeRecommendSubject.setId(id);
         homeRecommendSubject.setSort(sort);

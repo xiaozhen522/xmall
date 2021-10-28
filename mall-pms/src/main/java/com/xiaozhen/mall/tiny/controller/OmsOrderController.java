@@ -35,9 +35,9 @@ public class OmsOrderController {
     @ApiOperation("获取订单详情:订单信息、商品信息、操作记录")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<OmsOrderDetail> get(@PathVariable("id")
+    public CommontResult<OmsOrderDetail> getById(@PathVariable("id")
                                              @ApiParam("id") Long id) {
-        return CommontResult.success(orderService.get(id));
+        return CommontResult.success(orderService.getById(id));
     }
 
     @ApiOperation("批量删除订单")
@@ -137,20 +137,20 @@ public class OmsOrderController {
     @ApiOperation("备注订单")
     @RequestMapping(value = "/update/note", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateNote(@RequestParam(name = "id")
+    public CommontResult updateNoteById(@RequestParam(name = "id")
                                     @ApiParam("id") Long id,
                                     @RequestParam(name = "note")
                                     @ApiParam("note") String note,
                                     @RequestParam(name = "status")
                                     @ApiParam("status") Integer status) {
         CommontResult commontResult;
-        int count = orderService.updateNote(id, note, status);
+        int count = orderService.updateNoteById(id, note, status);
         if (count == 1) {
             commontResult = CommontResult.success(id);
-            LOGGER.debug("updateNote success:id={}", id);
+            LOGGER.debug("updateNoteById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateNote failed:id={}", id);
+            LOGGER.debug("updateNoteById failed:id={}", id);
         }
         return commontResult;
     }

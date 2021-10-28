@@ -25,7 +25,7 @@ public class OmsOrderReturnApplyServiceImpl implements OmsOrderReturnApplyServic
     private OmsOrderReturnApplyMapper returnApplyMapper;
 
     @Override
-    public OmsOrderReturnApply get(Long id) {
+    public OmsOrderReturnApply getById(Long id) {
         return returnApplyMapper.selectByPrimaryKey(id);
     }
 
@@ -72,7 +72,7 @@ public class OmsOrderReturnApplyServiceImpl implements OmsOrderReturnApplyServic
     }
 
     @Override
-    public int updateStatus(Long id, OmsUpdateStatusParam statusParam) {
+    public int updateStatusById(Long id, OmsUpdateStatusParam statusParam) {
         OmsOrderReturnApply returnApply = new OmsOrderReturnApply();
         BeanUtils.copyProperties(statusParam, returnApply);
         returnApply.setId(id);

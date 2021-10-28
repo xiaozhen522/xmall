@@ -125,34 +125,34 @@ public class UmsRoleController {
     @ApiOperation("获取相关角色菜单")
     @RequestMapping(value = "/listMenu/{roleId}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<List<UmsMenu>> listMenu(@PathVariable("roleId")
-                                                 @ApiParam("roleId") Long roleId) {
-        return CommontResult.success(roleService.listMenu(roleId));
+    public CommontResult<List<UmsMenu>> listMenuById(@PathVariable("roleId")
+                                                     @ApiParam("roleId") Long roleId) {
+        return CommontResult.success(roleService.listMenuById(roleId));
     }
 
     @ApiOperation("获取相关角色菜单")
     @RequestMapping(value = "/listResource/{roleId}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<List<UmsResource>> listResource(@PathVariable("roleId")
-                                                         @ApiParam("roleId") Long roleId) {
-        return CommontResult.success(roleService.listResource(roleId));
+    public CommontResult<List<UmsResource>> listResourceById(@PathVariable("roleId")
+                                                             @ApiParam("roleId") Long roleId) {
+        return CommontResult.success(roleService.listResourceById(roleId));
     }
 
     @ApiOperation("修改角色")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult update(@PathVariable("id")
-                                @ApiParam("id") Long id,
-                                @RequestBody
-                                @ApiParam("role") UmsRole role) {
+    public CommontResult updateById(@PathVariable("id")
+                                    @ApiParam("id") Long id,
+                                    @RequestBody
+                                    @ApiParam("role") UmsRole role) {
         CommontResult commontResult;
-        int count = roleService.update(id, role);
+        int count = roleService.updateById(id, role);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("update success:{}", role);
+            LOGGER.debug("updateById success:{}", role);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("update failed:{}", role);
+            LOGGER.debug("updateById failed:{}", role);
         }
         return commontResult;
     }
@@ -160,18 +160,18 @@ public class UmsRoleController {
     @ApiOperation("修改角色状态")
     @RequestMapping(value = "/updateStatus/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateStatus(@PathVariable("id")
-                                      @ApiParam("id") Long id,
-                                      @RequestParam(name = "status")
-                                      @ApiParam("status") Integer status) {
+    public CommontResult updateStatusById(@PathVariable("id")
+                                          @ApiParam("id") Long id,
+                                          @RequestParam(name = "status")
+                                          @ApiParam("status") Integer status) {
         CommontResult commontResult;
-        int count = roleService.updateStatus(id, status);
+        int count = roleService.updateStatusById(id, status);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("updateStatus success:id={}", id);
+            LOGGER.debug("updateStatusById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateStatus failed:id={}", id);
+            LOGGER.debug("updateStatusById failed:id={}", id);
         }
         return commontResult;
     }

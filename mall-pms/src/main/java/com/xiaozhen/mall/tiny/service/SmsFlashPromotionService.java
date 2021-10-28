@@ -1,6 +1,7 @@
 package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.mbg.model.SmsFlashPromotion;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -10,42 +11,20 @@ import java.util.List;
  * @Author : XiaoZhen
  **/
 public interface SmsFlashPromotionService {
-    /**
-     * @description : 获取指定id的显示购活动
-     * @param: id   显示购活动id
-     * @return: 显示购活动对象
-     */
-    SmsFlashPromotion getFlashPromotion(Long id);
 
-    /**
-     * @description : 创建新的显示购活动
-     * @param: flash  新的显示购活动
-     * @return: 影响行数
-     */
-    int createFlashPromotion(SmsFlashPromotion flashPromotion);
+    SmsFlashPromotion getById(Long id);
 
-    /**
-     * @description : 删除指定id的显示购活动
-     * @param: id   显示购活动id
-     * @return: 影响行数
-     */
-    int deleteFlashPromotion(Long id);
+    @Transactional
+    int create(SmsFlashPromotion flashPromotion);
 
-    /**
-     * @description : 分页查询显示购活动
-     * @param: pageNum  页码
-     * @param: pageSize 每页数量
-     * @return: 显示购活动对象列表
-     */
-    List<SmsFlashPromotion> listFlashPromotion(String keyword, Integer pageNum, Integer pageSize);
+    @Transactional
+    int deleteById(Long id);
 
-    /**
-     * @description : 更新指定id的显示购活动
-     * @param: id   显示购活动id
-     * @param: flash  新的显示购活动
-     * @return: 影响行数
-     */
-    int updateFlashPromotion(Long id, SmsFlashPromotion flashPromotion);
+    List<SmsFlashPromotion> list(String keyword, Integer pageNum, Integer pageSize);
 
-    int updateStatus(Long id, Integer status);
+    @Transactional
+    int updateById(Long id, SmsFlashPromotion flashPromotion);
+
+    @Transactional
+    int updateStatusById(Long id, Integer status);
 }

@@ -46,12 +46,12 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     private UmsAdminRoleRelationMapper adminRoleRelationMapper;
 
     @Override
-    public UmsAdmin get(Long id) {
+    public UmsAdmin getById(Long id) {
         return adminMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int delete(Long id) {
+    public int deleteById(Long id) {
         return adminMapper.deleteByPrimaryKey(id);
     }
 
@@ -91,6 +91,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public int lougot() {
+
         return 1;
     }
 
@@ -126,7 +127,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     }
 
     @Override
-    public List<UmsRole> getRoleList(Long adminId) {
+    public List<UmsRole> getRoleListById(Long adminId) {
         return adminRoleRelationDao.getRoleList(adminId);
     }
 
@@ -143,7 +144,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     }
 
     @Override
-    public int update(Long id, UmsAdmin admin) {
+    public int updateById(Long id, UmsAdmin admin) {
         admin.setId(id);
         return adminMapper.updateByPrimaryKeySelective(admin);
     }
@@ -165,7 +166,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     }
 
     @Override
-    public int updateStatus(Long id, Integer status) {
+    public int updateStatusById(Long id, Integer status) {
         UmsAdmin admin = new UmsAdmin();
         admin.setId(id);
         admin.setStatus(status);
@@ -173,7 +174,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     }
 
     @Override
-    public UmsAdmin getAdminByUsername(String username) {
+    public UmsAdmin getInfoByName(String username) {
         UmsAdminExample example = new UmsAdminExample();
         example.createCriteria().andUsernameEqualTo(username);
         List<UmsAdmin> adminList = adminMapper.selectByExample(example);
@@ -184,7 +185,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     }
 
     @Override
-    public List<UmsPermission> getPermissionList(Long adminId) {
+    public List<UmsPermission> getPermissionListById(Long adminId) {
         return adminRoleRelationDao.getPermissionList(adminId);
     }
 }

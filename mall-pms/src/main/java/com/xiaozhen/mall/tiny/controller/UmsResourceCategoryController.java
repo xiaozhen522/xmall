@@ -47,16 +47,16 @@ public class UmsResourceCategoryController {
     @ApiOperation("根据id删除后台资源")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult delete(@PathVariable("id")
-                                @ApiParam("id") Long id) {
+    public CommontResult deleteById(@PathVariable("id")
+                                    @ApiParam("id") Long id) {
         CommontResult commontResult;
-        int count = resourceCateGoryService.delete(id);
+        int count = resourceCateGoryService.deleteById(id);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("delete success:id={}", id);
+            LOGGER.debug("deleteById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("delete failed:id={}", id);
+            LOGGER.debug("deleteById failed:id={}", id);
         }
         return commontResult;
     }
@@ -71,18 +71,18 @@ public class UmsResourceCategoryController {
     @ApiOperation("修改后台资源分类")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult update(@PathVariable("id")
-                                @ApiParam("id") Long id,
-                                @RequestBody
-                                @ApiParam("umsResourceCategory") UmsResourceCategory resourceCateGory) {
+    public CommontResult updateById(@PathVariable("id")
+                                    @ApiParam("id") Long id,
+                                    @RequestBody
+                                    @ApiParam("umsResourceCategory") UmsResourceCategory resourceCateGory) {
         CommontResult commontResult;
-        int count = resourceCateGoryService.update(id, resourceCateGory);
+        int count = resourceCateGoryService.updateById(id, resourceCateGory);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("update success:{}", resourceCateGory);
+            LOGGER.debug("updateById success:{}", resourceCateGory);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("update failed:{}", resourceCateGory);
+            LOGGER.debug("updateById failed:{}", resourceCateGory);
         }
         return commontResult;
     }

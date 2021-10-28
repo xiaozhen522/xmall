@@ -21,22 +21,22 @@ public class SmsFlashPromotionServiceImpl implements SmsFlashPromotionService {
     private SmsFlashPromotionMapper flashPromotionMapper;
 
     @Override
-    public SmsFlashPromotion getFlashPromotion(Long id) {
+    public SmsFlashPromotion getById(Long id) {
         return flashPromotionMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int createFlashPromotion(SmsFlashPromotion flashPromotion) {
+    public int create(SmsFlashPromotion flashPromotion) {
         return flashPromotionMapper.insertSelective(flashPromotion);
     }
 
     @Override
-    public int deleteFlashPromotion(Long id) {
+    public int deleteById(Long id) {
         return flashPromotionMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public List<SmsFlashPromotion> listFlashPromotion(String keyword, Integer pageNum, Integer pageSize) {
+    public List<SmsFlashPromotion> list(String keyword, Integer pageNum, Integer pageSize) {
         SmsFlashPromotionExample example = new SmsFlashPromotionExample();
         if (keyword != null) {
             example.createCriteria().andTitleLike("%" + keyword + "%");
@@ -46,13 +46,13 @@ public class SmsFlashPromotionServiceImpl implements SmsFlashPromotionService {
     }
 
     @Override
-    public int updateFlashPromotion(Long id, SmsFlashPromotion flashPromotion) {
+    public int updateById(Long id, SmsFlashPromotion flashPromotion) {
         flashPromotion.setId(id);
         return flashPromotionMapper.updateByPrimaryKey(flashPromotion);
     }
 
     @Override
-    public int updateStatus(Long id, Integer status) {
+    public int updateStatusById(Long id, Integer status) {
         SmsFlashPromotion flashPromotion = new SmsFlashPromotion();
         flashPromotion.setId(id);
         flashPromotion.setStatus(status);

@@ -11,6 +11,7 @@ import com.xiaozhen.mall.tiny.mbg.model.PmsProductCategory;
 import com.xiaozhen.mall.tiny.mbg.model.PmsProductCategoryAttributeRelation;
 import com.xiaozhen.mall.tiny.mbg.model.PmsProductCategoryExample;
 import com.xiaozhen.mall.tiny.service.PmsProductCategoryService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +31,7 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
     @Autowired
     private ProductCategoryParamDao productCategoryParamDao;
     @Autowired
-    private PmsProductCategoryAttributeRelationMapper pcarMapper;
+    private PmsProductCategoryAttributeRelationMapper productCategoryAttributeRelationMapper;
 
     @Override
     public PmsProductCategory getById(Long id) {
@@ -39,20 +40,18 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
 
     @Override
     public int create(ProductCategoryParam productCategoryParam) {
-//        return productCategoryParamDao.create(productCategoryParam);
         int rows = 0;
         PmsProductCategory pc = new PmsProductCategory();
-        MyUtils.cast(productCategoryParam, pc);
-        productCategoryMapper.insertSelective(pc);
-        rows++;
+        BeanUtils.copyProperties(productCategoryParam, pc);
+        rows += productCategoryMapper.insertSelective(pc);
+
         Long pcId = pc.getId();
         List<Long> ids = productCategoryParam.getProductAttributeIdList();
         for (Long id : ids) {
             PmsProductCategoryAttributeRelation pcar = new PmsProductCategoryAttributeRelation();
             pcar.setProductCategoryId(pcId);
             pcar.setProductAttributeId(id);
-            pcarMapper.insertSelective(pcar);
-            rows++;
+            rows += productCategoryAttributeRelationMapper.insertSelective(pcar);
         }
         return rows;
     }
@@ -71,21 +70,8 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
     }
 
     @Override
-    public List<PmsProductCategoryWithChildernItem> listWithChildern() {
-        PmsProductCategoryExample pcExample1 = new PmsProductCategoryExample();
-        pcExample1.createCriteria().andParentIdEqualTo(0L);
-        List<PmsProductCategory> pcList1 = productCategoryMapper.selectByExample(pcExample1);
-        List<PmsProductCategoryWithChildernItem> pcwciList = new ArrayList<>();
-        for (PmsProductCategory productCategory : pcList1) {
-            PmsProductCategoryWithChildernItem pcwcItem = new PmsProductCategoryWithChildernItem();
-            MyUtils.cast(productCategory, pcwcItem);
-            PmsProductCategoryExample pcExample2 = new PmsProductCategoryExample();
-            pcExample2.createCriteria().andParentIdEqualTo(productCategory.getId());
-            List<PmsProductCategory> pcList = productCategoryMapper.selectByExample(pcExample2);
-            pcwcItem.setChildren(pcList);
-            pcwciList.add(pcwcItem);
-        }
-        return pcwciList;
+    public List<PmsProductCategoryWithChildernItem> listWithChildren(Long id) {
+        return productCategoryParamDao.listWithChildren(id);
     }
 
     @Override

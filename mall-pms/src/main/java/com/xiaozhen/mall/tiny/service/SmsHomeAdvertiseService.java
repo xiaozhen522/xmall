@@ -1,6 +1,7 @@
 package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.mbg.model.SmsHomeAdvertise;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -10,42 +11,19 @@ import java.util.List;
  * @Author : XiaoZhen
  **/
 public interface SmsHomeAdvertiseService {
-    /**
-     * @description : 获取指定id的首页轮播广告
-     * @param: id   首页轮播广告id
-     * @return: 首页轮播广告对象
-     */
-    SmsHomeAdvertise getHomeAdvertise(Long id);
+    SmsHomeAdvertise getById(Long id);
 
-    /**
-     * @description : 创建新的首页轮播广告
-     * @param: home  新的首页轮播广告
-     * @return: 影响行数
-     */
-    int createHomeAdvertise(SmsHomeAdvertise homeAdvertise);
+    @Transactional
+    int create(SmsHomeAdvertise homeAdvertise);
 
-    /**
-     * @description : 删除指定id的首页轮播广告
-     * @param: id   首页轮播广告id
-     * @return: 影响行数
-     */
-    int deleteHomeAdvertise(Long[] ids);
+    @Transactional
+    int delete(Long[] ids);
 
-    /**
-     * @description : 分页查询首页轮播广告
-     * @param: pageNum  页码
-     * @param: pageSize 每页数量
-     * @return: 首页轮播广告对象列表
-     */
-    List<SmsHomeAdvertise> listHomeAdvertise(String endTime, String name, Integer pageNum, Integer pageSize);
+    List<SmsHomeAdvertise> list(String endTime, String name, Integer pageNum, Integer pageSize);
 
-    /**
-     * @description : 更新指定id的首页轮播广告
-     * @param: id   首页轮播广告id
-     * @param: home  新的首页轮播广告
-     * @return: 影响行数
-     */
-    int updateHomeAdvertise(Long id, SmsHomeAdvertise homeAdvertise);
+    @Transactional
+    int updateById(Long id, SmsHomeAdvertise homeAdvertise);
 
-    int updateStatus(Long id, Integer status);
+    @Transactional
+    int updateStatusById(Long id, Integer status);
 }

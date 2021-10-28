@@ -1,6 +1,7 @@
 package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.mbg.model.UmsResourceCategory;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -10,12 +11,12 @@ import java.util.List;
  * @Author : XiaoZhen
  **/
 public interface UmsResourceCategoryService {
-
+    @Transactional
     int create(UmsResourceCategory resourceCateGory);
-
-    int delete(Long id);
-
-    int update(Long id, UmsResourceCategory resourceCateGory);
+    @Transactional
+    int deleteById(Long id);
+    @Transactional
+    int updateById(Long id, UmsResourceCategory resourceCateGory);
 
     List<UmsResourceCategory> listAll();
 

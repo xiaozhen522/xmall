@@ -2,6 +2,7 @@ package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.dto.SmsFlashPromotionProduct;
 import com.xiaozhen.mall.tiny.mbg.model.SmsFlashPromotionProductRelation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,42 +12,18 @@ import java.util.List;
  * @Author : XiaoZhen
  **/
 public interface SmsFlashPromotionProductRelationService {
-    /**
-     * @description : 获取指定id的限时购和商品关系
-     * @param: id   限时购和商品关系id
-     * @return: 限时购和商品关系对象
-     */
-    SmsFlashPromotionProductRelation getFlashPromotionProductRelation(Long id);
+    SmsFlashPromotionProductRelation getById(Long id);
 
-    /**
-     * @description : 创建新的限时购和商品关系
-     * @param: flashProductRelation  新的限时购和商品关系
-     * @return: 影响行数
-     */
-    int createFlashPromotionProductRelation(SmsFlashPromotionProductRelation[] fpprList);
+    @Transactional
+    int create(SmsFlashPromotionProductRelation[] fpprList);
 
-    /**
-     * @description : 删除指定id的限时购和商品关系
-     * @param: id   限时购和商品关系id
-     * @return: 影响行数
-     */
-    int deleteFlashPromotionProductRelation(Long id);
+    @Transactional
+    int deleteById(Long id);
 
-    /**
-     * @description : 分页查询限时购和商品关系
-     * @param: pageNum  页码
-     * @param: pageSize 每页数量
-     * @return: 限时购和商品关系对象列表
-     */
-    List<SmsFlashPromotionProduct> listFlashPromotionProduct(Long flashPromotionId, Long flashPromotionSessionId,
-                                                             Integer pageNum, Integer pageSize);
+    List<SmsFlashPromotionProduct> list(Long flashPromotionId, Long flashPromotionSessionId, Integer pageNum,
+                                        Integer pageSize);
 
-    /**
-     * @description : 更新指定id的限时购和商品关系
-     * @param: id   限时购和商品关系id
-     * @param: flashProductRelation  新的限时购和商品关系
-     * @return: 影响行数
-     */
-    int updateFlashPromotionProductRelation(Long id, SmsFlashPromotionProductRelation flashProductRelation);
+    @Transactional
+    int updateById(Long id, SmsFlashPromotionProductRelation flashProductRelation);
 
 }

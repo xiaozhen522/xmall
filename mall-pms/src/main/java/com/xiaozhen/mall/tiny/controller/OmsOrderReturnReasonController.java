@@ -31,9 +31,9 @@ public class OmsOrderReturnReasonController {
     @ApiOperation("获取单个退货原因详情信息")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<OmsOrderReturnReason> get(@PathVariable("id")
+    public CommontResult<OmsOrderReturnReason> getById(@PathVariable("id")
                                                    @ApiParam("id") Long id) {
-        return CommontResult.success(returnReasonService.get(id));
+        return CommontResult.success(returnReasonService.getById(id));
     }
 
     @ApiOperation("添加退货原因")
@@ -84,18 +84,18 @@ public class OmsOrderReturnReasonController {
     @ApiOperation("修改退货原因")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult update(@PathVariable("id")
+    public CommontResult updateById(@PathVariable("id")
                                 @ApiParam("id") Long id,
                                 @RequestBody
                                 @ApiParam("returnReason") OmsOrderReturnReason returnReason) {
         CommontResult commontResult;
-        int count = returnReasonService.update(id, returnReason);
+        int count = returnReasonService.updateById(id, returnReason);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("update success:{}", returnReason);
+            LOGGER.debug("updateById success:{}", returnReason);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("update failed:{}", returnReason);
+            LOGGER.debug("updateById failed:{}", returnReason);
         }
         return commontResult;
     }

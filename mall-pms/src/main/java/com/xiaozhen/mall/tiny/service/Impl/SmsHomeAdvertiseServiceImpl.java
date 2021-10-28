@@ -23,30 +23,30 @@ public class SmsHomeAdvertiseServiceImpl implements SmsHomeAdvertiseService {
     private SmsHomeAdvertiseMapper homeAdvertiseMapper;
 
     @Override
-    public SmsHomeAdvertise getHomeAdvertise(Long id) {
+    public SmsHomeAdvertise getById(Long id) {
         return homeAdvertiseMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int createHomeAdvertise(SmsHomeAdvertise homeAdvertise) {
+    public int create(SmsHomeAdvertise homeAdvertise) {
         return homeAdvertiseMapper.insertSelective(homeAdvertise);
     }
 
     @Override
-    public int deleteHomeAdvertise(Long[] ids) {
+    public int delete(Long[] ids) {
         SmsHomeAdvertiseExample example = new SmsHomeAdvertiseExample();
         example.createCriteria().andIdIn(Arrays.asList(ids));
         return homeAdvertiseMapper.deleteByExample(example);
     }
 
     @Override
-    public List<SmsHomeAdvertise> listHomeAdvertise(String endTime, String name, Integer pageNum, Integer pageSize) {
+    public List<SmsHomeAdvertise> list(String endTime, String name, Integer pageNum, Integer pageSize) {
         SmsHomeAdvertiseExample example = new SmsHomeAdvertiseExample();
         SmsHomeAdvertiseExample.Criteria criteria = example.createCriteria();
         if (endTime != null && !"".equals(endTime)) {
             criteria.andEndTimeEqualTo(new Date(endTime));
         }
-        if (name != null && !"".equals(name)) {
+        if (name != null) {
             criteria.andNameLike("%" + name + "%");
         }
         PageHelper.startPage(pageNum, pageSize);
@@ -54,13 +54,13 @@ public class SmsHomeAdvertiseServiceImpl implements SmsHomeAdvertiseService {
     }
 
     @Override
-    public int updateHomeAdvertise(Long id, SmsHomeAdvertise homeAdvertise) {
+    public int updateById(Long id, SmsHomeAdvertise homeAdvertise) {
         homeAdvertise.setId(id);
         return homeAdvertiseMapper.updateByPrimaryKey(homeAdvertise);
     }
 
     @Override
-    public int updateStatus(Long id, Integer status) {
+    public int updateStatusById(Long id, Integer status) {
         SmsHomeAdvertise homeAdvertise = new SmsHomeAdvertise();
         homeAdvertise.setStatus(status);
         homeAdvertise.setId(id);

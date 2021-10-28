@@ -2,6 +2,7 @@ package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.dto.PmsProductAttributeCategoryItem;
 import com.xiaozhen.mall.tiny.mbg.model.PmsProductAttributeCategory;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,13 +15,16 @@ public interface PmsProductAttributeCategoryService {
 
     PmsProductAttributeCategory getById(Long id);
 
+    @Transactional
     int create(String name);
 
+    @Transactional
     int deleteById(Long id);
 
     List<PmsProductAttributeCategory> list(Integer pageNum, Integer pageSize);
 
     List<PmsProductAttributeCategoryItem> listAllWithAttr();
 
+    @Transactional
     int updateById(Long id, String name);
 }

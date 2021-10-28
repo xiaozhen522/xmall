@@ -31,17 +31,17 @@ public class SmsCouponHistoryController {
     @ApiOperation("根据优惠券id,使用状态,订单编号分页获取领取记录")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<CommonPage<SmsCouponHistory>> listCouponHistory(@RequestParam(name = "couponId", defaultValue = "")
-                                                                         @ApiParam("couponId") Long couponId,
-                                                                         @RequestParam(value = "orderSn", defaultValue = "")
-                                                                         @ApiParam("orderSn") String orderSn,
-                                                                         @RequestParam(name = "pageNum", defaultValue = "1")
-                                                                         @ApiParam("页码") Integer pageNum,
-                                                                         @RequestParam(name = "pageSize", defaultValue = "5")
-                                                                         @ApiParam("每页数量") Integer pageSize,
-                                                                         @RequestParam(value = "useStatus", defaultValue = "")
-                                                                         @ApiParam("useStatus") Integer useStatus) {
-        List<SmsCouponHistory> couponHistoryList = couponHistoryService.listCouponHistory(couponId, orderSn, pageNum, pageSize, useStatus);
+    public CommontResult<CommonPage<SmsCouponHistory>> list(@RequestParam(name = "couponId", defaultValue = "")
+                                                            @ApiParam("couponId") Long couponId,
+                                                            @RequestParam(value = "orderSn", defaultValue = "")
+                                                            @ApiParam("orderSn") String orderSn,
+                                                            @RequestParam(name = "pageNum", defaultValue = "1")
+                                                            @ApiParam("页码") Integer pageNum,
+                                                            @RequestParam(name = "pageSize", defaultValue = "5")
+                                                            @ApiParam("每页数量") Integer pageSize,
+                                                            @RequestParam(value = "useStatus", defaultValue = "")
+                                                            @ApiParam("useStatus") Integer useStatus) {
+        List<SmsCouponHistory> couponHistoryList = couponHistoryService.list(couponId, orderSn, pageNum, pageSize, useStatus);
         return CommontResult.success(CommonPage.restPage(couponHistoryList));
     }
 }

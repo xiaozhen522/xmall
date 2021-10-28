@@ -24,38 +24,38 @@ public class SmsFlashPromotionSessionServiceImpl implements SmsFlashPromotionSes
     private SmsFlashPromotionSessionDeatilDao flashPromotionSessionDeatilDao;
 
     @Override
-    public SmsFlashPromotionSession getFlashPromotionSession(Long id) {
+    public SmsFlashPromotionSession getById(Long id) {
         return flashSessionMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int createFlashPromotionSession(SmsFlashPromotionSession flashSession) {
+    public int create(SmsFlashPromotionSession flashSession) {
         return flashSessionMapper.insertSelective(flashSession);
     }
 
     @Override
-    public int deleteFlashPromotionSession(Long id) {
+    public int deleteById(Long id) {
         return flashSessionMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public List<SmsFlashPromotionSession> listFlashPromotionSession() {
+    public List<SmsFlashPromotionSession> list() {
         return flashSessionMapper.selectByExample(new SmsFlashPromotionSessionExample());
     }
 
     @Override
-    public List<SmsFlashPromotionSessionDeatil> listFlashPromotionSessionDetail(Long flashPromotionId) {
+    public List<SmsFlashPromotionSessionDeatil> selectList(Long flashPromotionId) {
         return flashPromotionSessionDeatilDao.listFlashPromotionSessionDetail(flashPromotionId);
     }
 
     @Override
-    public int updateFlashPromotionSession(Long id, SmsFlashPromotionSession flashSession) {
+    public int updateById(Long id, SmsFlashPromotionSession flashSession) {
         flashSession.setId(id);
         return flashSessionMapper.updateByPrimaryKey(flashSession);
     }
 
     @Override
-    public int updateStatus(Long id, Integer status) {
+    public int updateStatusById(Long id, Integer status) {
         SmsFlashPromotionSession flashPromotionSession = new SmsFlashPromotionSession();
         flashPromotionSession.setId(id);
         flashPromotionSession.setStatus(status);

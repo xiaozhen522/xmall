@@ -26,7 +26,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/memberLevel")
 public class UmsMemberLevelController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(UmsMemberLevelController.class);
     @Autowired
     private UmsMemberLevelService memberLevelService;
 

@@ -31,24 +31,24 @@ public class SmsFlashPromotionSessionController {
     @ApiOperation("获取场次详情")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<SmsFlashPromotionSession> getFlashPromotionSession(@PathVariable("id")
-                                                                            @ApiParam("id") Long id) {
-        return CommontResult.success(flashSessionService.getFlashPromotionSession(id));
+    public CommontResult<SmsFlashPromotionSession> getById(@PathVariable("id")
+                                                           @ApiParam("id") Long id) {
+        return CommontResult.success(flashSessionService.getById(id));
     }
 
     @ApiOperation("添加场次")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult createFlashPromotionSession(@RequestBody
-                                                     @ApiParam("promotionSession") SmsFlashPromotionSession flashSession) {
+    public CommontResult create(@RequestBody
+                                @ApiParam("promotionSession") SmsFlashPromotionSession flashSession) {
         CommontResult commontResult;
-        int count = flashSessionService.createFlashPromotionSession(flashSession);
+        int count = flashSessionService.create(flashSession);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("createFlashPromotionSession success:{}", flashSession);
+            LOGGER.debug("create success:{}", flashSession);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("createFlashPromotionSession failed:{}", flashSession);
+            LOGGER.debug("create failed:{}", flashSession);
         }
         return commontResult;
     }
@@ -56,16 +56,16 @@ public class SmsFlashPromotionSessionController {
     @ApiOperation("删除场次")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult deleteFlashPromotionSession(@PathVariable("id")
-                                                     @ApiParam("id") Long id) {
+    public CommontResult deleteById(@PathVariable("id")
+                                    @ApiParam("id") Long id) {
         CommontResult commontResult;
-        int count = flashSessionService.deleteFlashPromotionSession(id);
+        int count = flashSessionService.deleteById(id);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("deleteFlashPromotionSession success:id={}", id);
+            LOGGER.debug("deleteById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("deleteFlashPromotionSession failed:id={}", id);
+            LOGGER.debug("deleteById failed:id={}", id);
         }
         return commontResult;
     }
@@ -73,33 +73,33 @@ public class SmsFlashPromotionSessionController {
     @ApiOperation("获取全部场次")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<List<SmsFlashPromotionSession>> listFlashPromotionSession() {
-        return CommontResult.success(flashSessionService.listFlashPromotionSession());
+    public CommontResult<List<SmsFlashPromotionSession>> list() {
+        return CommontResult.success(flashSessionService.list());
     }
 
     @ApiOperation("获取全部可选场次及其数量")
     @RequestMapping(value = "/selectList", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<List<SmsFlashPromotionSessionDeatil>> listFlashPromotionSessionDetail(@RequestParam(name = "flashPromotion")
-                                                                                               @ApiParam("flashPromotionId") Long flashPromotionId) {
-        return CommontResult.success(flashSessionService.listFlashPromotionSessionDetail(flashPromotionId));
+    public CommontResult<List<SmsFlashPromotionSessionDeatil>> selectList(@RequestParam(name = "flashPromotion")
+                                                                          @ApiParam("flashPromotionId") Long flashPromotionId) {
+        return CommontResult.success(flashSessionService.selectList(flashPromotionId));
     }
 
     @ApiOperation("修改场次")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateFlashPromotionSession(@PathVariable("id")
-                                                     @ApiParam("id") Long id,
-                                                     @RequestBody
-                                                     @ApiParam("promotionSession") SmsFlashPromotionSession flashSession) {
+    public CommontResult updateById(@PathVariable("id")
+                                    @ApiParam("id") Long id,
+                                    @RequestBody
+                                    @ApiParam("promotionSession") SmsFlashPromotionSession flashSession) {
         CommontResult commontResult;
-        int count = flashSessionService.updateFlashPromotionSession(id, flashSession);
+        int count = flashSessionService.updateById(id, flashSession);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("updateFlashPromotionSession success:{}", flashSession);
+            LOGGER.debug("updateById success:{}", flashSession);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateFlashPromotionSession failed:{}", flashSession);
+            LOGGER.debug("updateById failed:{}", flashSession);
         }
         return commontResult;
     }
@@ -107,18 +107,18 @@ public class SmsFlashPromotionSessionController {
     @ApiOperation("修改启用状态")
     @RequestMapping(value = "/update/status/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateStatus(@PathVariable("id")
-                                      @ApiParam("id") Long id,
-                                      @RequestParam(name = "status")
-                                      @ApiParam("status") Integer status) {
+    public CommontResult updateStatusById(@PathVariable("id")
+                                          @ApiParam("id") Long id,
+                                          @RequestParam(name = "status")
+                                          @ApiParam("status") Integer status) {
         CommontResult commontResult;
-        int count = flashSessionService.updateStatus(id, status);
+        int count = flashSessionService.updateStatusById(id, status);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("updateFlashPromotionSession success:{}", status);
+            LOGGER.debug("updateStatusById success:{}", status);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateFlashPromotionSession failed:{}", status);
+            LOGGER.debug("updateStatusById failed:{}", status);
         }
         return commontResult;
     }

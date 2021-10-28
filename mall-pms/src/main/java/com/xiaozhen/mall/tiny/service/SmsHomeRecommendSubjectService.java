@@ -1,6 +1,7 @@
 package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.mbg.model.SmsHomeRecommendSubject;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -10,15 +11,18 @@ import java.util.List;
  * @Author : XiaoZhen
  **/
 public interface SmsHomeRecommendSubjectService {
+    @Transactional
+    int create(SmsHomeRecommendSubject[] homeRecommendSubjectList);
 
-    int createHomeRecommendSubject(SmsHomeRecommendSubject[] homeRecommendSubjectList);
+    @Transactional
+    int delete(Long[] ids);
 
-    int deleteHomeRecommendSubject(Long[] ids);
+    List<SmsHomeRecommendSubject> list(Integer pageNum, Integer pageSize, Integer recommendStatus,
+                                       String subjectName);
 
-    List<SmsHomeRecommendSubject> listHomeRecommendSubject(Integer pageNum, Integer pageSize, Integer recommendStatus,
-                                                           String subjectName);
-
+    @Transactional
     int updateRecommendStatus(Long[] ids, Integer recommendStatus);
 
-    int updateSort(Long id, Integer sort);
+    @Transactional
+    int updateSortById(Long id, Integer sort);
 }

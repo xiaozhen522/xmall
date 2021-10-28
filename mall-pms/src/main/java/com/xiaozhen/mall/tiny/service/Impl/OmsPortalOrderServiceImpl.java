@@ -41,6 +41,9 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     @Override
     public void cancelOrder(Long orderId) {
         // TODO: 2021/10/27 执行一系列取消订单操作
+
+
+
         LOGGER.info("执行取消订单操作 orderId:{}", orderId);
     }
 }

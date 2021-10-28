@@ -17,13 +17,13 @@ public class OmsOrderSettingServiceImpl implements OmsOrderSettingService {
     private OmsOrderSettingMapper orderSettingMapper;
 
     @Override
-    public int update(Long id, OmsOrderSetting orderSetting) {
+    public int updateById(Long id, OmsOrderSetting orderSetting) {
         orderSetting.setId(id);
         return orderSettingMapper.updateByPrimaryKey(orderSetting);
     }
 
     @Override
-    public OmsOrderSetting get(Long id) {
+    public OmsOrderSetting getById(Long id) {
         return orderSettingMapper.selectByPrimaryKey(id);
     }
 

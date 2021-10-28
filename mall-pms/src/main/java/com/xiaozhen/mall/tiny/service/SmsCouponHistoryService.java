@@ -10,12 +10,5 @@ import java.util.List;
  * @Author : XiaoZhen
  **/
 public interface SmsCouponHistoryService {
-    /**
-     * @description : 分页查询优惠券领取记录
-     * @param: pageNum  页码
-     * @param: pageSize 每页数量
-     * @return: 优惠券领取记录对象列表
-     */
-    List<SmsCouponHistory> listCouponHistory(Long couponId, String orderSn, Integer pageNum, Integer pageSize,
-                                             Integer useStatus);
+    List<SmsCouponHistory> list(Long couponId, String orderSn, Integer pageNum, Integer pageSize, Integer useStatus);
 }

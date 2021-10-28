@@ -30,28 +30,28 @@ public class PmsSkuStockController {
     @ApiOperation("根据商品编号及编号模糊搜索sku库存")
     @RequestMapping(value = "/get/{pid}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<List<PmsSkuStock>> getSkuStock(@PathVariable("pid")
-                                                        @ApiParam("pid") Long pid,
-                                                        @RequestParam(name = "keyword",defaultValue = "")
-                                                        @ApiParam("keyword") String keyword) {
-        return CommontResult.success(skuService.getSkuStock(pid, keyword));
+    public CommontResult<List<PmsSkuStock>> getById(@PathVariable("pid")
+                                                    @ApiParam("pid") Long pid,
+                                                    @RequestParam(name = "keyword", defaultValue = "")
+                                                    @ApiParam("keyword") String keyword) {
+        return CommontResult.success(skuService.getById(pid, keyword));
     }
 
     @ApiOperation("批量更新库存信息")
     @RequestMapping(value = "/update/{pid}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateSkuStockList(@PathVariable("pid")
-                                            @ApiParam("pid") Long pid,
-                                            @RequestBody
-                                            @ApiParam("skuStockList") PmsSkuStock... skuStockList) {
+    public CommontResult updateById(@PathVariable("pid")
+                                    @ApiParam("pid") Long pid,
+                                    @RequestBody
+                                    @ApiParam("skuStockList") PmsSkuStock... skuStockList) {
         CommontResult commontResult;
-        int count = skuService.updateSkuStockList(pid, skuStockList);
+        int count = skuService.updateById(pid, skuStockList);
         if (count > 0) {
-            commontResult = CommontResult.success(skuStockList);
-            LOGGER.debug("updateSkuStockList success:{}", skuStockList);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("updateById success:{}", skuStockList);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateSkuStockList failed:{}", skuStockList);
+            LOGGER.debug("updateById failed:{}", skuStockList);
         }
         return commontResult;
     }

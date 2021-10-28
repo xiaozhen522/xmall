@@ -2,6 +2,7 @@ package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.dto.SmsFlashPromotionSessionDeatil;
 import com.xiaozhen.mall.tiny.mbg.model.SmsFlashPromotionSession;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,42 +12,21 @@ import java.util.List;
  * @Author : XiaoZhen
  **/
 public interface SmsFlashPromotionSessionService {
-    /**
-     * @description : 获取指定id的显示场次管理
-     * @param: id   显示场次管理id
-     * @return: 显示场次管理对象
-     */
-    SmsFlashPromotionSession getFlashPromotionSession(Long id);
+    SmsFlashPromotionSession getById(Long id);
 
-    /**
-     * @description : 创建新的显示场次管理
-     * @param: flashSession  新的显示场次管理
-     * @return: 影响行数
-     */
-    int createFlashPromotionSession(SmsFlashPromotionSession flashSession);
+    @Transactional
+    int create(SmsFlashPromotionSession flashSession);
 
-    /**
-     * @description : 删除指定id的显示场次管理
-     * @param: id   显示场次管理id
-     * @return: 影响行数
-     */
-    int deleteFlashPromotionSession(Long id);
+    @Transactional
+    int deleteById(Long id);
 
-    /**
-     * @description : 获取所有显示场次管理
-     * @return: 显示场次管理对象列表
-     */
-    List<SmsFlashPromotionSession> listFlashPromotionSession();
+    List<SmsFlashPromotionSession> list();
 
-    List<SmsFlashPromotionSessionDeatil> listFlashPromotionSessionDetail(Long flashPromotionId);
+    List<SmsFlashPromotionSessionDeatil> selectList(Long flashPromotionId);
 
-    /**
-     * @description : 更新指定id的显示场次管理
-     * @param: id   显示场次管理id
-     * @param: flashSession  新的显示场次管理
-     * @return: 影响行数
-     */
-    int updateFlashPromotionSession(Long id, SmsFlashPromotionSession flashSession);
+    @Transactional
+    int updateById(Long id, SmsFlashPromotionSession flashSession);
 
-    int updateStatus(Long id, Integer status);
+    @Transactional
+    int updateStatusById(Long id, Integer status);
 }

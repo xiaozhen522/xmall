@@ -6,7 +6,7 @@
         <collection column="id" property="children" ofType="com.xiaozhen.mall.tiny.dto.UmsMenuNode"
                     select="treeList"/>
     </resultMap>
-    <select id="treeList" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <select id="treeList" resultMap="BaseResultMap">
         SELECT *
         FROM ums_menu
         WHERE ums_menu.parent_id = #{id}

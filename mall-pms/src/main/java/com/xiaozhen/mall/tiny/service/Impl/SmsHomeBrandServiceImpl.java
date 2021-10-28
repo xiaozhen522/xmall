@@ -22,7 +22,7 @@ public class SmsHomeBrandServiceImpl implements SmsHomeBrandService {
     private SmsHomeBrandMapper homeBrandMapper;
 
     @Override
-    public int createHomeBrands(SmsHomeBrand[] homeBrandList) {
+    public int create(SmsHomeBrand[] homeBrandList) {
         int rows = 0;
         for (SmsHomeBrand homeBrand : homeBrandList) {
             rows += homeBrandMapper.insertSelective(homeBrand);
@@ -31,17 +31,17 @@ public class SmsHomeBrandServiceImpl implements SmsHomeBrandService {
     }
 
     @Override
-    public int deleteHomeBrands(Long[] ids) {
+    public int delete(Long[] ids) {
         SmsHomeBrandExample example = new SmsHomeBrandExample();
         example.createCriteria().andBrandIdIn(Arrays.asList(ids));
         return homeBrandMapper.deleteByExample(example);
     }
 
     @Override
-    public List<SmsHomeBrand> listHomeBrand(String brandName, Integer pageNum, Integer pageSize) {
+    public List<SmsHomeBrand> list(String brandName, Integer pageNum, Integer pageSize) {
         SmsHomeBrandExample example = new SmsHomeBrandExample();
         System.out.println(brandName);
-        if (brandName != null && !"".equals(brandName)) {
+        if (brandName != null) {
             example.createCriteria().andBrandNameLike("%" + brandName + "%");
         }
         PageHelper.startPage(pageNum, pageSize);
@@ -49,7 +49,7 @@ public class SmsHomeBrandServiceImpl implements SmsHomeBrandService {
     }
 
     @Override
-    public int updateStatus(Long[] ids, Integer recommendStatus) {
+    public int updateRecommendStatus(Long[] ids, Integer recommendStatus) {
         SmsHomeBrand homeBrand = new SmsHomeBrand();
         homeBrand.setRecommendStatus(recommendStatus);
         SmsHomeBrandExample example = new SmsHomeBrandExample();
@@ -58,7 +58,7 @@ public class SmsHomeBrandServiceImpl implements SmsHomeBrandService {
     }
 
     @Override
-    public int updateSort(Long id, Integer sort) {
+    public int updateSortById(Long id, Integer sort) {
         SmsHomeBrand homeBrand = new SmsHomeBrand();
         homeBrand.setId(id);
         homeBrand.setSort(sort);

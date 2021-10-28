@@ -1,6 +1,9 @@
 package com.xiaozhen.mall.tiny.dao;
 
+import com.xiaozhen.mall.tiny.dto.PmsProductCategoryWithChildernItem;
 import com.xiaozhen.mall.tiny.dto.ProductCategoryParam;
+
+import java.util.List;
 
 /**
  * @description :
@@ -8,5 +11,6 @@ import com.xiaozhen.mall.tiny.dto.ProductCategoryParam;
  * @Author : XiaoZhen
  **/
 public interface ProductCategoryParamDao {
-    int create(ProductCategoryParam productCategoryParam);
+
+    List<PmsProductCategoryWithChildernItem> listWithChildren(Long id);
 }

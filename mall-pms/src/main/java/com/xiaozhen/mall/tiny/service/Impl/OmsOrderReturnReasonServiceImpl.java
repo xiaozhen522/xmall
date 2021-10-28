@@ -22,7 +22,7 @@ public class OmsOrderReturnReasonServiceImpl implements OmsOrderReturnReasonServ
     private OmsOrderReturnReasonMapper returnReasonMapper;
 
     @Override
-    public OmsOrderReturnReason get(Long id) {
+    public OmsOrderReturnReason getById(Long id) {
         return returnReasonMapper.selectByPrimaryKey(id);
     }
 
@@ -39,7 +39,7 @@ public class OmsOrderReturnReasonServiceImpl implements OmsOrderReturnReasonServ
     }
 
     @Override
-    public int update(Long id, OmsOrderReturnReason returnReason) {
+    public int updateById(Long id, OmsOrderReturnReason returnReason) {
         returnReason.setId(id);
         return returnReasonMapper.updateByPrimaryKey(returnReason);
     }

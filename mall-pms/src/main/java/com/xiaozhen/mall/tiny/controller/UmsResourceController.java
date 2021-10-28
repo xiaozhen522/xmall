@@ -31,9 +31,9 @@ public class UmsResourceController {
     @ApiOperation("根据id获取资源详情")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<UmsResource> get(@PathVariable("id")
-                                          @ApiParam("id") Long id) {
-        return CommontResult.success(resourceService.get(id));
+    public CommontResult<UmsResource> getById(@PathVariable("id")
+                                              @ApiParam("id") Long id) {
+        return CommontResult.success(resourceService.getById(id));
     }
 
     @ApiOperation("添加后台资源")
@@ -56,16 +56,16 @@ public class UmsResourceController {
     @ApiOperation("根据id删除后台资源")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult delete(@PathVariable("id")
-                                @ApiParam("id") Long id) {
+    public CommontResult deleteById(@PathVariable("id")
+                                    @ApiParam("id") Long id) {
         CommontResult commontResult;
-        int count = resourceService.delete(id);
+        int count = resourceService.deleteById(id);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("delete success:id={}", id);
+            LOGGER.debug("deleteById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("delete failed:id={}", id);
+            LOGGER.debug("deleteById failed:id={}", id);
         }
         return commontResult;
     }
@@ -97,18 +97,18 @@ public class UmsResourceController {
     @ApiOperation("修改后台资源")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult update(@PathVariable("id")
-                                @ApiParam("id") Long id,
-                                @RequestBody
-                                @ApiParam("umsResource") UmsResource resource) {
+    public CommontResult updateById(@PathVariable("id")
+                                    @ApiParam("id") Long id,
+                                    @RequestBody
+                                    @ApiParam("umsResource") UmsResource resource) {
         CommontResult commontResult;
-        int count = resourceService.update(id, resource);
+        int count = resourceService.updateById(id, resource);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("update success:{}", resource);
+            LOGGER.debug("updateById success:{}", resource);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("update failed:{}", resource);
+            LOGGER.debug("updateById failed:{}", resource);
         }
         return commontResult;
     }

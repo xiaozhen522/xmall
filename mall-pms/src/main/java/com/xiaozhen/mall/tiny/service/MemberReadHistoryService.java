@@ -1,6 +1,7 @@
 package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.nosql.mongodb.document.MemberReadHistory;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public interface MemberReadHistoryService {
      * @param memberReadHistory 浏览记录对象
      * @return 影响行数
      */
+    @Transactional
     int create(MemberReadHistory memberReadHistory);
 
     /**
@@ -24,6 +26,7 @@ public interface MemberReadHistoryService {
      * @param ids 浏览记录id集合
      * @return 删除条数
      */
+    @Transactional
     int delete(List<String> ids);
 
     /**

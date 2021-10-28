@@ -32,24 +32,24 @@ public class SmsFlashPromotionProductRelationController {
     @ApiOperation("获取管理商品促销信息")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<SmsFlashPromotionProductRelation> getFlashPromotionProductRelation(@PathVariable("id")
-                                                                                            @ApiParam("id") Long id) {
-        return CommontResult.success(flashProductRelationService.getFlashPromotionProductRelation(id));
+    public CommontResult<SmsFlashPromotionProductRelation> getById(@PathVariable("id")
+                                                                   @ApiParam("id") Long id) {
+        return CommontResult.success(flashProductRelationService.getById(id));
     }
 
     @ApiOperation("批量选择商品关系关联")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult createFlashPromotionProductRelation(@RequestBody
-                                                             @ApiParam("relationList") SmsFlashPromotionProductRelation... fpprList) {
+    public CommontResult create(@RequestBody
+                                @ApiParam("relationList") SmsFlashPromotionProductRelation... fpprList) {
         CommontResult commontResult;
-        int count = flashProductRelationService.createFlashPromotionProductRelation(fpprList);
+        int count = flashProductRelationService.create(fpprList);
         if (count > 0) {
-            commontResult = CommontResult.success(fpprList);
-            LOGGER.debug("createFlashPromotionProductRelation success:{}", fpprList);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("create success:{}", fpprList);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("createFlashPromotionProductRelation failed:{}", fpprList);
+            LOGGER.debug("create failed:{}", fpprList);
         }
         return commontResult;
     }
@@ -57,16 +57,16 @@ public class SmsFlashPromotionProductRelationController {
     @ApiOperation("删除关联")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult deleteFlashPromotionProductRelation(@PathVariable("id")
-                                                             @ApiParam("id") Long id) {
+    public CommontResult deleteById(@PathVariable("id")
+                                    @ApiParam("id") Long id) {
         CommontResult commontResult;
-        int count = flashProductRelationService.deleteFlashPromotionProductRelation(id);
+        int count = flashProductRelationService.deleteById(id);
         if (count == 1) {
-            commontResult = CommontResult.success(id);
-            LOGGER.debug("deleteFlashPromotionProductRelation success:id={}", id);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("deleteById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("deleteFlashPromotionProductRelation failed:id={}", id);
+            LOGGER.debug("deleteById failed:id={}", id);
         }
         return commontResult;
     }
@@ -74,15 +74,15 @@ public class SmsFlashPromotionProductRelationController {
     @ApiOperation("分页查询限时购和商品关系")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<CommonPage<SmsFlashPromotionProduct>> listFlashPromotionProduct(@RequestParam(name = "flashPromotionId", defaultValue = "")
-                                                                                         @ApiParam("flashPromotionId") Long flashPromotionId,
-                                                                                         @RequestParam(name = "flashPromotionSessionId", defaultValue = "")
-                                                                                         @ApiParam("flashPromotionSessionId") Long flashPromotionSessionId,
-                                                                                         @RequestParam(name = "pageNum", defaultValue = "1")
-                                                                                         @ApiParam("页码") Integer pageNum,
-                                                                                         @RequestParam(name = "pageSize", defaultValue = "5")
-                                                                                         @ApiParam("每页数量") Integer pageSize) {
-        List<SmsFlashPromotionProduct> fppList = flashProductRelationService.listFlashPromotionProduct(flashPromotionId, flashPromotionSessionId,
+    public CommontResult<CommonPage<SmsFlashPromotionProduct>> list(@RequestParam(name = "flashPromotionId", defaultValue = "")
+                                                                    @ApiParam("flashPromotionId") Long flashPromotionId,
+                                                                    @RequestParam(name = "flashPromotionSessionId", defaultValue = "")
+                                                                    @ApiParam("flashPromotionSessionId") Long flashPromotionSessionId,
+                                                                    @RequestParam(name = "pageNum", defaultValue = "1")
+                                                                    @ApiParam("页码") Integer pageNum,
+                                                                    @RequestParam(name = "pageSize", defaultValue = "5")
+                                                                    @ApiParam("每页数量") Integer pageSize) {
+        List<SmsFlashPromotionProduct> fppList = flashProductRelationService.list(flashPromotionId, flashPromotionSessionId,
                 pageNum, pageSize);
         return CommontResult.success(CommonPage.restPage(fppList));
     }
@@ -90,18 +90,18 @@ public class SmsFlashPromotionProductRelationController {
     @ApiOperation("修改关联信息相关信息")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateFlashPromotionProductRelation(@PathVariable("id")
-                                                             @ApiParam("id") Long id,
-                                                             @RequestBody
-                                                             @ApiParam("relation") SmsFlashPromotionProductRelation flashProductRelation) {
+    public CommontResult updateById(@PathVariable("id")
+                                    @ApiParam("id") Long id,
+                                    @RequestBody
+                                    @ApiParam("relation") SmsFlashPromotionProductRelation flashProductRelation) {
         CommontResult commontResult;
-        int count = flashProductRelationService.updateFlashPromotionProductRelation(id, flashProductRelation);
+        int count = flashProductRelationService.updateById(id, flashProductRelation);
         if (count == 1) {
-            commontResult = CommontResult.success(flashProductRelation);
-            LOGGER.debug("updateFlashPromotionProductRelation success:{}", flashProductRelation);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("updateById success:{}", flashProductRelation);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateFlashPromotionProductRelation failed:{}", flashProductRelation);
+            LOGGER.debug("updateById failed:{}", flashProductRelation);
         }
         return commontResult;
     }

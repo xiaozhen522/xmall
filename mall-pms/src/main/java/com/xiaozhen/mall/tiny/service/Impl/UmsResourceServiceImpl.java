@@ -21,7 +21,7 @@ public class UmsResourceServiceImpl implements UmsResourceService {
     private UmsResourceMapper resourceMapper;
 
     @Override
-    public UmsResource get(Long id) {
+    public UmsResource getById(Long id) {
         return resourceMapper.selectByPrimaryKey(id);
     }
 
@@ -31,7 +31,7 @@ public class UmsResourceServiceImpl implements UmsResourceService {
     }
 
     @Override
-    public int delete(Long id) {
+    public int deleteById(Long id) {
         return resourceMapper.deleteByPrimaryKey(id);
     }
 
@@ -58,7 +58,7 @@ public class UmsResourceServiceImpl implements UmsResourceService {
     }
 
     @Override
-    public int update(Long id, UmsResource resource) {
+    public int updateById(Long id, UmsResource resource) {
         resource.setId(id);
         return resourceMapper.updateByPrimaryKey(resource);
     }

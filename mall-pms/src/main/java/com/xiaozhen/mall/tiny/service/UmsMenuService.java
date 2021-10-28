@@ -2,6 +2,7 @@ package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.dto.UmsMenuNode;
 import com.xiaozhen.mall.tiny.mbg.model.UmsMenu;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,17 +13,21 @@ import java.util.List;
  **/
 public interface UmsMenuService {
 
-    UmsMenu get(Long id);
+    UmsMenu getById(Long id);
 
+    @Transactional
     int create(UmsMenu menu);
 
-    int delete(Long id);
+    @Transactional
+    int deleteById(Long id);
 
     List<UmsMenu> list(Integer pageNum, Integer pageSize, Long parentId);
 
     List<UmsMenuNode> treeList(Long id);
 
-    int update(Long id, UmsMenu menu);
+    @Transactional
+    int updateById(Long id, UmsMenu menu);
 
-    int updateHidden(Long id, Integer hidden);
+    @Transactional
+    int updateHiddenById(Long id, Integer hidden);
 }

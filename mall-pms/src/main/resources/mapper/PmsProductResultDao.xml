@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaozhen.mall.tiny.dao.PmsProductResultDao">
+    <resultMap id="BaseResultMap" type="com.xiaozhen.mall.tiny.dto.PmsProductResult"
+               extends="com.xiaozhen.mall.tiny.mbg.mapper.PmsProductMapper.BaseResultMap">
+        <result column="cate_parent_id" jdbcType="BIGINT" property="cateParentId"/>
+        <collection column="id" property="memberPriceList" ofType="com.xiaozhen.mall.tiny.mbg.model.PmsMemberPrice"
+                    select="selectMemberPrice"/>
+        <collection column="id" property="prefrenceAreaProductRelationList"
+                    ofType="com.xiaozhen.mall.tiny.mbg.model.CmsPrefrenceAreaProductRelation"
+                    select="selectPrefrenceAreaProductRelation"/>
+        <collection column="id" property="productAttributeValueList"
+                    ofType="com.xiaozhen.mall.tiny.mbg.model.PmsProductAttributeValue"
+                    select="selectProductAttributeValue"/>
+        <collection column="id" property="productFullReductionList"
+                    ofType="com.xiaozhen.mall.tiny.mbg.model.PmsProductFullReduction"
+                    select="selectProductFullReduction"/>
+        <collection column="id" property="productLadderList"
+                    ofType="com.xiaozhen.mall.tiny.mbg.model.PmsProductLadder" select="selectProductLadder"/>
+        <collection column="id" property="skuStockList" ofType="com.xiaozhen.mall.tiny.mbg.model.PmsSkuStock"
+                    select="selectSkuStock"/>
+        <collection column="id" property="subjectProductRelationList"
+                    ofType="com.xiaozhen.mall.tiny.mbg.model.CmsSubjectProductRelation"
+                    select="selectSubjectProductRelation"/>
+    </resultMap>
+    <select id="getUpdateInfoById" resultMap="BaseResultMap">
+        SELECT pms_product_category.parent_id AS cate_parent_id,
+               pms_product.*
+        FROM pms_product,
+             pms_product_category
+        WHERE pms_product.product_category_id = pms_product_category.id
+          AND pms_product.id = #{id}
+    </select>
+    <select id="selectMemberPrice" resultMap="com.xiaozhen.mall.tiny.mbg.mapper.PmsMemberPriceMapper.BaseResultMap">
+        SELECT *
+        FROM pms_member_price
+        WHERE pms_member_price.product_id = #{id}
+    </select>
+    <select id="selectPrefrenceAreaProductRelation"
+            resultMap="com.xiaozhen.mall.tiny.mbg.mapper.CmsPrefrenceAreaProductRelationMapper.BaseResultMap">
+        SELECT *
+        FROM cms_prefrence_area_product_relation
+        WHERE cms_prefrence_area_product_relation.product_id = #{id}
+    </select>
+    <select id="selectProductAttributeValue"
+            resultMap="com.xiaozhen.mall.tiny.mbg.mapper.PmsProductAttributeValueMapper.BaseResultMap">
+        SELECT *
+        FROM pms_product_attribute_value
+        WHERE pms_product_attribute_value.product_id = #{id}
+    </select>
+    <select id="selectProductFullReduction"
+            resultMap="com.xiaozhen.mall.tiny.mbg.mapper.PmsProductFullReductionMapper.BaseResultMap">
+        SELECT *
+        FROM pms_product_full_reduction
+        WHERE pms_product_full_reduction.product_id = #{id}
+    </select>
+    <select id="selectProductLadder" resultMap="com.xiaozhen.mall.tiny.mbg.mapper.PmsProductLadderMapper.BaseResultMap">
+        SELECT *
+        FROM pms_product_ladder
+        WHERE pms_product_ladder.product_id = #{id}
+    </select>
+    <select id="selectSkuStock" resultMap="com.xiaozhen.mall.tiny.mbg.mapper.PmsSkuStockMapper.BaseResultMap">
+        SELECT *
+        FROM pms_sku_stock
+        WHERE pms_sku_stock.product_id = #{id}
+    </select>
+    <select id="selectSubjectProductRelation"
+            resultMap="com.xiaozhen.mall.tiny.mbg.mapper.CmsSubjectProductRelationMapper.BaseResultMap">
+        SELECT *
+        FROM cms_subject_product_relation
+        WHERE cms_subject_product_relation.product_id = #{id}
+    </select>
+
+</mapper>

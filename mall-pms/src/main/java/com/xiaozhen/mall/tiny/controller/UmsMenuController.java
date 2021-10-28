@@ -32,9 +32,9 @@ public class UmsMenuController {
     @ApiOperation("根据id获取菜单详情")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<UmsMenu> get(@PathVariable("id")
-                                      @ApiParam("id") Long id) {
-        return CommontResult.success(menuService.get(id));
+    public CommontResult<UmsMenu> getById(@PathVariable("id")
+                                          @ApiParam("id") Long id) {
+        return CommontResult.success(menuService.getById(id));
     }
 
     @ApiOperation("添加后台菜单")
@@ -57,16 +57,16 @@ public class UmsMenuController {
     @ApiOperation("根据id删除后台菜单")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult delete(@PathVariable("id")
-                                @ApiParam("id") Long id) {
+    public CommontResult deleteById(@PathVariable("id")
+                                    @ApiParam("id") Long id) {
         CommontResult commontResult;
-        int count = menuService.delete(id);
+        int count = menuService.deleteById(id);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("delete success:id={}", id);
+            LOGGER.debug("deleteById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("delete failed:id={}", id);
+            LOGGER.debug("deleteById failed:id={}", id);
         }
         return commontResult;
     }
@@ -95,18 +95,18 @@ public class UmsMenuController {
     @ApiOperation("修改后台菜单")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult update(@PathVariable("id")
-                                @ApiParam("id") Long id,
-                                @RequestBody
-                                @ApiParam("umsMenu") UmsMenu menu) {
+    public CommontResult updateById(@PathVariable("id")
+                                    @ApiParam("id") Long id,
+                                    @RequestBody
+                                    @ApiParam("umsMenu") UmsMenu menu) {
         CommontResult commontResult;
-        int count = menuService.update(id, menu);
+        int count = menuService.updateById(id, menu);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("update success:{}", menu);
+            LOGGER.debug("updateById success:{}", menu);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("update failed:{}", menu);
+            LOGGER.debug("updateById failed:{}", menu);
         }
         return commontResult;
     }
@@ -114,18 +114,18 @@ public class UmsMenuController {
     @ApiOperation("修改菜单显示状态")
     @RequestMapping(value = "/updateHidden/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateHidden(@PathVariable("id")
-                                      @ApiParam("id") Long id,
-                                      @RequestParam(name = "hidden")
-                                      @ApiParam("hidden") Integer hidden) {
+    public CommontResult updateHiddenById(@PathVariable("id")
+                                          @ApiParam("id") Long id,
+                                          @RequestParam(name = "hidden")
+                                          @ApiParam("hidden") Integer hidden) {
         CommontResult commontResult;
-        int count = menuService.updateHidden(id, hidden);
+        int count = menuService.updateHiddenById(id, hidden);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("updateHidden success:id={}", id);
+            LOGGER.debug("updateHiddenById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateHidden failed:id={}", id);
+            LOGGER.debug("updateHiddenById failed:id={}", id);
         }
         return commontResult;
     }

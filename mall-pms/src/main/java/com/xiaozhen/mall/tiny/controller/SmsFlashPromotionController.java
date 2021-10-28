@@ -26,29 +26,29 @@ import java.util.List;
 public class SmsFlashPromotionController {
     private static final Logger LOGGER = LoggerFactory.getLogger(SmsFlashPromotionController.class);
     @Autowired
-    private SmsFlashPromotionService flashService;
+    private SmsFlashPromotionService flashPromotionService;
 
     @ApiOperation("获取活动详情")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<SmsFlashPromotion> getFlashPromotion(@PathVariable("id")
-                                                              @ApiParam("id") Long id) {
-        return CommontResult.success(flashService.getFlashPromotion(id));
+    public CommontResult<SmsFlashPromotion> getById(@PathVariable("id")
+                                                    @ApiParam("id") Long id) {
+        return CommontResult.success(flashPromotionService.getById(id));
     }
 
     @ApiOperation("添加活动")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult createFlashPromotion(@RequestBody
-                                              @ApiParam("flashPromotion") SmsFlashPromotion flashPromotion) {
+    public CommontResult create(@RequestBody
+                                @ApiParam("flashPromotion") SmsFlashPromotion flashPromotion) {
         CommontResult commontResult;
-        int count = flashService.createFlashPromotion(flashPromotion);
+        int count = flashPromotionService.create(flashPromotion);
         if (count == 1) {
-            commontResult = CommontResult.success(flashPromotion);
-            LOGGER.debug("createFlashPromotion success:{}", flashPromotion);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("create success:{}", flashPromotion);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("createFlashPromotion failed:{}", flashPromotion);
+            LOGGER.debug("create failed:{}", flashPromotion);
         }
         return commontResult;
     }
@@ -56,16 +56,16 @@ public class SmsFlashPromotionController {
     @ApiOperation("删除活动信息")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult deleteFlashPromotion(@PathVariable("id")
-                                              @ApiParam("id") Long id) {
+    public CommontResult deleteById(@PathVariable("id")
+                                    @ApiParam("id") Long id) {
         CommontResult commontResult;
-        int count = flashService.deleteFlashPromotion(id);
+        int count = flashPromotionService.deleteById(id);
         if (count == 1) {
-            commontResult = CommontResult.success(id);
-            LOGGER.debug("deleteFlashPromotion success:id={}", id);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("deleteById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("deleteFlashPromotion failed:id={}", id);
+            LOGGER.debug("deleteById failed:id={}", id);
         }
         return commontResult;
     }
@@ -73,31 +73,31 @@ public class SmsFlashPromotionController {
     @ApiOperation("根据活动名称分页查询")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<CommonPage<SmsFlashPromotion>> listFlashPromotion(@RequestParam(name = "keyword", defaultValue = "")
-                                                                           @ApiParam("keyword") String keyword,
-                                                                           @RequestParam(name = "pageNum", defaultValue = "1")
-                                                                           @ApiParam("页码") Integer pageNum,
-                                                                           @RequestParam(name = "pageSize", defaultValue = "5")
-                                                                           @ApiParam("每页数量") Integer pageSize) {
-        List<SmsFlashPromotion> flashList = flashService.listFlashPromotion(keyword, pageNum, pageSize);
+    public CommontResult<CommonPage<SmsFlashPromotion>> list(@RequestParam(name = "keyword", defaultValue = "")
+                                                             @ApiParam("keyword") String keyword,
+                                                             @RequestParam(name = "pageNum", defaultValue = "1")
+                                                             @ApiParam("页码") Integer pageNum,
+                                                             @RequestParam(name = "pageSize", defaultValue = "5")
+                                                             @ApiParam("每页数量") Integer pageSize) {
+        List<SmsFlashPromotion> flashList = flashPromotionService.list(keyword, pageNum, pageSize);
         return CommontResult.success(CommonPage.restPage(flashList));
     }
 
     @ApiOperation("更新活动信息")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateFlashPromotion(@PathVariable("id")
-                                              @ApiParam("id") Long id,
-                                              @RequestBody
-                                              @ApiParam("flashPromotion") SmsFlashPromotion flashPromotion) {
+    public CommontResult updateById(@PathVariable("id")
+                                    @ApiParam("id") Long id,
+                                    @RequestBody
+                                    @ApiParam("flashPromotion") SmsFlashPromotion flashPromotion) {
         CommontResult commontResult;
-        int count = flashService.updateFlashPromotion(id, flashPromotion);
+        int count = flashPromotionService.updateById(id, flashPromotion);
         if (count == 1) {
-            commontResult = CommontResult.success(flashPromotion);
-            LOGGER.debug("updateFlashPromotion success:{}", flashPromotion);
+            commontResult = CommontResult.success(null);
+            LOGGER.debug("updateById success:{}", flashPromotion);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateFlashPromotion failed:{}", flashPromotion);
+            LOGGER.debug("updateById failed:{}", flashPromotion);
         }
         return commontResult;
     }
@@ -105,18 +105,18 @@ public class SmsFlashPromotionController {
     @ApiOperation("修改上下线状态")
     @RequestMapping(value = "/update/status/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateStatus(@PathVariable("id")
-                                      @ApiParam("id") Long id,
-                                      @RequestParam(name = "status", defaultValue = "")
-                                      @ApiParam("status") Integer status) {
+    public CommontResult updateStatusById(@PathVariable("id")
+                                          @ApiParam("id") Long id,
+                                          @RequestParam(name = "status", defaultValue = "")
+                                          @ApiParam("status") Integer status) {
         CommontResult commontResult;
-        int count = flashService.updateStatus(id, status);
+        int count = flashPromotionService.updateStatusById(id, status);
         if (count == 1) {
             commontResult = CommontResult.success(id);
-            LOGGER.debug("updateStatus success:id={}", id);
+            LOGGER.debug("updateStatusById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateStatus failed:id={}", id);
+            LOGGER.debug("updateStatusById failed:id={}", id);
         }
         return commontResult;
     }

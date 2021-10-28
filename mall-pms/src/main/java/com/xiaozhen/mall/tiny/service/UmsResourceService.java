@@ -1,6 +1,7 @@
 package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.mbg.model.UmsResource;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,15 +12,18 @@ import java.util.List;
  **/
 public interface UmsResourceService {
 
-    UmsResource get(Long id);
+    UmsResource getById(Long id);
 
+    @Transactional
     int create(UmsResource resource);
 
-    int delete(Long id);
+    @Transactional
+    int deleteById(Long id);
 
     List<UmsResource> list(Integer pageNum, Integer pageSize, Long categoryId, String nameKeyword, String urlKeyword);
 
     List<UmsResource> listAll();
 
-    int update(Long id, UmsResource resource);
+    @Transactional
+    int updateById(Long id, UmsResource resource);
 }

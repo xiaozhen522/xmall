@@ -1,6 +1,7 @@
 package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.mbg.model.OmsOrderReturnReason;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface OmsOrderReturnReasonService {
      * @param id 退货原因id
      * @return 退货原因对象
      */
-    OmsOrderReturnReason get(Long id);
+    OmsOrderReturnReason getById(Long id);
 
     /**
      * 新建退货原因
@@ -25,6 +26,7 @@ public interface OmsOrderReturnReasonService {
      * @param returnReason 退货原因对象
      * @return 创建行数
      */
+    @Transactional
     int create(OmsOrderReturnReason returnReason);
 
     /**
@@ -33,6 +35,7 @@ public interface OmsOrderReturnReasonService {
      * @param ids 退货原因id列表
      * @return 删除行数
      */
+    @Transactional
     int delete(Long[] ids);
 
     /**
@@ -42,7 +45,8 @@ public interface OmsOrderReturnReasonService {
      * @param returnReason 新的退货原因对象
      * @return 更新行数
      */
-    int update(Long id, OmsOrderReturnReason returnReason);
+    @Transactional
+    int updateById(Long id, OmsOrderReturnReason returnReason);
 
     /**
      * 分页查询退货原因
@@ -60,5 +64,6 @@ public interface OmsOrderReturnReasonService {
      * @param status 退货原因状态
      * @return 更新行数
      */
+    @Transactional
     int updateStatus(Long[] ids, Integer status);
 }

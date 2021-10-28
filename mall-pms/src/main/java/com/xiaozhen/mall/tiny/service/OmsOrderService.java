@@ -5,6 +5,7 @@ import com.xiaozhen.mall.tiny.dto.OmsOrderDeliveryParam;
 import com.xiaozhen.mall.tiny.dto.OmsOrderDetail;
 import com.xiaozhen.mall.tiny.dto.OmsReceiverInfoParam;
 import com.xiaozhen.mall.tiny.mbg.model.OmsOrder;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public interface OmsOrderService {
      * @param id 订单id
      * @return 订单对象
      */
-    OmsOrderDetail get(Long id);
+    OmsOrderDetail getById(Long id);
 
     /**
      * 批量删除订单
@@ -28,6 +29,7 @@ public interface OmsOrderService {
      * @param ids 订单id列表
      * @return 删除行数
      */
+    @Transactional
     int delete(Long[] ids);
 
     /**
@@ -52,6 +54,7 @@ public interface OmsOrderService {
      * @param ids    订单id列表
      * @return 更新行数
      */
+    @Transactional
     int updateStatus(Integer status, Long[] ids);
 
     /**
@@ -60,6 +63,7 @@ public interface OmsOrderService {
      * @param orderDeliveryParamList 订单物流信息列表
      * @return 更新行数
      */
+    @Transactional
     int updateDelivery(List<OmsOrderDeliveryParam> orderDeliveryParamList);
 
     /**
@@ -68,6 +72,7 @@ public interface OmsOrderService {
      * @param moneyInfoParam 订单费用信息对象
      * @return 更新行数
      */
+    @Transactional
     int updateMoneyInfo(OMSMoneyInfoParam moneyInfoParam);
 
     /**
@@ -78,7 +83,8 @@ public interface OmsOrderService {
      * @param status 订单状态
      * @return 更新行数
      */
-    int updateNote(Long id, String note, Integer status);
+    @Transactional
+    int updateNoteById(Long id, String note, Integer status);
 
     /**
      * 修改收货人信息
@@ -86,5 +92,6 @@ public interface OmsOrderService {
      * @param receiverInfoParam 收货人信息
      * @return 更新行数
      */
+    @Transactional
     int updateReceiverInfo(OmsReceiverInfoParam receiverInfoParam);
 }

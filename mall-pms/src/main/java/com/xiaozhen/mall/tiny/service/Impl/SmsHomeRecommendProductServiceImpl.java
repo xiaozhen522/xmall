@@ -22,7 +22,7 @@ public class SmsHomeRecommendProductServiceImpl implements SmsHomeRecommendProdu
     private SmsHomeRecommendProductMapper homeRecommendProductMapper;
 
     @Override
-    public int createHomeRecommendProduct(SmsHomeRecommendProduct[] homeRecommendProductList) {
+    public int create(SmsHomeRecommendProduct[] homeRecommendProductList) {
         int rows = 0;
         for (SmsHomeRecommendProduct homeRecommendProduct : homeRecommendProductList) {
             rows += homeRecommendProductMapper.insertSelective(homeRecommendProduct);
@@ -31,16 +31,14 @@ public class SmsHomeRecommendProductServiceImpl implements SmsHomeRecommendProdu
     }
 
     @Override
-    public int deleteHomeRecommendProduct(Long[] ids) {
+    public int delete(Long[] ids) {
         SmsHomeRecommendProductExample example = new SmsHomeRecommendProductExample();
         example.createCriteria().andIdIn(Arrays.asList(ids));
         return homeRecommendProductMapper.deleteByExample(example);
     }
 
-
     @Override
-    public List<SmsHomeRecommendProduct> listHomeRecommendProduct(Integer pageNum, Integer pageSize, String productName,
-                                                                  Integer recommendStatus) {
+    public List<SmsHomeRecommendProduct> list(Integer pageNum, Integer pageSize, String productName, Integer recommendStatus) {
         SmsHomeRecommendProductExample example = new SmsHomeRecommendProductExample();
         SmsHomeRecommendProductExample.Criteria criteria = example.createCriteria();
         if (productName != null && !"".equals(productName)) {
@@ -63,7 +61,7 @@ public class SmsHomeRecommendProductServiceImpl implements SmsHomeRecommendProdu
     }
 
     @Override
-    public int updateSort(Long id, Integer sort) {
+    public int updateSortById(Long id, Integer sort) {
         SmsHomeRecommendProduct homeRecommendProduct = new SmsHomeRecommendProduct();
         homeRecommendProduct.setId(id);
         homeRecommendProduct.setSort(sort);

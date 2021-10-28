@@ -28,26 +28,26 @@ public class OmsOrderSettingController {
     @ApiOperation("获取指定订单设置")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<OmsOrderSetting> get(@PathVariable("id")
+    public CommontResult<OmsOrderSetting> getById(@PathVariable("id")
                                               @ApiParam("id") Long id) {
-        return CommontResult.success(orderSettingService.get(id));
+        return CommontResult.success(orderSettingService.getById(id));
     }
 
     @ApiOperation("修改指定订单设置")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult update(@PathVariable("id")
+    public CommontResult updateById(@PathVariable("id")
                                 @ApiParam("id") Long id,
                                 @RequestBody
                                 @ApiParam("orderSetting") OmsOrderSetting orderSetting) {
         CommontResult commontResult;
-        int count = orderSettingService.update(id, orderSetting);
+        int count = orderSettingService.updateById(id, orderSetting);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("update success:{}", orderSetting);
+            LOGGER.debug("updateById success:{}", orderSetting);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("update failed:{}", orderSetting);
+            LOGGER.debug("updateById failed:{}", orderSetting);
         }
         return commontResult;
     }

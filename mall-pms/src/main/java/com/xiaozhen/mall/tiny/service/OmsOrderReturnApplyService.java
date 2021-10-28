@@ -2,6 +2,7 @@ package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.dto.OmsUpdateStatusParam;
 import com.xiaozhen.mall.tiny.mbg.model.OmsOrderReturnApply;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface OmsOrderReturnApplyService {
      * @param id 订单退货申请id
      * @return 订单退货申请对象
      */
-    OmsOrderReturnApply get(Long id);
+    OmsOrderReturnApply getById(Long id);
 
     /**
      * 批量删除订单退货申请
@@ -25,6 +26,7 @@ public interface OmsOrderReturnApplyService {
      * @param ids 订单退货申请id列表
      * @return 删除行数
      */
+    @Transactional
     int delete(Long[] ids);
 
     /**
@@ -49,6 +51,7 @@ public interface OmsOrderReturnApplyService {
      * @param statusParam 订单状态对象
      * @return 更新行数
      */
-    int updateStatus(Long id, OmsUpdateStatusParam statusParam);
+    @Transactional
+    int updateStatusById(Long id, OmsUpdateStatusParam statusParam);
 
 }

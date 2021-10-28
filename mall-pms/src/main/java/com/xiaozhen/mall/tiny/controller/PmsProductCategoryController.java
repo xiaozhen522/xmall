@@ -90,8 +90,9 @@ public class PmsProductCategoryController {
     @ApiOperation("查询所有一级分类及子分类")
     @RequestMapping(value = "/list/withChildren", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<List<PmsProductCategoryWithChildernItem>> listWithChildern() {
-        return CommontResult.success(productCategoryService.listWithChildern());
+    public CommontResult<List<PmsProductCategoryWithChildernItem>> listWithChildren(@RequestParam(name = "id", defaultValue = "0")
+                                                                                    @ApiParam("父级id") Long id) {
+        return CommontResult.success(productCategoryService.listWithChildren(id));
     }
 
     @ApiOperation("修改商品分类")

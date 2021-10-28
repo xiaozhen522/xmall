@@ -21,14 +21,13 @@ public class SmsCouponHistoryServiceImpl implements SmsCouponHistoryService {
     private SmsCouponHistoryMapper couponHistoryMapper;
 
     @Override
-    public List<SmsCouponHistory> listCouponHistory(Long couponId, String orderSn, Integer pageNum, Integer pageSize,
-                                                    Integer useStatus) {
+    public List<SmsCouponHistory> list(Long couponId, String orderSn, Integer pageNum, Integer pageSize, Integer useStatus) {
         SmsCouponHistoryExample example = new SmsCouponHistoryExample();
         SmsCouponHistoryExample.Criteria criteria = example.createCriteria();
         if (couponId != null) {
             criteria.andCouponIdEqualTo(couponId);
         }
-        if (orderSn != null && !orderSn.equals("")) {
+        if (orderSn != null) {
             criteria.andOrderSnLike("%" + orderSn + "%");
         }
         if (useStatus != null) {

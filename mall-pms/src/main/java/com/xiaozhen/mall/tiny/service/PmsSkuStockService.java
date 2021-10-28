@@ -1,6 +1,7 @@
 package com.xiaozhen.mall.tiny.service;
 
 import com.xiaozhen.mall.tiny.mbg.model.PmsSkuStock;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -10,12 +11,8 @@ import java.util.List;
  * @Author : XiaoZhen
  **/
 public interface PmsSkuStockService {
-    /**
-     * @description : 获取指定id的sku商品库存
-     * @param: id   sku商品库存id
-     * @return: sku商品库存对象
-     */
-    List<PmsSkuStock> getSkuStock(Long id, String keyword);
+    List<PmsSkuStock> getById(Long id, String keyword);
 
-    int updateSkuStockList(Long pid, PmsSkuStock[] skuStockList);
+    @Transactional
+    int updateById(Long pid, PmsSkuStock[] skuStockList);
 }

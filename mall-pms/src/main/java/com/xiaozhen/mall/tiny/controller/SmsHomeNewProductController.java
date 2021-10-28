@@ -31,16 +31,16 @@ public class SmsHomeNewProductController {
     @ApiOperation("添加首页推荐商品")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult createHomeNewProduct(@RequestBody
-                                              @ApiParam("homeProductList") SmsHomeNewProduct... homeNewProductList) {
+    public CommontResult create(@RequestBody
+                                @ApiParam("homeProductList") SmsHomeNewProduct... homeNewProductList) {
         CommontResult commontResult;
-        int count = homeNewProductService.createHomeNewProduct(homeNewProductList);
+        int count = homeNewProductService.create(homeNewProductList);
         if (count > 0) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("createHomeNewProduct success:{}", homeNewProductList);
+            LOGGER.debug("create success:{}", homeNewProductList);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("createHomeNewProduct failed:{}", homeNewProductList);
+            LOGGER.debug("create failed:{}", homeNewProductList);
         }
         return commontResult;
     }
@@ -48,16 +48,16 @@ public class SmsHomeNewProductController {
     @ApiOperation("批量删除推荐")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult deleteHomeNewProduct(@RequestParam(name = "ids")
-                                              @ApiParam("ids") Long... ids) {
+    public CommontResult delete(@RequestParam(name = "ids")
+                                @ApiParam("ids") Long... ids) {
         CommontResult commontResult;
-        int count = homeNewProductService.deleteHomeNewProduct(ids);
+        int count = homeNewProductService.delete(ids);
         if (count > 0) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("deleteHomeNewProduct success:ids={}", ids);
+            LOGGER.debug("delete success:ids={}", ids);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("deleteHomeNewProduct failed:ids={}", ids);
+            LOGGER.debug("delete failed:ids={}", ids);
         }
         return commontResult;
     }
@@ -65,17 +65,16 @@ public class SmsHomeNewProductController {
     @ApiOperation("分页查询推荐")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<CommonPage<SmsHomeNewProduct>> listHomeNewProduct(@RequestParam(name = "pageNum", defaultValue = "1")
-                                                                           @ApiParam("页码") Integer pageNum,
-                                                                           @RequestParam(name = "pageSize", defaultValue = "5")
-                                                                           @ApiParam("每页数量") Integer pageSize,
-                                                                           @RequestParam(name = "productName", defaultValue = "")
-                                                                           @ApiParam("productName") String productName,
-                                                                           @RequestParam(name = "recommendStatus", defaultValue = "")
-                                                                           @ApiParam("recommendStatus") Integer recommendStatus) {
+    public CommontResult<CommonPage<SmsHomeNewProduct>> list(@RequestParam(name = "pageNum", defaultValue = "1")
+                                                             @ApiParam("页码") Integer pageNum,
+                                                             @RequestParam(name = "pageSize", defaultValue = "5")
+                                                             @ApiParam("每页数量") Integer pageSize,
+                                                             @RequestParam(name = "productName", defaultValue = "")
+                                                             @ApiParam("productName") String productName,
+                                                             @RequestParam(name = "recommendStatus", defaultValue = "")
+                                                             @ApiParam("recommendStatus") Integer recommendStatus) {
 
-        List<SmsHomeNewProduct> homeNewProductList = homeNewProductService.listHomeNewProduct(pageNum, pageSize,
-                productName, recommendStatus);
+        List<SmsHomeNewProduct> homeNewProductList = homeNewProductService.list(pageNum, pageSize, productName, recommendStatus);
         return CommontResult.success(CommonPage.restPage(homeNewProductList));
     }
 
@@ -101,18 +100,18 @@ public class SmsHomeNewProductController {
     @ApiOperation("修改推荐排序")
     @RequestMapping(value = "/update/sort/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateSort(@PathVariable("id")
-                                    @ApiParam("id") Long id,
-                                    @RequestParam(name = "sort")
-                                    @ApiParam("port") Integer sort) {
+    public CommontResult updateSortById(@PathVariable("id")
+                                        @ApiParam("id") Long id,
+                                        @RequestParam(name = "sort")
+                                        @ApiParam("port") Integer sort) {
         CommontResult commontResult;
-        int count = homeNewProductService.updateSort(id, sort);
+        int count = homeNewProductService.updateSortById(id, sort);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("updateSort success:id={}", id);
+            LOGGER.debug("updateSortById success:id={}", id);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateSort failed:id={}", id);
+            LOGGER.debug("updateSortById failed:id={}", id);
         }
         return commontResult;
     }

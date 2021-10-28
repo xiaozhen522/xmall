@@ -30,7 +30,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
     private OmsOrderDetailDao orderDetailDao;
 
     @Override
-    public OmsOrderDetail get(Long id) {
+    public OmsOrderDetail getById(Long id) {
         return orderDetailDao.get(id);
     }
 
@@ -100,7 +100,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
     }
 
     @Override
-    public int updateNote(Long id, String note, Integer status) {
+    public int updateNoteById(Long id, String note, Integer status) {
         OmsOrder order = new OmsOrder();
         order.setId(id);
         order.setNote(note);

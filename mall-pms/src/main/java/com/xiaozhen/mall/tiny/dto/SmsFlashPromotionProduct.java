@@ -2,6 +2,7 @@ package com.xiaozhen.mall.tiny.dto;
 
 import com.xiaozhen.mall.tiny.mbg.model.PmsProduct;
 import com.xiaozhen.mall.tiny.mbg.model.SmsFlashPromotionProductRelation;
+import lombok.Data;
 
 import java.util.List;
 
@@ -10,14 +11,7 @@ import java.util.List;
  * @create time:2021/10/20
  * @Author : XiaoZhen
  **/
+@Data
 public class SmsFlashPromotionProduct extends SmsFlashPromotionProductRelation {
-    private PmsProduct product;
-
-    public PmsProduct getProduct() {
-        return product;
-    }
-
-    public void setProduct(PmsProduct product) {
-        this.product = product;
-    }
+    private List<PmsProduct> product;
 }

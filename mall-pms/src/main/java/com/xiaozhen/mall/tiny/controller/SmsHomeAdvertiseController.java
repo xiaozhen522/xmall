@@ -31,24 +31,24 @@ public class SmsHomeAdvertiseController {
     @ApiOperation("获取广告详情")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<SmsHomeAdvertise> getHomeAdvertise(@PathVariable("id")
-                                                            @ApiParam("id") Long id) {
-        return CommontResult.success(homeAdvertiseService.getHomeAdvertise(id));
+    public CommontResult<SmsHomeAdvertise> getById(@PathVariable("id")
+                                                   @ApiParam("id") Long id) {
+        return CommontResult.success(homeAdvertiseService.getById(id));
     }
 
     @ApiOperation("添加广告")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult createHomeAdvertise(@RequestBody
-                                             @ApiParam("advertise") SmsHomeAdvertise homeAdvertise) {
+    public CommontResult create(@RequestBody
+                                @ApiParam("advertise") SmsHomeAdvertise homeAdvertise) {
         CommontResult commontResult;
-        int count = homeAdvertiseService.createHomeAdvertise(homeAdvertise);
+        int count = homeAdvertiseService.create(homeAdvertise);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("createHomeAdvertise success:{}", homeAdvertise);
+            LOGGER.debug("create success:{}", homeAdvertise);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("createHomeAdvertise failed:{}", homeAdvertise);
+            LOGGER.debug("create failed:{}", homeAdvertise);
         }
         return commontResult;
     }
@@ -56,16 +56,16 @@ public class SmsHomeAdvertiseController {
     @ApiOperation("删除广告")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult deleteHomeAdvertise(@RequestParam(name = "ids")
-                                             @ApiParam("ids") Long... ids) {
+    public CommontResult delete(@RequestParam(name = "ids")
+                                @ApiParam("ids") Long... ids) {
         CommontResult commontResult;
-        int count = homeAdvertiseService.deleteHomeAdvertise(ids);
+        int count = homeAdvertiseService.delete(ids);
         if (count > 0) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("deleteHomeAdvertise success:id={}", ids);
+            LOGGER.debug("delete success:id={}", ids);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("deleteHomeAdvertise failed:id={}", ids);
+            LOGGER.debug("delete failed:id={}", ids);
         }
         return commontResult;
     }
@@ -73,33 +73,33 @@ public class SmsHomeAdvertiseController {
     @ApiOperation("分页查询广告")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommontResult<CommonPage<SmsHomeAdvertise>> listHomeAdvertise(@RequestParam(name = "endTime",defaultValue = "")
-                                                                         @ApiParam("endTime") String endTime,
-                                                                         @RequestParam(name = "name",defaultValue = "")
-                                                                         @ApiParam("name") String name,
-                                                                         @RequestParam(name = "pageNum", defaultValue = "1")
-                                                                         @ApiParam("页码") Integer pageNum,
-                                                                         @RequestParam(name = "pageSize", defaultValue = "5")
-                                                                         @ApiParam("每页数量") Integer pageSize) {
-        List<SmsHomeAdvertise> homeList = homeAdvertiseService.listHomeAdvertise(endTime, name, pageNum, pageSize);
+    public CommontResult<CommonPage<SmsHomeAdvertise>> list(@RequestParam(name = "endTime", defaultValue = "")
+                                                            @ApiParam("endTime") String endTime,
+                                                            @RequestParam(name = "name", defaultValue = "")
+                                                            @ApiParam("name") String name,
+                                                            @RequestParam(name = "pageNum", defaultValue = "1")
+                                                            @ApiParam("页码") Integer pageNum,
+                                                            @RequestParam(name = "pageSize", defaultValue = "5")
+                                                            @ApiParam("每页数量") Integer pageSize) {
+        List<SmsHomeAdvertise> homeList = homeAdvertiseService.list(endTime, name, pageNum, pageSize);
         return CommontResult.success(CommonPage.restPage(homeList));
     }
 
     @ApiOperation("修改广告")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateHomeAdvertise(@PathVariable("id")
-                                             @ApiParam("id") Long id,
-                                             @RequestBody
-                                             @ApiParam("advertise") SmsHomeAdvertise homeAdvertise) {
+    public CommontResult updateById(@PathVariable("id")
+                                    @ApiParam("id") Long id,
+                                    @RequestBody
+                                    @ApiParam("advertise") SmsHomeAdvertise homeAdvertise) {
         CommontResult commontResult;
-        int count = homeAdvertiseService.updateHomeAdvertise(id, homeAdvertise);
+        int count = homeAdvertiseService.updateById(id, homeAdvertise);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("updateHomeAdvertise success:{}", homeAdvertise);
+            LOGGER.debug("updateById success:{}", homeAdvertise);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateHomeAdvertise failed:{}", homeAdvertise);
+            LOGGER.debug("updateById failed:{}", homeAdvertise);
         }
         return commontResult;
     }
@@ -107,18 +107,18 @@ public class SmsHomeAdvertiseController {
     @ApiOperation("修改上下线状态")
     @RequestMapping(value = "/update/status/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommontResult updateStatus(@PathVariable("id")
-                                      @ApiParam("id") Long id,
-                                      @RequestParam(name = "status")
-                                      @ApiParam("status") Integer status) {
+    public CommontResult updateStatusById(@PathVariable("id")
+                                          @ApiParam("id") Long id,
+                                          @RequestParam(name = "status")
+                                          @ApiParam("status") Integer status) {
         CommontResult commontResult;
-        int count = homeAdvertiseService.updateStatus(id, status);
+        int count = homeAdvertiseService.updateStatusById(id, status);
         if (count == 1) {
             commontResult = CommontResult.success(null);
-            LOGGER.debug("updateStatus success:{}", status);
+            LOGGER.debug("updateStatusById success:{}", status);
         } else {
             commontResult = CommontResult.failed("操作失败");
-            LOGGER.debug("updateStatus failed:{}", status);
+            LOGGER.debug("updateStatusById failed:{}", status);
         }
         return commontResult;
     }
